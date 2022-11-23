@@ -12,7 +12,7 @@ const Hero = () => {
         as="section"
         backgroundColor={"#925EEB"}
         pt={[10, 12, 14, 16, 20]}
-        pb={10}
+        pb={[0,null,10]}
         color={"white"}
       >
         <Container maxW={"6xl"}>
