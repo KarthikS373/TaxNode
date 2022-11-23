@@ -40,6 +40,12 @@ const Faq = () => {
                   _expanded={{
                     color: "#4A00E0",
                   }}
+                  _focusWithin={{
+                    outline:'none'
+                  }}
+                  _focus={{
+                    outline:'none'
+                  }}
                 >
                   <Box flex="1" textAlign="left">
                     Are Cryptos taxable?
@@ -78,6 +84,12 @@ const Faq = () => {
                   _expanded={{
                     color: "#4A00E0",
                   }}
+                  _focusWithin={{
+                    outline:'none'
+                  }}
+                  _focus={{
+                    outline:'none'
+                  }}
                 >
                   <Box flex="1" textAlign="left">
                     What is the Crypto tax in India?
@@ -114,6 +126,12 @@ const Faq = () => {
                   }}
                   _expanded={{
                     color: "#4A00E0",
+                  }}
+                  _focusWithin={{
+                    outline:'none'
+                  }}
+                  _focus={{
+                    outline:'none'
                   }}
                 >
                   <Box flex="1" textAlign="left">
@@ -153,6 +171,12 @@ const Faq = () => {
                   }}
                   _expanded={{
                     color: "#4A00E0",
+                  }}
+                  _focusWithin={{
+                    outline:'none'
+                  }}
+                  _focus={{
+                    outline:'none'
                   }}
                 >
                   <Box flex="1" textAlign="left">
@@ -194,6 +218,12 @@ const Faq = () => {
                   _expanded={{
                     color: "#4A00E0",
                   }}
+                  _focusWithin={{
+                    outline:'none'
+                  }}
+                  _focus={{
+                    outline:'none'
+                  }}
                 >
                   <Box flex="1" textAlign="left">
                     How does Taxnodes simplify my tax journey?
@@ -232,6 +262,12 @@ const Faq = () => {
                   }}
                   _expanded={{
                     color: "#4A00E0",
+                  }}
+                  _focusWithin={{
+                    outline:'none'
+                  }}
+                  _focus={{
+                    outline:'none'
                   }}
                 >
                   <Box flex="1" textAlign="left">
@@ -273,6 +309,12 @@ const Faq = () => {
                   _expanded={{
                     color: "#4A00E0",
                   }}
+                  _focusWithin={{
+                    outline:'none'
+                  }}
+                  _focus={{
+                    outline:'none'
+                  }}
                 >
                   <Box flex="1" textAlign="left">
                     Where can I access the Crypto tax calculator?
@@ -309,6 +351,12 @@ const Faq = () => {
                   }}
                   _expanded={{
                     color: "#4A00E0",
+                  }}
+                  _focusWithin={{
+                    outline:'none'
+                  }}
+                  _focus={{
+                    outline:'none'
                   }}
                 >
                   <Box flex="1" textAlign="left">
