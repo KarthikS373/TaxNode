@@ -6,6 +6,8 @@ import {
   Text,
   VStack,
   HStack,
+  Grid,
+  GridItem,
 } from "@chakra-ui/react";
 import "swiper/css";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
@@ -16,10 +18,16 @@ const TaxCompliance = () => {
   return (
     <Box
       my={[10, 12, 14, 16, 20]}
-      bg={"rgba(130, 0, 255, 0.06)"}
+      bg={"rgba(130, 0, 255, 0.04)"}
       py={[10, 12, 14, 16, 20]}
     >
-      <Container maxW={"7xl"}>
+      <Container
+        maxW={"7xl"}
+        display={"flex"}
+        flexDir={"column"}
+        alignItems={"center"}
+        justifyContent={"center"}
+      >
         <Heading
           as={"h2"}
           size={"lg"}
@@ -29,83 +37,113 @@ const TaxCompliance = () => {
         >
           Tax Compliance Done Right
         </Heading>
-        <HStack
-          spacing={[0, 4, 14, 16, 20]}
-          flexDir={{ base: "column", sm: "row" }}
-          justify={"center"}
-          alignItems={{ base: "center", sm: "flex-start" }}
-          textAlign={"center"}
-        >
-          <VStack justifyContent={"center"} spacing={[4, null, 5, null, 6]}>
-            <Box
-              borderRadius={"full"}
-              bgColor={"#F4EEFF"}
-              p={[6, 7, 8, 9, 10]}
-              w={[24, 28, 32, 36, 40]}
-              height={[24, 28, 32, 36, 40]}
-            >
-              <Image src={"/register.png"} alt={""} width={80} height={80} />
-            </Box>
-
-            <Text size={"xs"} fontWeight={"medium"} maxW={"12.5rem"}>
-              Register
-            </Text>
-          </VStack>
-          <VStack top={[0, -5]} py={10} pos={"relative"}>
-            <ArrowForwardIcon
-              color={"#590AE0"}
-              fontSize={"2xl"}
-              transform={{ base: "rotate(90deg)", sm: "unset" }}
-            />
-          </VStack>
-          <VStack justifyContent={"center"} spacing={[4, null, 5, null, 6]}>
-            <Box
-              borderRadius={"full"}
-              bgColor={"#F4EEFF"}
-              p={[6, 7, 8, 9, 10]}
-              w={[24, 28, 32, 36, 40]}
-              height={[24, 28, 32, 36, 40]}
-            >
-              <Image
-                src={"/synchaccount.png"}
-                alt={""}
-                width={80}
-                height={80}
-              />
-            </Box>
-
-            <Text size={"xs"} fontWeight={"medium"} maxW={"12.5rem"}>
-              Sync accounts and wallets or upload statements
-            </Text>
-          </VStack>
-          <VStack top={[0, -5]} py={10} pos={"relative"}>
-            <ArrowForwardIcon
-              color={"#590AE0"}
-              fontSize={"2xl"}
-              transform={{ base: "rotate(90deg)", sm: "unset" }}
-            />
-          </VStack>
-          <VStack justifyContent={"center"} spacing={[4, null, 5, null, 6]}>
-            <Box
-              borderRadius={"full"}
-              bgColor={"#F4EEFF"}
-              p={[6, 7, 8, 9, 10]}
-              w={[24, 28, 32, 36, 40]}
-              height={[24, 28, 32, 36, 40]}
-            >
-              <Image
-                src={"/generatetaxreport.png"}
-                alt={""}
-                width={80}
-                height={80}
-              />
-            </Box>
-
-            <Text size={"xs"} fontWeight={"medium"} maxW={"12.5rem"}>
-              Generate tax reports
-            </Text>
-          </VStack>
-        </HStack>
+        <Box maxW={"5xl"}>
+          <Grid
+            templateRows="repeat(2, 1fr)"
+            templateColumns="repeat(7, 1fr)"
+            gap={[6, 7, 8, 9, 10]}
+          >
+            <GridItem rowSpan={2} colSpan={[7,3,2]}>
+              <Box
+                bgColor={"#F4EEFF"}
+                borderRadius={["lg", null, "xl", null, "2xl"]}
+                p={[6, 7, 8, 9, 10]}
+                textAlign={"center"}
+                height={'100%'}
+                display={'flex'}
+                flexDir={'column'}
+                alignItems={'center'}
+                justifyContent={'center'}
+              >
+                <Image
+                  src={"/accurate&Compliant.png"}
+                  alt={""}
+                  width={138}
+                  height={122}
+                />
+                <Text
+                  size={"xs"}
+                  fontWeight={"bold"}
+                  color={"#590AE0"}
+                  mt={[5, 6, 7, 8, 9]}
+                  mb={[2, null, 3, null, 4]}
+                >
+                  Accurate & Compliant
+                </Text>
+                <Text size={"xs"} fontWeight={"medium"}>
+                  Zero-error compliance with Indian Tax Department policies
+                </Text>
+              </Box>
+            </GridItem>
+            <GridItem colSpan={[7,4,5]}>
+              <Box
+                bgColor={"#F4EEFF"}
+                borderRadius={["lg", null, "xl", null, "2xl"]}
+                p={6}
+                textAlign={{ base: "center", md: "left" }}
+                display={"flex"}
+                flexDir={{ base: "column", md: "row" }}
+                alignItems={'center'}
+                minH={'176px'}
+              >
+                <Image
+                  src={"/quick&simple.png"}
+                  alt={""}
+                  width={99}
+                  height={119}
+                  layout={'fixed'}
+                />
+                <Box ml={[0, 7, 8, 9, 10]}  mt={[5, 6, 0, 0, 0]}>
+                  <Text
+                    size={"xs"}
+                    fontWeight={"bold"}
+                    color={"#590AE0"}
+                    mb={[2, null, 3, null, 4]}
+                  >
+                    Quick & Simple
+                  </Text>
+                  <Text size={"xs"} fontWeight={"medium"}>
+                    Sync accounts & wallets and calculate crypto taxes in a
+                    flash
+                  </Text>
+                </Box>
+              </Box>
+            </GridItem>
+            <GridItem colSpan={[7,4,5]}>
+              <Box
+                bgColor={"#F4EEFF"}
+                borderRadius={["lg", null, "xl", null, "2xl"]}
+                p={6}
+                display={"flex"}
+                alignItems={'center'}
+                flexDir={{ base: "column", md: "row" }}
+                textAlign={{ base: "center", md: "left" }}
+                minH={'176px'}
+              >
+                <Image
+                  src={"/worlClassSupport.png"}
+                  alt={""}
+                  width={103}
+                  height={93}
+                  layout={'fixed'}
+                />
+                <Box ml={[0, 7, 8, 9, 10]}  mt={[5, 6, 0, 0, 0]}>
+                  <Text
+                    size={"xs"}
+                    fontWeight={"bold"}
+                    color={"#590AE0"}
+                    mb={[2, null, 3, null, 4]}
+                  >
+                    World-Class Support
+                  </Text>
+                  <Text size={"xs"} fontWeight={"medium"}>
+                    Get timely expert support, exactly when you need it
+                  </Text>
+                </Box>
+              </Box>
+            </GridItem>
+          </Grid>
+        </Box>
       </Container>
     </Box>
   );

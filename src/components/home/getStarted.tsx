@@ -53,6 +53,7 @@ const GetStarted = () => {
               fontSize={"2xl"}
               transform={{ base: "rotate(90deg)", sm: "unset" }}
               mt={[0, 10, 12, 14, 16]}
+              opacity={0.5}
             />
           </VStack>
           <VStack justifyContent={"center"} spacing={[4, null, 5, null, 6]}>
@@ -81,6 +82,7 @@ const GetStarted = () => {
               fontSize={"2xl"}
               transform={{ base: "rotate(90deg)", sm: "unset" }}
               mt={[0, 10, 12, 14, 16]}
+              opacity={0.5}
             />
           </VStack>
           <VStack justifyContent={"center"} spacing={[4, null, 5, null, 6]}>
