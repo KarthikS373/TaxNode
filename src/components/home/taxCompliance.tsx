@@ -12,9 +12,13 @@ import { ArrowForwardIcon } from "@chakra-ui/icons";
 
 import Image from "next/image";
 
-const GetStarted = () => {
+const TaxCompliance = () => {
   return (
-    <Box my={[10, 12, 14, 16, 20]}>
+    <Box
+      my={[10, 12, 14, 16, 20]}
+      bg={"rgba(130, 0, 255, 0.06)"}
+      py={[10, 12, 14, 16, 20]}
+    >
       <Container maxW={"7xl"}>
         <Heading
           as={"h2"}
@@ -23,7 +27,7 @@ const GetStarted = () => {
           textAlign={"center"}
           mb={[6, 7, 8, 9, 10]}
         >
-          Get Started
+          Tax Compliance Done Right
         </Heading>
         <HStack
           spacing={[0, 4, 14, 16, 20]}
@@ -34,7 +38,7 @@ const GetStarted = () => {
         >
           <VStack justifyContent={"center"} spacing={[4, null, 5, null, 6]}>
             <Box
-              borderRadius={["lg", null, "xl", null, "2xl"]}
+              borderRadius={"full"}
               bgColor={"#F4EEFF"}
               p={[6, 7, 8, 9, 10]}
               w={[24, 28, 32, 36, 40]}
@@ -43,21 +47,20 @@ const GetStarted = () => {
               <Image src={"/register.png"} alt={""} width={80} height={80} />
             </Box>
 
-            <Text size={"xs"} fontWeight={"medium"} maxW={"10rem"}>
+            <Text size={"xs"} fontWeight={"medium"} maxW={"12.5rem"}>
               Register
             </Text>
           </VStack>
-          <VStack pos={"relative"} py={[5,0]}>
+          <VStack top={[0, -5]} py={10} pos={"relative"}>
             <ArrowForwardIcon
               color={"#590AE0"}
               fontSize={"2xl"}
               transform={{ base: "rotate(90deg)", sm: "unset" }}
-              mt={[0, 10, 12, 14, 16]}
             />
           </VStack>
           <VStack justifyContent={"center"} spacing={[4, null, 5, null, 6]}>
             <Box
-              borderRadius={["lg", null, "xl", null, "2xl"]}
+              borderRadius={"full"}
               bgColor={"#F4EEFF"}
               p={[6, 7, 8, 9, 10]}
               w={[24, 28, 32, 36, 40]}
@@ -71,21 +74,20 @@ const GetStarted = () => {
               />
             </Box>
 
-            <Text size={"xs"} fontWeight={"medium"} maxW={"10rem"}>
+            <Text size={"xs"} fontWeight={"medium"} maxW={"12.5rem"}>
               Sync accounts and wallets or upload statements
             </Text>
           </VStack>
-          <VStack pos={"relative"} py={[5,0]}>
+          <VStack top={[0, -5]} py={10} pos={"relative"}>
             <ArrowForwardIcon
               color={"#590AE0"}
               fontSize={"2xl"}
               transform={{ base: "rotate(90deg)", sm: "unset" }}
-              mt={[0, 10, 12, 14, 16]}
             />
           </VStack>
           <VStack justifyContent={"center"} spacing={[4, null, 5, null, 6]}>
             <Box
-              borderRadius={["lg", null, "xl", null, "2xl"]}
+              borderRadius={"full"}
               bgColor={"#F4EEFF"}
               p={[6, 7, 8, 9, 10]}
               w={[24, 28, 32, 36, 40]}
@@ -99,7 +101,7 @@ const GetStarted = () => {
               />
             </Box>
 
-            <Text size={"xs"} fontWeight={"medium"} maxW={"10rem"}>
+            <Text size={"xs"} fontWeight={"medium"} maxW={"12.5rem"}>
               Generate tax reports
             </Text>
           </VStack>
@@ -109,4 +111,4 @@ const GetStarted = () => {
   );
 };
 
-export default GetStarted;
+export default TaxCompliance;
