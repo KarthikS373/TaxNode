@@ -1,7 +1,7 @@
 const typography = {
   fonts: {
-    body: "Commissioner, sans-serif",
-    heading: "Commissioner, sans-serif",
+    body: "Poppins, sans-serif",
+    heading: "Poppins, sans-serif",
   },
 };
 

@@ -11,7 +11,7 @@ const Home = () => {
     <>
       <NextSeo title="Home" />
       <Hero/>
-      <SupportExchanges/>
+      {/* <SupportExchanges/> */}
       <GetStarted/>
       <Faq/>
     </>

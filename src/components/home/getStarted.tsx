@@ -29,6 +29,8 @@ const GetStarted = () => {
           spacing={[0, 4, 14, 16, 20]}
           flexDir={{ base: "column", sm: "row" }}
           justify={"center"}
+          alignItems={{base:'center',sm:'flex-start'}}
+          textAlign={'center'}
         >
           <VStack justifyContent={"center"} spacing={[4, null, 5, null, 6]}>
             <Box
@@ -39,19 +41,19 @@ const GetStarted = () => {
               height={[24, 28, 32, 36, 40]}
             >
               <Image
-                src={"/taxi-page-not-found-1.png"}
+                src={"/register.png"}
                 alt={""}
                 width={80}
                 height={80}
               />
             </Box>
 
-            <Text size={"xs"} fontWeight={"medium"}>
+            <Text size={"xs"} fontWeight={"medium"} maxW={'12.5rem'}>
               Register
             </Text>
           </VStack>
           <VStack top={[0, -5]} py={10} pos={"relative"}>
-            <ArrowForwardIcon color={"#590AE0"} fontSize={"2xl"} />
+            <ArrowForwardIcon color={"#590AE0"} fontSize={"2xl"}  transform={{base:'rotate(90deg)',sm:'unset'}}/>
           </VStack>
           <VStack justifyContent={"center"} spacing={[4, null, 5, null, 6]}>
             <Box
@@ -62,19 +64,19 @@ const GetStarted = () => {
               height={[24, 28, 32, 36, 40]}
             >
               <Image
-                src={"/taxi-page-not-found-1.png"}
+                src={"/synchaccount.png"}
                 alt={""}
                 width={80}
                 height={80}
               />
             </Box>
 
-            <Text size={"xs"} fontWeight={"medium"}>
-              Register
+            <Text size={"xs"} fontWeight={"medium"} maxW={'12.5rem'}>
+            Sync accounts and wallets or upload statements
             </Text>
           </VStack>
           <VStack top={[0, -5]} py={10} pos={"relative"}>
-            <ArrowForwardIcon color={"#590AE0"} fontSize={"2xl"} />
+            <ArrowForwardIcon color={"#590AE0"} fontSize={"2xl"}  transform={{base:'rotate(90deg)',sm:'unset'}}/>
           </VStack>
           <VStack justifyContent={"center"} spacing={[4, null, 5, null, 6]}>
             <Box
@@ -85,15 +87,15 @@ const GetStarted = () => {
               height={[24, 28, 32, 36, 40]}
             >
               <Image
-                src={"/taxi-page-not-found-1.png"}
+                src={"/generatetaxreport.png"}
                 alt={""}
                 width={80}
                 height={80}
               />
             </Box>
 
-            <Text size={"xs"} fontWeight={"medium"}>
-              Register
+            <Text size={"xs"} fontWeight={"medium"} maxW={'12.5rem'}>
+            Generate tax reports
             </Text>
           </VStack>
         </HStack>
