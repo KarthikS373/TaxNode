@@ -10,12 +10,13 @@ const Hero = () => {
 
       <Box
         as="section"
-        backgroundColor={"#925EEB"}
-        pt={[10, 12, 14, 16, 20]}
-        pb={[0,null,10]}
+        background={
+          "linear-gradient(90deg, #8E2DE2 0.19%, #4A00E0 99.81%), #925EEB;"
+        }
+        py={[10, 12, 14, 16, 20]}
         color={"white"}
       >
-        <Container maxW={"6xl"}>
+        <Container maxW={"7xl"}>
           <Grid
             templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }}
             gap={[6, 7, 8, 9, 10]}
@@ -39,14 +40,14 @@ const Hero = () => {
                 Calculate crypto taxes like a pro, with our blazing fast tax
                 reconciliation & reporting engine.
               </Text>
-              <Button
+              {/* <Button
                 colorScheme="white"
                 variant="outline"
                 fontWeight="semibold"
                 size="md"
               >
                 Request invite
-              </Button>
+              </Button> */}
             </Box>
             <Box pos={"relative"}>
               <NextImage
