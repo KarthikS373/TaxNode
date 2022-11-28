@@ -17,8 +17,10 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 import { NextSeo } from "next-seo";
+import { useToast } from "@chakra-ui/react";
 
 const Hero = () => {
+  const toast = useToast();
   return (
     <>
       <NextSeo title="Home" />
@@ -57,7 +59,7 @@ const Hero = () => {
                 the right course of action to ensure 100% tax compliance.
               </Text>
             </Box>
-            <Box pos={"relative"} pl={[0,20,0,28,40]} pr={[0,20,0,0,0]}>
+            <Box pos={"relative"} pl={[0, 20, 0, 28, 40]} pr={[0, 20, 0, 0, 0]}>
               <VStack
                 bgColor={"white"}
                 borderRadius={"md"}
@@ -106,16 +108,28 @@ const Hero = () => {
                   Have queries? Talk to an expert
                 </Text>
                 <FormControl>
-                  <FormLabel color={'darkGray'}>Email address</FormLabel>
-                  <Input type="email" borderColor={'themeGray'} size={'md'}/>
+                  <FormLabel color={"darkGray"}>Email address</FormLabel>
+                  <Input type="email" borderColor={"themeGray"} size={"md"} />
                   <FormErrorMessage>Email is required.</FormErrorMessage>
                 </FormControl>
                 <FormControl>
-                  <FormLabel color={'darkGray'}>Phone Number</FormLabel>
-                  <Input type="phone" placeholder="+91 (*** *** ****)"/>
+                  <FormLabel color={"darkGray"}>Phone Number</FormLabel>
+                  <Input type="phone" placeholder="+91 (*** *** ****)" />
                   <FormErrorMessage>Phone Number is required.</FormErrorMessage>
                 </FormControl>
-                <Button variant={"gradient"} w={"100%"}>
+                <Button
+                  variant={"gradient"}
+                  w={"100%"}
+                  onClick={() =>
+                    toast({
+                      title: "Account created.",
+                      description: "We've created your account for you.",
+                      status: "success",  //error for error
+                      duration: 9000,
+                      isClosable: true,
+                    })
+                  }
+                >
                   Request a Callback
                 </Button>
               </VStack>
