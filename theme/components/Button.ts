@@ -1,8 +1,7 @@
 import { border, ThemeComponents } from "@chakra-ui/react";
 
 const Button: ThemeComponents["Button"] = {
-  baseStyle: {
-  },
+  baseStyle: {},
   variants: {
     primary: {
       bgColor: "black",
@@ -23,9 +22,18 @@ const Button: ThemeComponents["Button"] = {
       backdropFilter: "blur(5px)",
       borderRadius: 16,
       boxShadow: "none",
-      color:'primary', 
+      color: "primary",
       _hover: {
         background: "rgba(255, 255, 255, 0.9)",
+      },
+    },
+    gradient: {
+      background: "linear-gradient(90deg, #8E2DE2 0.19%, #4A00E0 99.81%);",
+      borderRadius: 4,
+      boxShadow: "none",
+      color: "white",
+      _hover: {
+        boxShadow: "sm",
       },
     },
   },

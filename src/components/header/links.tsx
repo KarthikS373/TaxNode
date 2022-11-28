@@ -5,8 +5,7 @@ import { Box, chakra } from "@chakra-ui/react";
 
 const links = [
   { title: "Home", path: "/" },
-  { title: "About", path: "/about" },
-  { title: "Contact", path: "/contact" },
+  { title: "Advisory", path: "/advisory" },
 ];
 
 interface Props {
@@ -20,12 +19,12 @@ const Links = ({ onClick }: Props) => {
         <Box
           as="li"
           listStyleType="none"
-          px={{ lg: "8" }}
-          py={{ base: "3" }}
+          px={[6,7,8,9,10]}
+          py={[3,0]}
           key={link.title}
         >
           <NextLink href={link.path}>
-            <chakra.a href={link.path} onClick={onClick}>
+            <chakra.a href={link.path} onClick={onClick} fontSize={'sm'}>
               {link.title}
             </chakra.a>
           </NextLink>

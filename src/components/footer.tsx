@@ -6,13 +6,13 @@ const Footer = () => (
     <Container
       maxW={"7xl"}
       display={"flex"}
-      flexDir={'column'}
+      flexDir={{base:'column',sm:'row'}}
       alignItems={"center"}
-      justifyContent={"center"}
-      py={[8, 9, 10, 12, 14]}
+      justifyContent={{base:'center',sm:"space-between"}}
+      py={[3,null,4,null,5]}
     >
       <Image src={"/taxnodeWhite.png"} alt={""} width={170} height={46} />
-      <Text fontSize={"xs"} fontWeight={"medium"} textAlign={"center"} color={'white'} mt={[6,7,8,9,10]}>
+      <Text fontSize={"xs"} fontWeight={"medium"} textAlign={"center"} color={'white'} mt={{base:2,sm:'unset'}}>
         Copyright ©2022 TaxNodes. All rights reserved
       </Text>
     </Container>
