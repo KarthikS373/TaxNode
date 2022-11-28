@@ -17,7 +17,6 @@ import Image from "next/image";
 const TaxCompliance = () => {
   return (
     <Box
-      my={[10, 12, 14, 16, 20]}
       bg={"rgba(130, 0, 255, 0.04)"}
       py={[10, 12, 14, 16, 20]}
     >
