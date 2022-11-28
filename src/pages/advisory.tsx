@@ -9,7 +9,7 @@ import WhatIsRequired from "../components/advisory/whatIsRequired";
 const Home = () => {
   return (
     <>
-      <NextSeo title="Taxnodes" />
+      <NextSeo title="Advisory" />
       <Hero />
       <TaxCompliance />
       <GetStarted />

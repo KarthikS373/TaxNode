@@ -1,6 +1,21 @@
 import NextImage from "next/image";
 import React from "react";
-import { Box, Heading, Text, Button, Container, Grid } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Text,
+  Button,
+  Container,
+  Grid,
+  VStack,
+  Divider,
+  FormControl,
+  FormHelperText,
+  FormLabel,
+  Input,
+  InputLeftAddon,
+  FormErrorMessage,
+} from "@chakra-ui/react";
 import { NextSeo } from "next-seo";
 
 const Hero = () => {
@@ -41,23 +56,69 @@ const Hero = () => {
                 one-on-one call with our tax experts. Our experts will recommend
                 the right course of action to ensure 100% tax compliance.
               </Text>
-              {/* <Button
-                colorScheme="white"
-                variant="outline"
-                fontWeight="semibold"
-                size="md"
-              >
-                Request invite
-              </Button> */}
             </Box>
-            <Box pos={"relative"}>
-              {/* <NextImage
-                src="/heroFeaturedImage.png"
-                width="640"
-                height="509"
-                alt="team"
-                priority
-              /> */}
+            <Box pos={"relative"} pl={[0,20,0,28,40]} pr={[0,20,0,0,0]}>
+              <VStack
+                bgColor={"white"}
+                borderRadius={"md"}
+                borderWidth={1}
+                borderStyle={"solid"}
+                borderColor={"rgba(0, 0, 0, 0.08)"}
+                px={[3, null, 4, null, 5]}
+                py={[4, 5, 6, 7, 8]}
+                spacing={5}
+                color={"black"}
+              >
+                <Text fontWeight={"semibold"} size={"2xl"}>
+                  ₹2,999
+                </Text>
+                <Button variant={"gradient"} w={"100%"}>
+                  Buy Now
+                </Button>
+                <Box pos={"relative"} w={"100%"} opacity={0.4}>
+                  <Text
+                    fontSize={"xs"}
+                    color={"purple"}
+                    pos={"absolute"}
+                    bgColor={"white"}
+                    p={2}
+                    m={"0 auto"}
+                    left={0}
+                    right={0}
+                    w={"fit-content"}
+                    top={-4}
+                    zIndex={1}
+                  >
+                    {" "}
+                    OR{" "}
+                  </Text>
+                  <Divider
+                    borderColor={"purple"}
+                    w={"100%"}
+                    opacity={"unset"}
+                  />
+                </Box>
+                <Text
+                  fontWeight={"semibold"}
+                  fontSize={"xs"}
+                  textAlign={"center"}
+                >
+                  Have queries? Talk to an expert
+                </Text>
+                <FormControl>
+                  <FormLabel color={'darkGray'}>Email address</FormLabel>
+                  <Input type="email" borderColor={'themeGray'} size={'md'}/>
+                  <FormErrorMessage>Email is required.</FormErrorMessage>
+                </FormControl>
+                <FormControl>
+                  <FormLabel color={'darkGray'}>Phone Number</FormLabel>
+                  <Input type="phone" placeholder="+91 (*** *** ****)"/>
+                  <FormErrorMessage>Phone Number is required.</FormErrorMessage>
+                </FormControl>
+                <Button variant={"gradient"} w={"100%"}>
+                  Request a Callback
+                </Button>
+              </VStack>
             </Box>
           </Grid>
         </Container>

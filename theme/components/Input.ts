@@ -5,16 +5,15 @@ const Input: ThemeComponents['Input'] = {
   variants: {
     primary: {
       field: {
-        borderRadius: 'sm',
+        borderRadius: 'md',
         bg: 'transparent',
-        borderColor: 'white',
+        borderColor: 'themeGray',
         borderWidth: 1,
-        py: 6,
         _invalid: {
           borderColor: 'red.400',
         },
         _placeholder: {
-          color: 'gray.300',
+          darkGray: 'gray.300',
         },
       },
     },
