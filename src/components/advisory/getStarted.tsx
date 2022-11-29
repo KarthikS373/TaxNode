@@ -118,7 +118,7 @@ const GetStarted = () => {
             </Box>
 
             <Text size={"xs"} fontWeight={"medium"} maxW={"10rem"}>
-              Join the one-on-one online session with our Tax expert
+              Get all your questions answered in a flash
             </Text>
           </VStack>
         </HStack>
