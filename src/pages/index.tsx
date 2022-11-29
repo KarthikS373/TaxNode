@@ -13,7 +13,7 @@ const Home = () => {
       <NextSeo title="Taxnodes" />
       <Hero/>
       {/* <SupportExchanges/> */}
-      {/* <TaxCompliance/> */}
+      <TaxCompliance/>
       <GetStarted/>
       <Faq/>
     </>

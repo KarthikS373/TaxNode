@@ -23,7 +23,7 @@ const GetStarted = () => {
           textAlign={"center"}
           mb={[6, 7, 8, 9, 10]}
         >
-          Get Started
+          How is it done?
         </Heading>
         <HStack
           spacing={[0, 4, 14, 16, 20]}
@@ -37,17 +37,15 @@ const GetStarted = () => {
               borderRadius={["lg", null, "xl", null, "2xl"]}
               bgColor={"#F4EEFF"}
               p={[6, 7, 8, 9, 10]}
-              w={[24, 28, 32, 36, 40]}
-              height={[24, 28, 32, 36, 40]}
             >
-              <Image src={"/register.png"} alt={""} width={80} height={80} />
+              <Image src={"/howItIsDone/registerProgram.png"} alt={""} width={80} height={80} />
             </Box>
 
             <Text size={"xs"} fontWeight={"medium"} maxW={"10rem"}>
-              Register
+              Register for the program
             </Text>
           </VStack>
-          <VStack pos={"relative"} py={[5,0]}>
+          <VStack pos={"relative"} py={[5, 0]}>
             <ArrowForwardIcon
               color={"#590AE0"}
               fontSize={"2xl"}
@@ -61,22 +59,15 @@ const GetStarted = () => {
               borderRadius={["lg", null, "xl", null, "2xl"]}
               bgColor={"#F4EEFF"}
               p={[6, 7, 8, 9, 10]}
-              w={[24, 28, 32, 36, 40]}
-              height={[24, 28, 32, 36, 40]}
             >
-              <Image
-                src={"/synchaccount.png"}
-                alt={""}
-                width={80}
-                height={80}
-              />
+              <Image src={"/howItIsDone/time.png"} alt={""} width={80} height={80} />
             </Box>
 
             <Text size={"xs"} fontWeight={"medium"} maxW={"10rem"}>
-              Sync accounts and wallets or upload statements
+              Pick a time slot as per your availability
             </Text>
           </VStack>
-          <VStack pos={"relative"} py={[5,0]}>
+          <VStack pos={"relative"} py={[5, 0]}>
             <ArrowForwardIcon
               color={"#590AE0"}
               fontSize={"2xl"}
@@ -90,11 +81,9 @@ const GetStarted = () => {
               borderRadius={["lg", null, "xl", null, "2xl"]}
               bgColor={"#F4EEFF"}
               p={[6, 7, 8, 9, 10]}
-              w={[24, 28, 32, 36, 40]}
-              height={[24, 28, 32, 36, 40]}
             >
               <Image
-                src={"/generatetaxreport.png"}
+                src={"/howItIsDone/oneonone.png"}
                 alt={""}
                 width={80}
                 height={80}
@@ -102,7 +91,34 @@ const GetStarted = () => {
             </Box>
 
             <Text size={"xs"} fontWeight={"medium"} maxW={"10rem"}>
-              Generate tax reports
+              Join the one-on-one online session with our Tax expert
+            </Text>
+          </VStack>
+          <VStack pos={"relative"} py={[5, 0]}>
+            <ArrowForwardIcon
+              color={"#590AE0"}
+              fontSize={"2xl"}
+              transform={{ base: "rotate(90deg)", sm: "unset" }}
+              mt={[0, 10, 12, 14, 16]}
+              opacity={0.5}
+            />
+          </VStack>
+          <VStack justifyContent={"center"} spacing={[4, null, 5, null, 6]}>
+            <Box
+              borderRadius={["lg", null, "xl", null, "2xl"]}
+              bgColor={"#F4EEFF"}
+              p={[6, 7, 8, 9, 10]}
+            >
+              <Image
+                src={"/howItIsDone/question.png"}
+                alt={""}
+                width={80}
+                height={80}
+              />
+            </Box>
+
+            <Text size={"xs"} fontWeight={"medium"} maxW={"10rem"}>
+              Get all your questions answered in a flash
             </Text>
           </VStack>
         </HStack>

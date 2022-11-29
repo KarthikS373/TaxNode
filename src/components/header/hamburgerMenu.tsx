@@ -9,7 +9,7 @@ interface Props {
 }
 
 const HamburgerMenu = ({ toggled, toggle }: Props) => (
-  <Box display={{ lg: "none" }}>
+  <Box display={{ sm: "none" }}>
     <Hamburger
       hideOutline={false}
       label="hamburger menu"

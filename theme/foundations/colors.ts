@@ -6,5 +6,7 @@ const colors = {
   veryLightGray:'#F0F0F0',
   bgGray: "#F3F3F3",
   themeBlack: "#242328",
+  purple:'#4A00E0',
+  darkGray: '#595959',
 };
 export default colors;
