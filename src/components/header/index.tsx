@@ -12,9 +12,6 @@ const Header = () => (
         </Box>
         <HStack>
           <Navbar />
-<!--           <Button variant={"gradient"} size={"sm"}>
-            Sign in
-          </Button> -->
         </HStack>
       </HStack>
     </Container>
