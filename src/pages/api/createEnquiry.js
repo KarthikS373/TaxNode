@@ -10,9 +10,10 @@ export default async function handler(req, res) {
     const data = req.query;
     //! Basic Validation
     if (!(data?.firstname && data?.email && data?.phone)) {
+      console.log("Error: Missing Value(s)");
       return res.status(400).send({
         status: false,
-        message: "Missing value(s)",
+        message: "Operation Failed",
       });
     }
 
@@ -53,10 +54,10 @@ export default async function handler(req, res) {
       contactForm.append("phone", data.phone);
       contactForm.append("mobile", data.phone); // We are putting the same value in both phone and mobile
       contactForm.append("custom_fields[customer_type]", "enquired");
-      // contactForm.append(
-      //   "custom_fields[enquired_on]",
-      //   moment().format("DD-MM-YYYY")
-      // );
+      contactForm.append(
+        "custom_fields[enquiry_date]",
+        moment().format("DD-MM-YYYY")
+      );
 
       const contactRequest = {
         url: "https://taxnodes.freshdesk.com/api/v2/contacts",
@@ -73,7 +74,7 @@ export default async function handler(req, res) {
       contact = await axios.request(contactRequest);
       contact = contact.data; // contact lies inside the data object (in response)
     } else if (contactExists) {
-      //TODO: PHASE2 handle this seperately if goes into catch then create a new contact without phone and mobile!
+      //TODO: PHASE2 handle this seperately (try catch) if goes into catch then create a new contact without phone and mobile!
       contact = contact.data[0]; // contact lies inside an array inside the data object (in response)
     }
 
@@ -88,6 +89,7 @@ export default async function handler(req, res) {
     ticketForm.append("status", 2);
     ticketForm.append("priority", 1);
     ticketForm.append("description", "---------SOME DEMO DESCRIPTION---------");
+    ticketForm.append("group_id", process.env.ENQUIRED_GROUP_ID);
 
     const ticketRequest = {
       url: "https://taxnodes.freshdesk.com/api/v2/tickets",
@@ -119,22 +121,20 @@ export default async function handler(req, res) {
       }
     );
 
-    //! Sending the response back
+    console.log({
+      contact: contact,
+      ticket: ticket,
+      user: user,
+    });
     res.status(200).send({
       status: true,
-      message: "---------------SOME DEMO MESSAGE-----------------",
-      data: {
-        contact: contact, // TODO: Are the sesensitive data to be sent back ?🎯
-        ticket: ticket, // TODO: Are these sensitive data to be sent back ?🎯
-        user: user, // TODO: Are these sensitive data to be sent back ?🎯
-      },
+      message: "Operation Succeeded",
     });
   } catch (error) {
-    // console.log(error.response.data.errors);
+    console.log("This is in catch block", error.response.data);
     res.status(500).send({
       status: false,
-      message: "Internal Server Error (catch block)",
-      error: error,
+      message: "Operation Failed",
     });
   }
 }

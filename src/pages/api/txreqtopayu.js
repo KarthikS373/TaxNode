@@ -40,9 +40,10 @@ export default async function handler(req, res) {
 
     //! Basic Validation
     if (!(data?.firstname && data?.email && data?.phone)) {
+      console.log("Error: Missing Value(s)");
       return res.status(400).send({
         status: false,
-        message: "Missing value(s)",
+        message: "Operation Failed",
       });
     }
 
@@ -78,8 +79,7 @@ export default async function handler(req, res) {
     form.append("hash", hash);
 
     const request = {
-//       url: "https://test.payu.in/_payment", //TODO:PHASE2: Change it to production later! => https://secure.payu.in/_payment
-      url: "https://secure.payu.in/_payment",
+      url: process.env.PAYU_URL,
       headers: {
         Accept: "application/json",
       },
@@ -88,21 +88,24 @@ export default async function handler(req, res) {
     };
     const response = await axios.request(request);
     if (response?.request?.res?.responseUrl) {
+      console.log(
+        "This is the responseUrl: ",
+        response?.request?.res?.responseUrl
+      );
       return res.status(200).send({
         status: true,
-        responseUrl: response?.request?.res?.responseUrl,
-        // hash: hash, //! JUST FOR TESTING : REMOVE THIS++++++++++++++++++++++++++++++++++++++++++++++++++
+        message: "Operation Succeeded",
       });
     }
     res.status(400).send({
       status: false,
-      message: "Payment Failed",
+      message: "Operation Failed",
     });
   } catch (error) {
+    console.log("This is in catch block; error.message: ", error.message);
     res.status(500).send({
       status: false,
-      message: "Internal Server Error (catch block)",
-      error: error.message,
+      message: "Operation Failed",
     });
   }
 }

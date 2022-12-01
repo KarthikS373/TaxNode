@@ -3,7 +3,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const schema = new mongoose.Schema(
   {
-    user_id: { type: ObjectId, required: true, unique: true },
+    user_id: { type: ObjectId, required: true },
     unmappedstatus: String,
     phone: Number,
     txnid: String,

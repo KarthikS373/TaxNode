@@ -3,8 +3,8 @@ import userModel from "../../../models/user";
 import paymentModel from "../../../models/payment";
 // const AWS = require("aws-sdk"); // TODO: PHASE2
 const moment = require("moment");
-const axios = require('axios');
-const formData = require('form-data')
+const axios = require("axios");
+const formData = require("form-data");
 
 const payu = require("../../../lib/payu")({
   key: process.env.PAYU_KEY,
@@ -101,9 +101,10 @@ export default async function handler(req, res) {
       data.card_hash &&
       data.field1
     ) {
+      console.log("Missing value(s)");
       return res.status(400).send({
         status: false,
-        message: "Missing value(s)",
+        message: "Operation Failed",
       });
     }
 
@@ -122,9 +123,10 @@ export default async function handler(req, res) {
     // Considering isValidHash is Boolean (PHASE2)
     console.log("This is isValidhash", isValidHash);
     if (!isValidHash) {
+      console.log("Invalid Hash");
       return res.status(401).send({
         status: false,
-        message: "Payment Failed : Invalid Hash",
+        message: "Operation Failed",
       });
     }
 
@@ -136,7 +138,7 @@ export default async function handler(req, res) {
     // const subscription_end = date;
 
     //! Declaring below variables for storing responses
-    let contactExists, contact, ticket, user;
+    let contactExists, contact, ticket, user, payment;
 
     //! Checking if contact already exists
     // Here (Freshdesk API), the query string must be URL encoded
@@ -172,7 +174,7 @@ export default async function handler(req, res) {
       contactForm.append("mobile", data.phone); // We are putting the same value in both phone and mobile
       contactForm.append("custom_fields[customer_type]", "subscribed");
       contactForm.append("custom_fields[subscription_date]", subscribed_on);
-      contactForm.append("custom_fields[subscription_amount]", data.amount);
+      contactForm.append("custom_fields[subscription_amt]", data.amount);
 
       const request = {
         url: "https://taxnodes.freshdesk.com/api/v2/contacts",
@@ -194,8 +196,8 @@ export default async function handler(req, res) {
       // if contact exists and customer_type = subscribed => update subsccription date, subscription amount
       // if contact exists and customer_type = enquired => update customer_type = subscribed, subscription_date = new Date(), subscription amount = "PayU_amount"
       if (
-        contact.customer_type === "subscribed" ||
-        contact.customer_type === "enquired"
+        contact.custom_fields.customer_type === "subscribed" ||
+        contact.custom_fields.customer_type === "enquired"
       ) {
         //! Freshdesk contact updation
         // Using form-data (Freshdesk API accepts "Content-Type": "multipart/form-data")
@@ -203,12 +205,13 @@ export default async function handler(req, res) {
         const contactForm = new formData();
         contactForm.append("custom_fields[customer_type]", "subscribed");
         contactForm.append("custom_fields[subscription_date]", subscribed_on);
-        contactForm.append("custom_fields[subscription_amount]", data.amount);
+        contactForm.append("custom_fields[subscription_amt]", data.amount);
 
         const contactRequest = {
           url: `https://taxnodes.freshdesk.com/api/v2/contacts/${contact.id}`,
           headers: {
             Accept: "application/json",
+            "accept-encoding": null,
           },
           method: "PUT",
           auth: {
@@ -217,8 +220,9 @@ export default async function handler(req, res) {
           },
           data: contactForm,
         };
+
         contact = await axios.request(contactRequest);
-        contact = contact.data; //TODO: CHECK THIS ONCE
+        contact = contact.data;
       }
     }
 
@@ -234,6 +238,7 @@ export default async function handler(req, res) {
     ticketForm.append("status", 2);
     ticketForm.append("priority", 1);
     ticketForm.append("description", "---------SOME DEMO DESCRIPTION---------");
+    ticketForm.append("group_id", process.env.SUBSCRIBED_GROUP_ID);
 
     const ticketRequest = {
       url: "https://taxnodes.freshdesk.com/api/v2/tickets",
@@ -259,13 +264,12 @@ export default async function handler(req, res) {
         firstname: data.firstname,
         subscribed_on: subscribed_on,
         subscription_start: subscription_start,
-        // subscription_end: subscription_end,
       },
       { new: true, upsert: true }
     );
 
     //! Payment creation
-    createPayment = await paymentModel.create({
+    payment = await paymentModel.create({
       user_id: user._id,
       unmappedstatus: data.unmappedstatus,
       phone: data.phone,
@@ -314,22 +318,21 @@ export default async function handler(req, res) {
     //   .then((_data) => console.log("Email sent successfully"))
     //   .catch((error) => console.log(error));
 
-    //! Figure out the response structure if any of created user, payment and email needs to be sent
+    console.log({
+      contact: contact,
+      ticket: ticket,
+      user: user,
+      payment: payment,
+    });
     res.status(200).send({
       status: true,
-      message: "-------------SOME----DEMO---MESSAGE-----------------",
-      data: {
-        contact: contact,
-        ticket: ticket,
-        user: user,
-        payment: payment,
-      },
+      message: "Operation succeeded",
     });
   } catch (error) {
+    console.log("This is in catch block; error.message: ", error.message);
     res.status(500).send({
       status: false,
-      message: "Internal Server Error (catch block)",
-      error: error.message,
+      message: "Operation failed",
     });
   }
 }
