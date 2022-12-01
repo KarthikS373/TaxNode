@@ -78,7 +78,8 @@ export default async function handler(req, res) {
     form.append("hash", hash);
 
     const request = {
-      url: "https://test.payu.in/_payment", //TODO:PHASE2: Change it to production later! => https://secure.payu.in/_payment
+//       url: "https://test.payu.in/_payment", //TODO:PHASE2: Change it to production later! => https://secure.payu.in/_payment
+      url: "https://secure.payu.in/_payment",
       headers: {
         Accept: "application/json",
       },
