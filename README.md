@@ -61,7 +61,7 @@ yarn dev
 
 Your site is now running at [`http://localhost:3000`](http://localhost:3000)!
 
-<!--- hello -->
+<!--- bye -->
 
 
 ## License
