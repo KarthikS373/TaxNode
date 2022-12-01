@@ -3,6 +3,7 @@ import userModel from "../../../models/user";
 import paymentModel from "../../../models/payment";
 // const AWS = require("aws-sdk"); // TODO: PHASE2
 const moment = require("moment");
+const axios = require('axios')
 
 const payu = require("../../../lib/payu")({
   key: process.env.PAYU_KEY,
