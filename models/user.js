@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const schema = new mongoose.Schema(
   {
@@ -19,4 +19,4 @@ const schema = new mongoose.Schema(
   }
 );
 
-module.exports = new mongoose.model("user", schema); //TODO collection name can be shortened
+export default mongoose.models.user || mongoose.model("user", schema);

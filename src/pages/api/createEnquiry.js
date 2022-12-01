@@ -1,22 +1,18 @@
-const model = require("../../../models/user");
-const axios = require("axios");
-const formData = require("form-data");
-const moment = require("moment");
+import model from "../../../models/user";
+import axios from "axios";
+import formData from "form-data";
+import moment from "moment";
+import dbConnect from "../../../lib/dbConnect";
 
-const createEnquiry = async function (req, res) {
+export default async function handler(req, res) {
   try {
+    await dbConnect();
     const data = req.query;
-    const keyArr = Object.keys(data);
-    const valArr = Object.values(data);
-    const map = new Map();
-    keyArr.forEach((element, index) => {
-      map.set(element, valArr[index]);
-    });
     //! Basic Validation
-    if (!(map.get("email") && map.get("phone") && map.get("firstname"))) {
+    if (!(data?.firstname && data?.email && data?.phone)) {
       return res.status(400).send({
         status: false,
-        message: "Missing value(s): email or phone or firstname",
+        message: "Missing value(s)",
       });
     }
 
@@ -48,7 +44,7 @@ const createEnquiry = async function (req, res) {
       : (contactExists = false);
 
     if (!contactExists) {
-      // contact does not exists => create a new contact with customer_type = enquired
+      // contact does not exists => create a new contact with customer_type = enquired & enquired_on = current Date
       //! Freshdesk contact creation
       // Using form-data (Freshdesk API accepts "Content-Type": "multipart/form-data")
       const contactForm = new formData();
@@ -57,6 +53,10 @@ const createEnquiry = async function (req, res) {
       contactForm.append("phone", data.phone);
       contactForm.append("mobile", data.phone); // We are putting the same value in both phone and mobile
       contactForm.append("custom_fields[customer_type]", "enquired");
+      // contactForm.append(
+      //   "custom_fields[enquired_on]",
+      //   moment().format("DD-MM-YYYY")
+      // );
 
       const contactRequest = {
         url: "https://taxnodes.freshdesk.com/api/v2/contacts",
@@ -73,6 +73,7 @@ const createEnquiry = async function (req, res) {
       contact = await axios.request(contactRequest);
       contact = contact.data; // contact lies inside the data object (in response)
     } else if (contactExists) {
+      //TODO: PHASE2 handle this seperately if goes into catch then create a new contact without phone and mobile!
       contact = contact.data[0]; // contact lies inside an array inside the data object (in response)
     }
 
@@ -100,8 +101,8 @@ const createEnquiry = async function (req, res) {
       },
       data: ticketForm,
     };
-    ticket = await axios.request(ticketRequest);
-    ticket = ticket.data; // ticket lies inside the data object (in response)
+    // ticket = await axios.request(ticketRequest);
+    // ticket = ticket.data; // ticket lies inside the data object (in response)
 
     //! User creation
     user = await model.findOneAndUpdate(
@@ -136,6 +137,4 @@ const createEnquiry = async function (req, res) {
       error: error,
     });
   }
-};
-
-module.exports = createEnquiry;
+}

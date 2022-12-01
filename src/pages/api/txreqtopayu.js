@@ -7,17 +7,39 @@ const payu = require("payu-sdk")({
   salt: process.env.PAYU_SALT,
 });
 
-const txreqtopayu = async function (req, res) {
-  try {
-    const data = req.body;
-    const keyArr = Object.keys(data);
-    const valArr = Object.values(data);
-    const map = new Map();
-    keyArr.forEach((element, index) => {
-      map.set(element, valArr[index]);
+const formidable = require("formidable");
+
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
+function runMiddleware(req, res, fn) {
+  return new Promise((resolve, reject) => {
+    fn(req, res, (result) => {
+      if (result instanceof Error) {
+        return reject(result);
+      }
+      return resolve(result);
     });
+  });
+}
+
+//! DEFAULT FUNCTION
+export default async function handler(req, res) {
+  try {
+    let data = await new Promise((resolve, reject) => {
+      const form = formidable();
+      form.parse(req, (err, fields, files) => {
+        if (err) reject({ err });
+        resolve({ err, fields, files });
+      });
+    });
+    data = data.fields;
+
     //! Basic Validation
-    if (!(map.get("firstname") && map.get("email") && map.get("phone"))) {
+    if (!(data?.firstname && data?.email && data?.phone)) {
       return res.status(400).send({
         status: false,
         message: "Missing value(s)",
@@ -28,7 +50,7 @@ const txreqtopayu = async function (req, res) {
     //TODO: PHASE2 DATA VALIDATION for security
 
     //! Generating txnid
-    const txnid = data.email.substring(0, 3) + short.generate();
+    let txnid = data.email.substring(0, 3) + short.generate();
     // error handling: txnid max length allowed = 25
     if (txnid.length > 25) {
       txnid = txnid.substring(0, 25);
@@ -82,6 +104,4 @@ const txreqtopayu = async function (req, res) {
       error: error.message,
     });
   }
-};
-
-module.exports = txreqtopayu;
+}

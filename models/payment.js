@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const schema = new mongoose.Schema(
@@ -35,4 +35,4 @@ const schema = new mongoose.Schema(
   }
 );
 
-module.exports = new mongoose.model("payment", schema);
+export default mongoose.models.payment || mongoose.model("payment", schema);

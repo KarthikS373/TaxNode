@@ -1,7 +1,38 @@
+import dbConnect from "../../../lib/dbConnect";
+import userModel from "../../../models/user";
+import paymentModel from "../../../models/payment";
 // const AWS = require("aws-sdk"); // TODO: PHASE2
 const moment = require("moment");
-const userModel = require("../../../models/user");
-const paymentModel = require("../../../models/payment");
+
+const payu = require("payu-sdk")({
+  key: process.env.PAYU_KEY,
+  salt: process.env.PAYU_SALT,
+});
+
+const Cors = require("cors");
+
+const cors = Cors({
+  methods: ["POST", "GET", "HEAD"],
+});
+
+const formidable = require("formidable");
+
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
+function runMiddleware(req, res, fn) {
+  return new Promise((resolve, reject) => {
+    fn(req, res, (result) => {
+      if (result instanceof Error) {
+        return reject(result);
+      }
+      return resolve(result);
+    });
+  });
+}
 
 // TODO: PHASE2
 // const awsConfig = {
@@ -12,19 +43,23 @@ const paymentModel = require("../../../models/payment");
 
 // const ses = new AWS.SES(awsConfig);
 
-//! CONDITIONS:
-//! CONTACT RELATED:
-//* 1. if contact doesn't exists => create a new contact with customer_type = subscribed, subscription_date = new Date(), subscription_amount = "PayU_amount"
-//* 2. if contact exists and customer_type = subscribed already => update subsccription date, subscription amount
-//* 3. if contact exists and customer_type = enquired => update customer_type = subscribed, subscription_date = new Date(), subscription amount = "PayU_amount"
-
-//! TICKET RELATED:
-//* Create a ticket with subject = "welcome", ticket_type = "subscription", customer info = (id / email)
-
-const sendEmail = async function (req, res) {
+export default async function handler(req, res) {
   try {
+    // Run the middleware
+    await runMiddleware(req, res, cors);
+    await dbConnect();
+
+    let data = await new Promise((resolve, reject) => {
+      const form = formidable();
+      form.parse(req, (err, fields, files) => {
+        if (err) reject({ err });
+        resolve({ err, fields, files });
+      });
+    });
+    data = data.fields;
+
     // //! Ip address check
-    console.log("This is the ip", req.ip);
+    // console.log("This is the ip", req.ip);
     // if (checkIp(req) === false) {
     //   return res.status(401).send({
     //     status: false,
@@ -38,13 +73,6 @@ const sendEmail = async function (req, res) {
     //     return allowedIpArr.includes(ip) ? true : false;
     //   }
     // }
-
-    //! Putting the PayU response data into a map
-    console.log("This is req.query", req.query);
-    console.log("This is req.params", req.params);
-    console.log("This is req.body", req.body);
-
-    const data = req.body;
 
     //! Basic Validation
     // TODO : Check if this is required 🎯
@@ -302,6 +330,6 @@ const sendEmail = async function (req, res) {
       error: error.message,
     });
   }
-};
+}
 
-module.exports = sendEmail;
+// module.exports = sendEmail;
