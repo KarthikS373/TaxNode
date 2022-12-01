@@ -1,6 +1,6 @@
 import NextImage from "next/image";
 import React from "react";
-import { Box, Heading, Text, Button, Container, Grid } from "@chakra-ui/react";
+import { Box, Heading, Text, Container, Grid } from "@chakra-ui/react";
 import { NextSeo } from "next-seo";
 
 const Hero = () => {

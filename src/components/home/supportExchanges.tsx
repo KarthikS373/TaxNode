@@ -1,7 +1,5 @@
-import NextImage from "next/image";
 import React, { useEffect, useRef, useState } from "react";
-import { Box, Heading, Text, Button, Container, Grid } from "@chakra-ui/react";
-import { NextSeo } from "next-seo";
+import { Box, Heading, Container } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import "swiper/css";

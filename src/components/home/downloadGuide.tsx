@@ -1,16 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {  } from "react";
 import {
   Box,
   Heading,
   Container,
-  HStack,
   FormControl,
   Input,
   Button,
   Flex,
   FormErrorMessage,
 } from "@chakra-ui/react";
-import SwiperCore from "swiper";
 import "swiper/css";
 import { useToast } from "@chakra-ui/react";
 
