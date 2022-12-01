@@ -15,11 +15,20 @@ import {
   Input,
   InputLeftAddon,
   FormErrorMessage,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { NextSeo } from "next-seo";
 import { useToast } from "@chakra-ui/react";
 
 const Hero = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
   return (
     <>
@@ -74,7 +83,7 @@ const Hero = () => {
                 <Text fontWeight={"semibold"} size={"2xl"}>
                   ₹2,999
                 </Text>
-                <Button variant={"gradient"} w={"100%"}>
+                <Button variant={"gradient"} w={"100%"} onClick={onOpen}>
                   Buy Now
                 </Button>
                 <Box pos={"relative"} w={"100%"} opacity={0.4}>
@@ -124,7 +133,7 @@ const Hero = () => {
                     toast({
                       title: "Account created.",
                       description: "We've created your account for you.",
-                      status: "success",  //error for error
+                      status: "success", //error for error
                       duration: 9000,
                       isClosable: true,
                     })
@@ -137,6 +146,33 @@ const Hero = () => {
           </Grid>
         </Container>
       </Box>
+      <Modal isOpen={isOpen} onClose={onClose} size={'xs'}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalCloseButton _focus={{outline:'none'}} _focusWithin={{outline:'none'}}/>
+          <ModalBody pb={5}>
+            <VStack spacing={5} color={"black"}>
+              <Text fontWeight={"semibold"} size={"2xl"}>
+                ₹2,999
+              </Text>
+
+              <FormControl>
+                <FormLabel color={"darkGray"}>Email address</FormLabel>
+                <Input type="email" borderColor={"themeGray"} size={"md"} />
+                <FormErrorMessage>Email is required.</FormErrorMessage>
+              </FormControl>
+              <FormControl>
+                <FormLabel color={"darkGray"}>Phone Number</FormLabel>
+                <Input type="phone" placeholder="+91 (*** *** ****)" />
+                <FormErrorMessage>Phone Number is required.</FormErrorMessage>
+              </FormControl>
+              <Button variant={"gradient"} w={"100%"}>
+                Request a Callback
+              </Button>
+            </VStack>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </>
   );
 };

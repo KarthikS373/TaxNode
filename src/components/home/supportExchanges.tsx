@@ -36,12 +36,10 @@ const SupportExchanges = () => {
           onSwiper={(swiper: SwiperCore) => {
             swiperRef.current = swiper;
           }}
-          freeMode={true}
-          centerInsufficientSlides={true}
           spaceBetween={24}
           breakpoints={{
             480: {
-              slidesPerView: 2.4,
+              slidesPerView: 2,
             },
             640: {
               slidesPerView: 3,
@@ -69,10 +67,10 @@ const SupportExchanges = () => {
               p={2}
             >
               <Image
-                src={"/team-bro.png"}
+                src={"/logos/binance.png"}
                 alt={""}
-                width={"100%"}
-                height={"100%"}
+                width={120}
+                height={69}
               />
             </Box>
           </SwiperSlide>
@@ -88,10 +86,10 @@ const SupportExchanges = () => {
               p={2}
             >
               <Image
-                src={"/team-bro.png"}
+                src={"/logos/zebpay.png"}
                 alt={""}
-                width={"100%"}
-                height={"100%"}
+                width={120}
+                height={27}
               />
             </Box>
           </SwiperSlide>
@@ -107,10 +105,10 @@ const SupportExchanges = () => {
               p={2}
             >
               <Image
-                src={"/team-bro.png"}
+                src={"/logos/coindcx.png"}
                 alt={""}
-                width={"100%"}
-                height={"100%"}
+                width={120}
+                height={24}
               />
             </Box>
           </SwiperSlide>
@@ -126,10 +124,10 @@ const SupportExchanges = () => {
               p={2}
             >
               <Image
-                src={"/team-bro.png"}
+                src={"/logos/coinswitch.png"}
                 alt={""}
-                width={"100%"}
-                height={"100%"}
+                width={120}
+                height={36}
               />
             </Box>
           </SwiperSlide>
@@ -145,10 +143,10 @@ const SupportExchanges = () => {
               p={2}
             >
               <Image
-                src={"/team-bro.png"}
+                src={"/logos/wazirx.png"}
                 alt={""}
-                width={"100%"}
-                height={"100%"}
+                width={120}
+                height={30}
               />
             </Box>
           </SwiperSlide>
@@ -164,29 +162,10 @@ const SupportExchanges = () => {
               p={2}
             >
               <Image
-                src={"/team-bro.png"}
+                src={"/logos/bitdn.png"}
                 alt={""}
-                width={"100%"}
-                height={"100%"}
-              />
-            </Box>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Box
-              boxShadow={"0px 0px 12px 4px rgba(0, 0, 0, 0.05)"}
-              borderRadius={["lg", null, "xl", null, "2xl"]}
-              w={"11.6rem"}
-              h={"10.5rem"}
-              display={"flex"}
-              alignItems={"center"}
-              justifyContent={"center"}
-              p={2}
-            >
-              <Image
-                src={"/team-bro.png"}
-                alt={""}
-                width={"100%"}
-                height={"100%"}
+                width={120}
+                height={36}
               />
             </Box>
           </SwiperSlide>

@@ -17,6 +17,20 @@ const Input: ThemeComponents['Input'] = {
         },
       },
     },
+    secondary: {
+      field: {
+        borderRadius: 'md',
+        bg: 'white',
+        borderColor: 'themeGray',
+        borderWidth: 1,
+        _invalid: {
+          borderColor: 'red.400',
+        },
+        _placeholder: {
+          color: 'rgba(0, 0, 0, 0.25)',
+        },
+      },
+    },
   },
   defaultProps: {
     variant: 'primary',

@@ -27,6 +27,21 @@ const Button: ThemeComponents["Button"] = {
         background: "rgba(255, 255, 255, 0.9)",
       },
     },
+    tertiary: {
+      background: "purple",
+      borderWidth: 0,
+      borderColor: "purple",
+      borderStyle: "solid",
+      backdropFilter: "blur(5px)",
+      borderRadius: 4,
+      boxShadow: "none",
+      color: "white",
+      _hover: {
+        background: "white",
+        color:'purple',
+        boxShadow:'xl'
+      },
+    },
     gradient: {
       background: "linear-gradient(90deg, #8E2DE2 0.19%, #4A00E0 99.81%);",
       borderRadius: 4,
