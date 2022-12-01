@@ -101,8 +101,8 @@ export default async function handler(req, res) {
       },
       data: ticketForm,
     };
-    // ticket = await axios.request(ticketRequest);
-    // ticket = ticket.data; // ticket lies inside the data object (in response)
+    ticket = await axios.request(ticketRequest);
+    ticket = ticket.data; // ticket lies inside the data object (in response)
 
     //! User creation
     user = await model.findOneAndUpdate(
