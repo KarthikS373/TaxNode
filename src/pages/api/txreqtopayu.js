@@ -2,7 +2,7 @@ const formData = require("form-data");
 const axios = require("axios");
 const short = require("short-uuid");
 
-const payu = require("payu-sdk")({
+const payu = require("../../../lib/payu")({
   key: process.env.PAYU_KEY,
   salt: process.env.PAYU_SALT,
 });
