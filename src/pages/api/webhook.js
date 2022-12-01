@@ -4,7 +4,7 @@ import paymentModel from "../../../models/payment";
 // const AWS = require("aws-sdk"); // TODO: PHASE2
 const moment = require("moment");
 
-const payu = require("payu-sdk")({
+const payu = require("../../../lib/payu")({
   key: process.env.PAYU_KEY,
   salt: process.env.PAYU_SALT,
 });
