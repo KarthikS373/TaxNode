@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     await dbConnect();
     const data = req.query;
     //! Basic Validation
-    if (!(data?.firstname && data?.email && data?.phone)) {
+    if (!(data?.email && data?.phone)) {
       console.log("Error: Missing Value(s)");
       return res.status(400).send({
         status: false,
@@ -49,7 +49,7 @@ export default async function handler(req, res) {
       //! Freshdesk contact creation
       // Using form-data (Freshdesk API accepts "Content-Type": "multipart/form-data")
       const contactForm = new formData();
-      contactForm.append("name", data.firstname); // TODO: Replace firstname with full name (maybe firstname + lastname)🎯
+      contactForm.append("name", data?.firstname || "Valued Customer"); // TODO: Replace firstname with full name (maybe firstname + lastname)🎯
       contactForm.append("email", data.email);
       contactForm.append("phone", data.phone);
       contactForm.append("mobile", data.phone); // We are putting the same value in both phone and mobile
@@ -81,7 +81,7 @@ export default async function handler(req, res) {
     //! Freshdesk ticket creation
     // Using form-data (Freshdesk API accepts "Content-Type": "multipart/form-data")
     const ticketForm = new formData();
-    ticketForm.append("name", data.firstname); // TODO: Replace firstname with full name (maybe firstname + lastname)🎯
+    ticketForm.append("name", data?.firstname || "Valued Customer"); // TODO: Replace firstname with full name (maybe firstname + lastname)🎯
     ticketForm.append("email", data.email);
     ticketForm.append("phone", data.phone);
     ticketForm.append("subject", "Enquiry");
@@ -112,7 +112,7 @@ export default async function handler(req, res) {
       {
         email: data.email,
         phone: data.phone,
-        firstname: data.firstname,
+        firstname: data?.firstname || "Valued Customer",
         enquired_on: moment().format("DD-MM-YYYY"),
       },
       {
