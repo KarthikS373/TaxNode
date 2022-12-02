@@ -10,5 +10,7 @@ const colors = {
   darkGray: '#595959',
   veryDarkGray:'#5A5A5A',
   themeGreen:'#85DB77',
+  blackOpac:'rgba(0, 0, 0, 0.6)',
+  pinkOpac:'rgba(89, 10, 224, 0.03)',
 };
 export default colors;

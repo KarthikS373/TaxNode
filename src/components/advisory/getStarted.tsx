@@ -14,7 +14,7 @@ import Image from "next/image";
 
 const GetStarted = () => {
   return (
-    <Box my={[10, 12, 14, 16, 20]}>
+    <Box py={[10, 12, 14, 16, 20]} bgColor={'pinkOpac'}>
       <Container maxW={"7xl"}>
         <Heading
           as={"h2"}

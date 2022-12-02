@@ -8,6 +8,7 @@ import GetStarted from "../components/home/getStarted";
 import TaxCompliance from "../components/home/taxCompliance";
 import DownloadGuide from "../components/home/downloadGuide";
 import Slider from "../components/home/slider";
+import Team from "../components/home/team";
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
       <GetStarted />
       <Slider />
       <DownloadGuide />
+      <Team />
       <Faq />
     </>
   );
