@@ -1,6 +1,6 @@
 import NextImage from "next/image";
 import React from "react";
-import { Box, Heading, Text, Container, Grid } from "@chakra-ui/react";
+import { Box, Heading, Text, Container, Grid, Button } from "@chakra-ui/react";
 import { NextSeo } from "next-seo";
 
 const Hero = () => {
@@ -13,7 +13,8 @@ const Hero = () => {
         background={
           "linear-gradient(90deg, #8E2DE2 0.19%, #4A00E0 99.81%), #925EEB;"
         }
-        py={[10, 12, 14, 16, 20]}
+        pt={[16, 20, 24, 28, 32]}
+        pb={[10, 12, 14, 16, 20]}
         color={"white"}
       >
         <Container maxW={"7xl"}>
@@ -35,19 +36,14 @@ const Hero = () => {
                 fontWeight="normal"
                 size={"xs"}
                 my={[3, null, 4, null, 5]}
-                maxW={"sm"}
+                maxW={"md"}
               >
                 Calculate crypto taxes like a pro, with our blazing fast tax
                 reconciliation & reporting engine.
               </Text>
-              {/* <Button
-                colorScheme="white"
-                variant="outline"
-                fontWeight="semibold"
-                size="md"
-              >
-                Request invite
-              </Button> */}
+              <Button variant="outlinePrimary" fontWeight="medium" size="md">
+                Coming soon
+              </Button>
             </Box>
             <Box pos={"relative"}>
               <NextImage

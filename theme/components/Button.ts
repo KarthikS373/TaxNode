@@ -38,8 +38,35 @@ const Button: ThemeComponents["Button"] = {
       color: "white",
       _hover: {
         background: "white",
+        color: "purple",
+        boxShadow: "xl",
+      },
+    },
+    outline: {
+      borderColor: "purple",
+      borderWidth: 1.5,
+      borderStyle: "solid",
+      color: "purple",
+      borderRadius: "md",
+      fontWeight: "normal",
+      _hover: {
+        backgroundColor: "purple",
+        color: "white",
+        "& .live": {
+          color: "white",
+        },
+      },
+    },
+    outlinePrimary: {
+      borderColor: "white",
+      borderWidth: 1.5,
+      borderStyle: "solid",
+      color: "white",
+      borderRadius: "md",
+      fontWeight: "normal",
+      _hover: {
+        backgroundColor: "white",
         color:'purple',
-        boxShadow:'xl'
       },
     },
     gradient: {

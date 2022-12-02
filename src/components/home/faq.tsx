@@ -15,7 +15,7 @@ import { MinusIcon, AddIcon } from "@chakra-ui/icons";
 const Faq = () => {
   return (
     <Box my={[10, 12, 14, 16, 20]}>
-      <Container maxW={"7xl"}>
+      <Container maxW={"3xl"}>
         <Heading
           as={"h2"}
           size={"lg"}

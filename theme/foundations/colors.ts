@@ -8,5 +8,7 @@ const colors = {
   themeBlack: "#242328",
   purple:'#4A00E0',
   darkGray: '#595959',
+  veryDarkGray:'#5A5A5A',
+  themeGreen:'#85DB77',
 };
 export default colors;

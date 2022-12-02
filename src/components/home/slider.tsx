@@ -1,11 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import {
-  Box,
-  Text,
-  Container,
-  Flex,
-  IconButton,
-} from "@chakra-ui/react";
+import { Box, Text, Container, Flex, IconButton } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import "swiper/css";
@@ -26,7 +20,7 @@ const Slider = () => {
         "linear-gradient(180deg, rgba(130, 0, 255, 0.12) 0%, rgba(130, 0, 255, 0) 100%)"
       }
     >
-      <Container maxW={"7xl"}>
+      <Container maxW={"fit-content"}>
         <Flex
           gap={[0, 1, 12, 16, 20]}
           alignItems={"center"}
@@ -36,10 +30,11 @@ const Slider = () => {
             aria-label={""}
             variant={"unstyled"}
             onClick={() => swiperRef.current?.slidePrev()}
-            mr={[2,2,0]}
-            ml={[-4,0]}
+            minW={"unset"}
+            ml={[-2, 0]}
+            mr={[2, 0]}
           >
-            <ChevronLeftIcon color={"purple"} fontSize={"5xl"} />
+            <Image src={"/leftArrow.svg"} alt={""} width={16} height={32} />
           </IconButton>
           <Swiper
             style={{
@@ -153,9 +148,11 @@ const Slider = () => {
             aria-label={""}
             variant={"unstyled"}
             onClick={() => swiperRef.current?.slideNext()}
-            mr={[-2,0]}
+            minW={"unset"}
+            mr={[-2, 0]}
+            ml={[2, 0]}
           >
-            <ChevronRightIcon color={"purple"} fontSize={"5xl"} />
+            <Image src={"/rightArrow.svg"} alt={""} width={16} height={32} />
           </IconButton>
         </Flex>
       </Container>

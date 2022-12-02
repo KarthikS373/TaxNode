@@ -24,7 +24,7 @@ const DownloadGuide = () => {
       <Container maxW={"4xl"}>
         <Heading
           as={"h2"}
-          size={"lg"}
+          size={"xl"}
           fontWeight={"semibold"}
           textAlign={"center"}
           mb={[6, 7, 8, 9, 10]}

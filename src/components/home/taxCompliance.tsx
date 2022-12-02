@@ -87,7 +87,6 @@ const TaxCompliance = () => {
                   alt={""}
                   width={99}
                   height={119}
-                  layout={'fixed'}
                 />
                 <Box ml={[0, 7, 8, 9, 10]}  mt={[5, 6, 0, 0, 0]}>
                   <Text
@@ -121,7 +120,6 @@ const TaxCompliance = () => {
                   alt={""}
                   width={103}
                   height={93}
-                  layout={'fixed'}
                 />
                 <Box ml={[0, 7, 8, 9, 10]}  mt={[5, 6, 0, 0, 0]}>
                   <Text
