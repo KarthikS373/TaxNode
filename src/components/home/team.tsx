@@ -35,54 +35,79 @@ const Team = () => {
           }}
           gap={[6, 7, 8, 9, 10]}
         >
-          <Box textAlign={"center"}>
+          <Box
+            display={"flex"}
+            flexDir={"column"}
+            alignItems={"center"}
+            textAlign={"center"}
+          >
             <Image
               src={"/team/avinash.jpg"}
               alt={""}
               width={150}
               height={150}
-              layout={"fixed"}
               style={{ borderRadius: 6 }}
             />
-            <Text size={"sm"}>Avinash Shekhar</Text>
+            <Text size={"sm"} mt={[1, null, 3, null, 4]}>
+              Avinash Shekhar
+            </Text>
             <Text fontSize={"xs"}>
               Founder & CEO <br /> Former CEO & CFO <br /> of Zebpay
             </Text>
           </Box>
-          <Box textAlign={"center"}>
+          <Box
+            display={"flex"}
+            flexDir={"column"}
+            alignItems={"center"}
+            textAlign={"center"}
+          >
             <Image
               src={"/team/karthikeyan.jpg"}
               alt={""}
               width={150}
               height={150}
-              layout={"fixed"}
               style={{ borderRadius: 6 }}
             />
-            <Text size={"sm"}> Karthikeyan NG</Text>
+            <Text size={"sm"} mt={[1, null, 3, null, 4]}>
+              {" "}
+              Karthikeyan NG
+            </Text>
             <Text fontSize={"xs"}>CTO</Text>
           </Box>
-          <Box textAlign={"center"}>
+          <Box
+            display={"flex"}
+            flexDir={"column"}
+            alignItems={"center"}
+            textAlign={"center"}
+          >
             <Image
               src={"/team/samir.jpg"}
               alt={""}
               width={150}
               height={150}
-              layout={"fixed"}
               style={{ borderRadius: 6 }}
             />
-            <Text size={"sm"}>Samir Rajpurkar</Text>
+            <Text size={"sm"} mt={[1, null, 3, null, 4]}>
+              Samir Rajpurkar
+            </Text>
             <Text fontSize={"xs"}>CEO at Leap Fintech</Text>
           </Box>
-          <Box textAlign={"center"}>
+          <Box
+            display={"flex"}
+            flexDir={"column"}
+            alignItems={"center"}
+            textAlign={"center"}
+          >
             <Image
               src={"/team/siddhartha.jpg"}
               alt={""}
               width={150}
               height={150}
-              layout={"fixed"}
               style={{ borderRadius: 6 }}
             />
-            <Text size={"sm"}>Siddhartha Chatterjee</Text>
+            <Text size={"sm"} mt={[1, null, 3, null, 4]}>
+              Siddhartha Chatterjee
+            </Text>
             <Text fontSize={"xs"}>Senior Developer</Text>
           </Box>
         </Grid>
@@ -103,40 +128,59 @@ const Team = () => {
           }}
           gap={[6, 7, 8, 9, 10]}
         >
-          <Box textAlign={"center"}>
+          <Box
+            display={"flex"}
+            flexDir={"column"}
+            alignItems={"center"}
+            textAlign={"center"}
+          >
             <Image
               src={"/team/rahil.jpg"}
               alt={""}
               width={150}
               height={150}
-              layout={"fixed"}
               style={{ borderRadius: 6 }}
             />
-            <Text size={"sm"}>Rahil Shaikh</Text>
+            <Text size={"sm"} mt={[1, null, 3, null, 4]}>
+              Rahil Shaikh
+            </Text>
             <Text fontSize={"xs"}>Advisor</Text>
           </Box>
-          <Box textAlign={"center"}>
+          <Box
+            display={"flex"}
+            flexDir={"column"}
+            alignItems={"center"}
+            textAlign={"center"}
+          >
             <Image
               src={"/team/mahin.jpg"}
               alt={""}
               width={150}
               height={150}
-              layout={"fixed"}
               style={{ borderRadius: 6 }}
             />
-            <Text size={"sm"}> Mahin Gupta</Text>
+            <Text size={"sm"} mt={[1, null, 3, null, 4]}>
+              {" "}
+              Mahin Gupta
+            </Text>
             <Text fontSize={"xs"}>Advisor & Investor</Text>
           </Box>
-          <Box textAlign={"center"}>
+          <Box
+            display={"flex"}
+            flexDir={"column"}
+            alignItems={"center"}
+            textAlign={"center"}
+          >
             <Image
               src={"/team/munider.jpg"}
               alt={""}
               width={150}
               height={150}
-              layout={"fixed"}
               style={{ borderRadius: 6 }}
             />
-            <Text size={"sm"}>Muninder K Anand</Text>
+            <Text size={"sm"} mt={[1, null, 3, null, 4]}>
+              Muninder K Anand
+            </Text>
             <Text fontSize={"xs"}>Advisor & Investor</Text>
           </Box>
         </Grid>
@@ -157,47 +201,66 @@ const Team = () => {
           }}
           gap={[6, 7, 8, 9, 10]}
         >
-          <Box textAlign={"center"}>
+          <Box
+            display={"flex"}
+            flexDir={"column"}
+            alignItems={"center"}
+            textAlign={"center"}
+          >
             <Image
               src={"/team/rahul.jpg"}
               alt={""}
               width={150}
               height={150}
-              layout={"fixed"}
               style={{ borderRadius: 6 }}
             />
-            <Text size={"sm"}>Rahul Pagidipati</Text>
+            <Text size={"sm"} mt={[1, null, 3, null, 4]}>
+              Rahul Pagidipati
+            </Text>
             <Text fontSize={"xs"}>
               Chairman, ZebPay and <br /> Managing Partner at Ayon <br />{" "}
               Capital
             </Text>
           </Box>
-          <Box textAlign={"center"}>
+          <Box
+            display={"flex"}
+            flexDir={"column"}
+            alignItems={"center"}
+            textAlign={"center"}
+          >
             <Image
               src={"/team/nischal.jpg"}
               alt={""}
               width={150}
               height={150}
-              layout={"fixed"}
               style={{ borderRadius: 6 }}
             />
-            <Text size={"sm"}> Nischal Shetty</Text>
+            <Text size={"sm"} mt={[1, null, 3, null, 4]}>
+              {" "}
+              Nischal Shetty
+            </Text>
             <Text fontSize={"xs"}>
               Founder, WazirX
               <br />
               Committer
             </Text>
           </Box>
-          <Box textAlign={"center"}>
+          <Box
+            display={"flex"}
+            flexDir={"column"}
+            alignItems={"center"}
+            textAlign={"center"}
+          >
             <Image
               src={"/team/ajeet.jpg"}
               alt={""}
               width={150}
               height={150}
-              layout={"fixed"}
               style={{ borderRadius: 6 }}
             />
-            <Text size={"sm"}>Ajeet Khurana</Text>
+            <Text size={"sm"} mt={[1, null, 3, null, 4]}>
+              Ajeet Khurana
+            </Text>
             <Text fontSize={"xs"}>
               Crypto Influencer, Founder,
               <br /> Reflexical and ex-CEO <br /> Zebpay
