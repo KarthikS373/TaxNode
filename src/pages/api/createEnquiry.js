@@ -131,7 +131,10 @@ export default async function handler(req, res) {
       message: "Operation Succeeded",
     });
   } catch (error) {
-    console.log("This is in catch block", error.response.data);
+    console.log("This is in catch block; error.message: ", error.message);
+    // Handling eventual consistency of FreshDesk APIs: Recreating the error
+    // - Keep the phone same and enter a new email (Fire two back to back requests)
+    // - Log the error using: error.response.data here
     res.status(500).send({
       status: false,
       message: "Operation Failed",
