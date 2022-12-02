@@ -7,6 +7,7 @@ const colors = {
   bgGray: "#F3F3F3",
   themeBlack: "#242328",
   purple:'#4A00E0',
+  lightPurple:'#590AE0',
   darkGray: '#595959',
   veryDarkGray:'#5A5A5A',
   themeGreen:'#85DB77',
