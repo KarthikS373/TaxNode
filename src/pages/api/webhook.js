@@ -77,7 +77,7 @@ export default async function handler(req, res) {
     // }
 
     //! Basic Validation
-    // TODO : Check if this is required 🎯
+    // TODO : Validation for state remaning
     if (
       data.unmappedstatus &&
       data.phone &&
@@ -106,6 +106,14 @@ export default async function handler(req, res) {
         status: false,
         message: "Operation Failed",
       });
+    }
+
+    if (data.productinfo !== "advisory") {
+      console.log(
+        "The productinfo is not advisory => logging the webhook records => ",
+        data
+      );
+      return res.status(200).send();
     }
 
     // TODO: VALIDATION (PHASE2)

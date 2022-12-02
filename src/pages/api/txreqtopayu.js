@@ -39,7 +39,7 @@ export default async function handler(req, res) {
     data = data.fields;
 
     //! Basic Validation
-    if (!(data?.firstname && data?.email && data?.phone)) {
+    if (!(data?.firstname && data?.email && data?.phone && data?.state)) {
       console.log("Error: Missing Value(s)");
       return res.status(400).send({
         status: false,
@@ -57,10 +57,16 @@ export default async function handler(req, res) {
       txnid = txnid.substring(0, 25);
     }
 
+    // Amount
+    const amount = (
+      parseInt(process.env.AMOUNT) -
+      parseInt(process.env.DISCOUNT) * 1.18
+    ).toString();
+
     //! Generating hash
     const hash = payu.hasher.generateHash({
       txnid: txnid,
-      amount: process.env.AMOUNT,
+      amount: amount,
       productinfo: process.env.PRODUCT_INFO,
       firstname: data.firstname,
       email: data.email,
@@ -69,11 +75,12 @@ export default async function handler(req, res) {
     const form = new formData();
     form.append("key", process.env.PAYU_KEY);
     form.append("txnid", txnid);
-    form.append("amount", process.env.AMOUNT);
+    form.append("amount", amount);
     form.append("productinfo", process.env.PRODUCT_INFO);
     form.append("firstname", data.firstname);
     form.append("email", data.email);
     form.append("phone", data.phone);
+    form.append("state", data.state);
     form.append("surl", process.env.PAYU_SURL);
     form.append("furl", process.env.PAYU_FURL);
     form.append("hash", hash);
