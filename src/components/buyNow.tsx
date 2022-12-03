@@ -1,4 +1,4 @@
-import { Box, Text, Flex, Button } from "@chakra-ui/react";
+import { Box, Text, Flex, Button, Link } from "@chakra-ui/react";
 import Image from "next/image";
 
 const BuyNow = () => (
@@ -9,12 +9,19 @@ const BuyNow = () => (
     p={[6, 7, 8, 9, 10]}
     borderRadius={"lg"}
     maxW={"fit-content"}
-    display={'flex'}
-    flexDir={'column'}
-    alignItems={'center'}
-    justifyContent={'center'}
+    display={"flex"}
+    flexDir={"column"}
+    alignItems={"center"}
+    justifyContent={"center"}
   >
-    <Text size={"xs"} color={"black"} display={"flex"} flexDir={{base:'column',sm:'row'}} alignItems={"center"} mb={[6,7,8,9,10]}>
+    <Text
+      size={"xs"}
+      color={"black"}
+      display={"flex"}
+      flexDir={{ base: "column", sm: "row" }}
+      alignItems={"center"}
+      mb={[6, 7, 8, 9, 10]}
+    >
       An early-bird offer for{" "}
       <Box as="span" mx={2}>
         {" "}
@@ -22,7 +29,7 @@ const BuyNow = () => (
       </Box>
       customers
     </Text>
-    <Flex gap={[3,null,4,null,5]} alignItems={'flex-end'} w={'fit-content'}>
+    <Flex gap={[3, null, 4, null, 5]} alignItems={"flex-end"} w={"fit-content"}>
       <Box>
         <Text
           size={"md"}
@@ -32,11 +39,19 @@ const BuyNow = () => (
         >
           ₹2,999
         </Text>
-        <Text fontWeight={"semibold"} size={"3xl"} color={"black"} lineHeight={'normal'} mb={{base:-2,sm:-3,xl:-4}}>
+        <Text
+          fontWeight={"semibold"}
+          size={"3xl"}
+          color={"black"}
+          lineHeight={"normal"}
+          mb={{ base: -2, sm: -3, xl: -4 }}
+        >
           ₹1,999
         </Text>
       </Box>
-      <Button variant={"gradient"}>Buy Now</Button>
+      <Link href="/orderSummary">
+        <Button variant={"gradient"}>Buy Now</Button>
+      </Link>
     </Flex>
     {/* <VStack
       bgColor={"white"}
