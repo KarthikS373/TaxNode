@@ -96,7 +96,7 @@ export default async function handler(req, res) {
       await dbConnect(); // Database connection
       // Storing only those fields in the database which are required (For security)
       await paymentModel.create({
-        tnxid: txnid,
+        txnid: txnid,
         amount: amount,
         productinfo: productinfo,
         firstname: data.firstname,

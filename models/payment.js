@@ -6,7 +6,7 @@ const schema = new mongoose.Schema(
     user_id: { type: ObjectId },
     unmappedstatus: String,
     phone: Number,
-    txnid: String,
+    txnid: { type: String, required: true },
     hash: String,
     status: String,
     curl: String,
