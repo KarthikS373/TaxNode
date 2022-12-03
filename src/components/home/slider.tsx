@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import "swiper/css";
 import Image from "next/image";
-import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
 const Slider = () => {
   const swiperRef = useRef<SwiperCore>();

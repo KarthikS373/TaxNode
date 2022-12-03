@@ -3944,6 +3944,11 @@ negotiator@0.6.3:
   resolved "https://registry.npmjs.org/negotiator/-/negotiator-0.6.3.tgz"
   integrity sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==
 
+next-recaptcha-v3@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/next-recaptcha-v3/-/next-recaptcha-v3-1.0.5.tgz#ccb117877acbb38c8f6c23e06ccb24d16086ddbe"
+  integrity sha512-u9wqf4W1wHANOwnB3MhH9BjamLGZfgweFj6c8HzNaLRpT+SAUmJ3bcnVJoCB3Knll3nWbq1IrVrKfQJjGD4Egw==
+
 next-seo@^5.4.0:
   version "5.4.0"
   resolved "https://registry.npmjs.org/next-seo/-/next-seo-5.4.0.tgz"

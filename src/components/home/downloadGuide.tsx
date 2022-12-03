@@ -8,6 +8,7 @@ import {
   Button,
   Flex,
   FormErrorMessage,
+  Spinner
 } from "@chakra-ui/react";
 import "swiper/css";
 import { useToast } from "@chakra-ui/react";
@@ -63,7 +64,7 @@ const DownloadGuide = () => {
               })
             }
           >
-            Download FreeTax Guide
+            Download FreeTax Guide <Spinner  ml={3} size={'md'}/>
           </Button>
         </Flex>
       </Container>

@@ -4,19 +4,16 @@ import {
   Heading,
   Container,
   Text,
-  VStack,
-  HStack,
   Grid,
   GridItem,
 } from "@chakra-ui/react";
 import "swiper/css";
-import { ArrowForwardIcon } from "@chakra-ui/icons";
 
 import Image from "next/image";
 
 const TaxCompliance = () => {
   return (
-    <Box bg={"pinkOpac"} py={[10, 12, 14, 16, 20]}>
+    <Box bg={"white"} py={[10, 12, 14, 16, 20]}>
       <Container
         maxW={"7xl"}
         display={"flex"}

@@ -4,13 +4,9 @@ import {
   Heading,
   Container,
   Text,
-  VStack,
-  HStack,
   Grid,
-  GridItem,
 } from "@chakra-ui/react";
 import "swiper/css";
-import { ArrowForwardIcon } from "@chakra-ui/icons";
 
 import Image from "next/image";
 
