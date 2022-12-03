@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Heading, Container, Grid, useDisclosure } from "@chakra-ui/react";
+import { Box, Heading, Container, Grid } from "@chakra-ui/react";
 import BuyNow from "../buyNow";
 
 const Hero = () => {
