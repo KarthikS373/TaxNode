@@ -19,6 +19,9 @@ import {
   Link,
 } from "@chakra-ui/react";
 import axios from "axios";
+import { redirect } from "next/dist/server/api-utils";
+import { Router } from "next/router";
+
 
 const OrderSummary = () => {
   const [firstName, setFirstName] = React.useState("");
@@ -26,6 +29,8 @@ const OrderSummary = () => {
   const [email, setEmail] = React.useState("");
   const [contactNo, setContactNo] = React.useState("");
   const [state, setState] = React.useState("");
+  
+  
 
   const emailHandleChange = (event: any) => {
     setEmail(event.target.value);
@@ -52,18 +57,12 @@ const OrderSummary = () => {
       state: state,
     };
 
-    let response = await axios.post(url, body);
-    console.log("response00::", response);
+    let response = await axios.post(url, body).then(response=>window.location.href=response?.data.responseUrl);
     setEmail("");
     setFirstName("");
     setLastName("");
     setContactNo("");
     setState("");
-    return (
-      <>
-        <ThankYou />
-      </>
-    );
   };
 
   return (
