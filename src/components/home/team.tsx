@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Heading,
-  Container,
-  Text,
-  Grid,
-} from "@chakra-ui/react";
+import { Box, Heading, Container, Text, Grid } from "@chakra-ui/react";
 import "swiper/css";
 
 import Image from "next/image";
@@ -115,7 +109,7 @@ const Team = () => {
           mt={[10, 12, 14, 16, 20]}
           mb={[6, 7, 8, 9, 10]}
         >
-          Investors
+          Advisors
         </Heading>
         <Grid
           templateColumns={{
@@ -188,7 +182,7 @@ const Team = () => {
           mt={[10, 12, 14, 16, 20]}
           mb={[6, 7, 8, 9, 10]}
         >
-          Advisors
+          Investors
         </Heading>
         <Grid
           templateColumns={{

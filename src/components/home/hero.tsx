@@ -13,7 +13,7 @@ const Hero = () => {
         background={
           "linear-gradient(90deg, #8E2DE2 0.19%, #4A00E0 99.81%), #925EEB;"
         }
-        pt={[16, 20, 24, 28, 32]}
+        pt={[24, 28, null, null, 32]}
         pb={[10, 12, 14, 16, 20]}
         color={"white"}
       >

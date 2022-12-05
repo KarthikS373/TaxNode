@@ -32,6 +32,12 @@ const Slider = () => {
             minW={"unset"}
             ml={[-2, 0]}
             mr={[2, 0]}
+            _focus={{
+              outline:'none'
+            }}
+            _focusWithin={{
+              outline:'none'
+            }}
           >
             <Image src={"/leftArrow.svg"} alt={""} width={16} height={32} />
           </IconButton>
@@ -48,7 +54,8 @@ const Slider = () => {
               <Flex
                 borderRadius={["lg", null, "xl", null, "2xl"]}
                 flexDir={{ base: "column", sm: "row" }}
-                alignItems={{ base: "flex-start", sm: "center" }}
+                alignItems={'center'}
+                textAlign={{base:'center',sm:'left'}}
                 justifyContent={"center"}
                 p={[6, 7, 8, 9, 10]}
                 bg={"white"}
@@ -81,7 +88,8 @@ const Slider = () => {
               <Flex
                 borderRadius={["lg", null, "xl", null, "2xl"]}
                 flexDir={{ base: "column", sm: "row" }}
-                alignItems={{ base: "flex-start", sm: "center" }}
+                alignItems={'center'}
+                textAlign={{base:'center',sm:'left'}}
                 justifyContent={"center"}
                 p={[6, 7, 8, 9, 10]}
                 bg={"white"}
@@ -114,7 +122,8 @@ const Slider = () => {
               <Flex
                 borderRadius={["lg", null, "xl", null, "2xl"]}
                 flexDir={{ base: "column", sm: "row" }}
-                alignItems={{ base: "flex-start", sm: "center" }}
+                alignItems={'center'}
+                textAlign={{base:'center',sm:'left'}}
                 justifyContent={"center"}
                 p={[6, 7, 8, 9, 10]}
                 bg={"white"}
@@ -150,6 +159,12 @@ const Slider = () => {
             minW={"unset"}
             mr={[-2, 0]}
             ml={[2, 0]}
+            _focus={{
+              outline:'none'
+            }}
+            _focusWithin={{
+              outline:'none'
+            }}
           >
             <Image src={"/rightArrow.svg"} alt={""} width={16} height={32} />
           </IconButton>

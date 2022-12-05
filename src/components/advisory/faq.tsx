@@ -248,9 +248,6 @@ const Faq = () => {
                 >
                   Our team will be happy to assist you with customised offerings
                   wherein you can book multiple sessions with our experts.
-                  Please write to us at
-                  <Link href="mailto:care@taxnodes.com">care@taxnodes.com</Link>
-                  for the same and we will assist you.
                 </AccordionPanel>
               </>
             )}
@@ -293,10 +290,7 @@ const Faq = () => {
                   pr={[8, 12, 16, 20, 24]}
                 >
                   Interested customers who want to know more about the services
-                  can opt for ‘Request a Callback’ feature on our website or
-                  send email to us at
-                  <Link href="mailto:care@taxnodes.com">care@taxnodes.com</Link>
-                  to know more about our offerings
+                  can opt for ‘Request a Callback’ feature on our website
                 </AccordionPanel>
               </>
             )}
