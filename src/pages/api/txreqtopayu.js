@@ -85,7 +85,8 @@ export default async function handler(req, res) {
     console.log("SURL: ", surl,"\nFURL: ", furl, "\n PAYU URL: ",process.env.PAYU_URL)
 
     const request = {
-      url: process.env.PAYU_URL,
+//       url: process.env.PAYU_URL,
+      url: 'https://secure.payu.in/_payment',
       headers: {
         Accept: "application/json",
       },
