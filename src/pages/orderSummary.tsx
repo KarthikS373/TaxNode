@@ -37,7 +37,7 @@ const OrderSummary = () => {
 
   const  apiTxreqtopayuCall = async()=>{
 
-    let url = 'http://localhost:3000/api/txreqtopayu';
+    let url = '/api/txreqtopayu';
     let body= {
       phone:contactNo,
       email:email,

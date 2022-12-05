@@ -24,7 +24,7 @@ const DownloadGuide = () => {
 
   const  apiDwnldtaxguideCall = async()=>{
 
-    let url = 'http://localhost:3000/api/dwnldtaxguide';
+    let url = '/api/dwnldtaxguide';
     let params= {
       name:name,
       email:email
@@ -75,15 +75,17 @@ const DownloadGuide = () => {
               <FormErrorMessage>Name is required.</FormErrorMessage>
             </FormControl>
             <FormControl>
-              <Input placeholder="Email" variant={"secondary"} value={email} onChange={emailHandleChange}/>
+              <Input type = "email" placeholder="Email" variant={"secondary"} value={email} onChange={emailHandleChange}/>
               <FormErrorMessage>Email is required.</FormErrorMessage>
             </FormControl>
           </Flex>
           <Button
+            
             variant={"tertiary"}
             onClick={() => apiDwnldtaxguideCall()}
           >
-            Download FreeTax Guide <Spinner  ml={3} size={'md'}/>
+            Download FreeTax Guide 
+            {/* <Spinner  ml={3} size={'md'}/> */}
           </Button>
         </Flex>
       </Container>

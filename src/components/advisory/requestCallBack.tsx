@@ -25,7 +25,9 @@ const RequestCallBack = () => {
 
   const  apiCreateEnquiryCall = async()=>{
 
-    let url = 'http://localhost:3000/api/createEnquiry';
+    console.log(window.location.hostname) 
+    console.log(window.location.href)
+    let url = '/api/createEnquiry';
     let params= {
       phone:contactNo,
       email:email
@@ -109,7 +111,8 @@ console.log("response:::",response);
             fontWeight={"semibold"}
             onClick={() =>apiCreateEnquiryCall()}
           >
-            Request a Callback <Spinner  ml={3} size={'md'}/>
+            Request a Callback 
+            {/* <Spinner  ml={3} size={'md'}/> */}
           </Button>
         </Box>
       </Container>
