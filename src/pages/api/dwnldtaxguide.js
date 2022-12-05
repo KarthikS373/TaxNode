@@ -22,6 +22,8 @@ export default async function handler(req, res) {
         pass: process.env.AWS_SMTP_PASSWORD,
       },
     });
+    
+    console.log("sendMail is about to be hit")
 
     mailer.sendMail(
       {
@@ -42,6 +44,7 @@ Taxnodes Team`,
         ],
       },
       function (error, info) {
+        console.log("Callback function inside sendMail is hit, error, info: ", error, info)
         if (error) {
           console.log("Error in sendMail: ", error);
         } else if (info) {
@@ -50,6 +53,7 @@ Taxnodes Team`,
       }
     );
 
+    console.log("Operation Succeeded")
     res.status(200).send({
       status: true,
       message: "Operation Succeeded",
