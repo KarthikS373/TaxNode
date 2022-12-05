@@ -1,6 +1,6 @@
 import React from "react";
 import { NextSeo } from "next-seo";
-import ThankYou from "./thankYou";
+import ThankYou from "./thankYou"
 import {
   Box,
   Text,
@@ -21,50 +21,42 @@ import {
 import axios from "axios";
 
 const OrderSummary = () => {
+
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [contactNo, setContactNo] = React.useState("");
   const [state, setState] = React.useState("");
 
-  const emailHandleChange = (event: any) => {
-    setEmail(event.target.value);
-  };
-  const firstNameHandleChange = (event: any) => {
-    setFirstName(event.target.value);
-  };
-  const lastNameHandleChange = (event: any) => {
-    setLastName(event.target.value);
-  };
-  const contactNoHandleChange = (event: any) => {
-    setContactNo(event.target.value);
-  };
-  const stateHandleChange = (event: any) => {
-    setState(event.target.value);
-  };
 
-  const apiTxreqtopayuCall = async () => {
-    let url = "http://localhost:3000/api/txreqtopayu";
-    let body = {
-      phone: contactNo,
-      email: email,
-      firstname: firstName,
-      state: state,
-    };
+  const emailHandleChange = (event:any)=>{ setEmail(event.target.value);}
+  const firstNameHandleChange = (event:any)=>{ setFirstName(event.target.value);}
+  const lastNameHandleChange = (event:any)=>{ setLastName(event.target.value);}
+  const contactNoHandleChange = (event:any)=>{ setContactNo(event.target.value);}
+  const stateHandleChange = (event:any)=>{ setState(event.target.value);}
 
-    let response = await axios.post(url, body);
-    console.log("response00::", response);
-    setEmail("");
-    setFirstName("");
-    setLastName("");
-    setContactNo("");
-    setState("");
+  const  apiTxreqtopayuCall = async()=>{
+
+    let url = '/api/txreqtopayu';
+    let body= {
+      phone:contactNo,
+      email:email,
+      firstname:firstName,
+      state:state
+    }
+
+    let response =await axios.post(url,body)
+    console.log("response00::",response);
+    setEmail('');
+    setFirstName('');
+    setLastName('');
+    setContactNo('');
+    setState('');
     return (
-      <>
-        <ThankYou />
-      </>
-    );
-  };
+    <>
+    <ThankYou/>
+    </>);
+  }
 
   return (
     <>
@@ -73,10 +65,6 @@ const OrderSummary = () => {
         maxW={"6xl"}
         pt={[24, 28, 32, 36, 40]}
         pb={[10, 12, 14, 16, 20]}
-        minH={"93vh"}
-        display={"flex"}
-        alignItems={"center"}
-        justifyContent={"center"}
       >
         <Flex
           alignItems={"center"}
@@ -259,23 +247,10 @@ const OrderSummary = () => {
                 my={[3, null, 4, null, 5]}
               >
                 <Text fontWeight={"semibold"} size={"xs"} color={"blackOpac"}>
-                  Discount
-                </Text>
-                <Text fontWeight={"semibold"} size={"xs"} color={"black"}>
-                  ₹1000
-                </Text>
-              </Flex>
-              <Flex
-                alignItems={"center"}
-                justifyContent={"space-between"}
-                gap={[3, null, 4, null, 5]}
-                my={[3, null, 4, null, 5]}
-              >
-                <Text fontWeight={"semibold"} size={"xs"} color={"blackOpac"}>
                   Goods and Services Tax @ 18%
                 </Text>
                 <Text fontWeight={"semibold"} size={"xs"} color={"black"}>
-                  ₹359.82
+                  ₹539.82
                 </Text>
               </Flex>
               <Flex
@@ -288,13 +263,13 @@ const OrderSummary = () => {
                   Total
                 </Text>
                 <Text fontWeight={"bold"} size={"md"} color={"black"}>
-                  ₹2358.82
+                  ₹3538.82
                 </Text>
               </Flex>
               <Text size={"xs"} color={"blacOpac"} my={[3, null, 4, null, 5]}>
-                Service Providers GSTIN:{" "}
+                Service Provider's GSTIN:{" "}
                 <Box as="span" fontWeight={"bold"} color={"black"}>
-                  24AAPCM2255H1ZE
+                  29AAECC3822D1ZY
                 </Box>
               </Text>
               <Checkbox
@@ -310,29 +285,19 @@ const OrderSummary = () => {
                 }}
               >
                 I accept ClearTax{" "}
-                <Link
-                  href="/termsOfUse.pdf"
-                  target={"_blank"}
-                  color={"themeBlue"}
-                  mx={1}
-                >
+                <Link href="" target={"_blank"} color={"themeBlue"} mx={1}>
                   Terms of use
                 </Link>
                 ,{" "}
-                <Link
-                  href="/privacyPolicy.pdf"
-                  color={"themeBlue"}
-                  target={"_blank"}
-                  mx={1}
-                >
+                <Link href="" color={"themeBlue"} target={"_blank"} mx={1}>
                   Privacy Policy
                 </Link>
+                and{" "}
+                <Link href="" color={"themeBlue"} target={"_blank"} mx={1}>
+                  Refund Policy
+                </Link>
               </Checkbox>
-              <Button
-                variant={"gradient"}
-                w={"100%"}
-                onClick={() => apiTxreqtopayuCall()}
-              >
+              <Button variant={"gradient"} w={"100%"} onClick = {()=>apiTxreqtopayuCall()} >
                 Proceed to Payment
               </Button>
             </Box>
