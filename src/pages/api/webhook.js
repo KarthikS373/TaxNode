@@ -75,7 +75,7 @@ export default async function handler(req, res) {
     //     return allowedIpArr.includes(ip) ? true : false;
     //   }
     // }
-    txnid && amount && productinfo && firstname && email && status;
+
     //! Basic Validation
     // TODO : Validation for state remaning
     if (
