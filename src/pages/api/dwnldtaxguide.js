@@ -2,7 +2,7 @@ import AWS from "aws-sdk";
 import nodemailer from "nodemailer";
 import path from "path";
 
-export default async function handler(req, res) {
+export default function handler(req, res) {
   try {
     const data = req.query;
     // Basic Validation
