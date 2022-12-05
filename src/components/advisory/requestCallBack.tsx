@@ -13,9 +13,40 @@ import {
   useToast,
   Spinner
 } from "@chakra-ui/react";
+import axios from "axios";
 
 const RequestCallBack = () => {
+  const [email, setEmail] = React.useState("");
+  const [contactNo, setContactNo] = React.useState("");
   const toast = useToast();
+  
+  const emailHandleChange = (event:any)=>{ setEmail(event.target.value);}
+  const contactNoHandleChange = (event:any)=>{ setContactNo(event.target.value);}
+
+  const  apiCreateEnquiryCall = async()=>{
+
+    let url = 'http://localhost:3000/api/createEnquiry';
+    let params= {
+      phone:contactNo,
+      email:email
+    }
+
+    let response =await axios.post(url,{},{ params:params})
+
+console.log("response:::",response);
+    
+      toast({
+        title: "Account created.",
+        description: "We've created your account for you.",
+        status: "success", //error for error
+        duration: 9000,
+        isClosable: true,
+      })
+      setEmail('');
+      setContactNo('');  
+
+
+  }
   return (
     <Box py={[10, 12, 14, 16, 20]} bg={"pinkOpac"}>
       <Container
@@ -62,11 +93,13 @@ const RequestCallBack = () => {
                 borderColor={"themeGray"}
                 size={"md"}
                 placeholder={"Enter email address"}
+                value={email}
+                onChange={emailHandleChange}
               />
               <FormErrorMessage>Email is required.</FormErrorMessage>
             </FormControl>
             <FormControl>
-              <Input type="phone" placeholder="Enter phone number" />
+              <Input type="phone" placeholder="Enter phone number" value={contactNo} onChange={contactNoHandleChange}/>
               <FormErrorMessage>Phone Number is required.</FormErrorMessage>
             </FormControl>
           </Flex>
@@ -74,15 +107,7 @@ const RequestCallBack = () => {
             mt={[3, null, 4, null, 5]}
             variant={"outline"}
             fontWeight={"semibold"}
-            onClick={() =>
-              toast({
-                title: "Account created.",
-                description: "We've created your account for you.",
-                status: "success", //error for error
-                duration: 9000,
-                isClosable: true,
-              })
-            }
+            onClick={() =>apiCreateEnquiryCall()}
           >
             Request a Callback <Spinner  ml={3} size={'md'}/>
           </Button>

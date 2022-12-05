@@ -12,9 +12,36 @@ import {
 } from "@chakra-ui/react";
 import "swiper/css";
 import { useToast } from "@chakra-ui/react";
+import axios from "axios";
 
 const DownloadGuide = () => {
+  const [email, setEmail] = React.useState("");
+  const [name, setName] = React.useState("");
   const toast = useToast();
+  
+  const emailHandleChange = (event:any)=>{ setEmail(event.target.value);}
+  const nameHandleChange = (event:any)=>{ setName(event.target.value);}
+
+  const  apiDwnldtaxguideCall = async()=>{
+
+    let url = 'http://localhost:3000/api/dwnldtaxguide';
+    let params= {
+      name:name,
+      email:email
+    }
+
+    let response =await axios.get(url,{params:params})
+
+      toast({
+        title: "Account created.",
+        description: "We've created your account for you.",
+        status: "success", //error for error
+        duration: 9000,
+        isClosable: true,
+      })
+      setName('');
+      setEmail('');
+  }
   return (
     <Box
       py={[10, 12, 14, 16, 20]}
@@ -44,25 +71,17 @@ const DownloadGuide = () => {
             alignItems={"flex-start"}
           >
             <FormControl>
-              <Input placeholder="Name" variant={"secondary"} />
+              <Input placeholder="Name" variant={"secondary"} value={name} onChange={nameHandleChange}/>
               <FormErrorMessage>Name is required.</FormErrorMessage>
             </FormControl>
             <FormControl>
-              <Input placeholder="Email" variant={"secondary"} />
+              <Input placeholder="Email" variant={"secondary"} value={email} onChange={emailHandleChange}/>
               <FormErrorMessage>Email is required.</FormErrorMessage>
             </FormControl>
           </Flex>
           <Button
             variant={"tertiary"}
-            onClick={() =>
-              toast({
-                title: "Account created.",
-                description: "We've created your account for you.",
-                status: "success", //error for error
-                duration: 9000,
-                isClosable: true,
-              })
-            }
+            onClick={() => apiDwnldtaxguideCall()}
           >
             Download FreeTax Guide <Spinner  ml={3} size={'md'}/>
           </Button>
