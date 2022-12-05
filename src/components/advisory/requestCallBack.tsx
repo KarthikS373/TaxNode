@@ -11,41 +11,57 @@ import {
   FormErrorMessage,
   Button,
   useToast,
-  Spinner
+  Spinner,
+  FormLabel
 } from "@chakra-ui/react";
 import axios from "axios";
 
 const RequestCallBack = () => {
-  const [email, setEmail] = React.useState("");
-  const [contactNo, setContactNo] = React.useState("");
+  const [email, setEmail] = React.useState(null as any);
+  const [contactNo, setContactNo] = React.useState(null as any);
   const toast = useToast();
-  
-  const emailHandleChange = (event:any)=>{ setEmail(event.target.value);}
-  const contactNoHandleChange = (event:any)=>{ setContactNo(event.target.value);}
 
-  const  apiCreateEnquiryCall = async()=>{
+  const emailHandleChange = (event: any) => { setEmail(event.target.value); }
+  const contactNoHandleChange = (event: any) => { setContactNo(event.target.value); }
 
-    console.log(window.location.hostname) 
-    console.log(window.location.href)
-    let url = '/api/createEnquiry';
-    let params= {
-      phone:contactNo,
-      email:email
+  const isErrorEmail = email === '';
+  const isErrorContactNo = contactNo === '';
+
+  const apiCreateEnquiryCall = async () => {
+
+    const mob_regex = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/;
+    const mobileValidation = mob_regex.test(contactNo);
+    const email_regex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/;
+    const emailValidation = email_regex.test(email);
+    if (!mobileValidation || !emailValidation || email === '' || contactNo === '') {
+      if (contactNo === '' || !mobileValidation) {
+        setContactNo('');
+      }      
+      if (!emailValidation || email === '' ) {
+        setEmail('');
+      }      
+      return;
     }
 
-    let response =await axios.post(url,{},{ params:params})
+    let url = '/api/createEnquiry';
+    let params = {
+      phone: contactNo,
+      email: email
+    }
 
-console.log("response:::",response);
-    
-      toast({
-        title: "Account created.",
-        description: "We've created your account for you.",
-        status: "success", //error for error
-        duration: 9000,
-        isClosable: true,
-      })
-      setEmail('');
-      setContactNo('');  
+    let response = await axios.post(url, {}, { params: params })
+
+    console.log("response:::", response);
+
+    toast({
+      title: "Account created.",
+      description: "We've created your account for you.",
+      status: "success", //error for error
+      duration: 9000,
+      isClosable: true,
+    })
+    setEmail('  ');
+    setContactNo('  ');
 
 
   }
@@ -88,10 +104,11 @@ console.log("response:::",response);
           Have queries? Talk to an expert
         </Text>
         <Box maxW={"md"}>
-          <Flex gap={[3, null, 4, null, 5]} flexDir={['column',"row"]}>
-            <FormControl>
+          <Flex gap={[3, null, 4, null, 5]} flexDir={['column', "row"]}>
+            <FormControl isRequired isInvalid={isErrorEmail}>
+            <FormLabel>Email</FormLabel>
               <Input
-                type="email"
+                type='email'
                 borderColor={"themeGray"}
                 size={"md"}
                 placeholder={"Enter email address"}
@@ -100,8 +117,9 @@ console.log("response:::",response);
               />
               <FormErrorMessage>Email is required.</FormErrorMessage>
             </FormControl>
-            <FormControl>
-              <Input type="phone" placeholder="Enter phone number" value={contactNo} onChange={contactNoHandleChange}/>
+            <FormControl isRequired isInvalid={isErrorContactNo}>
+            <FormLabel>PhoneNo</FormLabel>
+              <Input type='number' placeholder={"Enter phone number"} value={contactNo} onChange={contactNoHandleChange} />
               <FormErrorMessage>Phone Number is required.</FormErrorMessage>
             </FormControl>
           </Flex>
@@ -109,9 +127,9 @@ console.log("response:::",response);
             mt={[3, null, 4, null, 5]}
             variant={"outline"}
             fontWeight={"semibold"}
-            onClick={() =>apiCreateEnquiryCall()}
+            onClick={() => apiCreateEnquiryCall()}
           >
-            Request a Callback 
+            Request a Callback
             {/* <Spinner  ml={3} size={'md'}/> */}
           </Button>
         </Box>
