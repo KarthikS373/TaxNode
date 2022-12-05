@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       });
     }
 
-    const mailer = nodemailer.createTransport({
+    const mailer = await nodemailer.createTransport({
       host: process.env.AWS_SMTP_HOST,
       port: process.env.AWS_SMTP_PORT || 587,
       secure: false,
@@ -25,7 +25,7 @@ export default async function handler(req, res) {
     
     console.log("sendMail is about to be hit")
 
-    mailer.sendMail(
+    await mailer.sendMail(
       {
         from: process.env.SMTP_SENDER_EMAIL,
         to: data.email,
