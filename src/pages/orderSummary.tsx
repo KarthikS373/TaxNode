@@ -284,7 +284,7 @@ const OrderSummary = () => {
                   },
                 }}
               >
-                I accept ClearTax{" "}
+                I accept Taxnodes{" "}
                 <Link href="" target={"_blank"} color={"themeBlue"} mx={1}>
                   Terms of use
                 </Link>
