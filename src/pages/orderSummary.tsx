@@ -1,12 +1,10 @@
 import React from "react";
 import { NextSeo } from "next-seo";
-import ThankYou from "./thankYou";
 import {
   Box,
   Text,
   Container,
   Flex,
-  IconButton,
   Heading,
   FormLabel,
   FormControl,
@@ -19,16 +17,14 @@ import {
   Link,
 } from "@chakra-ui/react";
 import axios from "axios";
-import { redirect } from "next/dist/server/api-utils";
-import { Router } from "next/router";
 
 
 const OrderSummary = () => {
-  const [firstName, setFirstName] = React.useState("");
-  const [lastName, setLastName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [contactNo, setContactNo] = React.useState("");
-  const [state, setState] = React.useState("");
+  const [firstName, setFirstName] = React.useState(null as any);
+  const [lastName, setLastName] = React.useState(null as any);
+  const [email, setEmail] = React.useState(null as any);
+  const [contactNo, setContactNo] = React.useState(null as any);
+  const [state, setState] = React.useState(null as any);
   
   
 
@@ -48,7 +44,32 @@ const OrderSummary = () => {
     setState(event.target.value);
   };
 
+  const isErrorEmail = email === '';
+  const isErrorContactNo = contactNo === '';
+  const isErrorFirstName = firstName ==='';
+  const isErrorState = state ==='';
+
   const apiTxreqtopayuCall = async () => {
+    const mob_regex = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/;
+    const mobileValidation = mob_regex.test(contactNo);
+    const email_regex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/;
+    const emailValidation = email_regex.test(email);
+    if (!mobileValidation || !emailValidation || email === '' || contactNo === '' || firstName ==='' || state === '') {
+      if (contactNo === '' || !mobileValidation) {
+        setContactNo('');
+      }      
+      if (!emailValidation || email === '' ) {
+        setEmail('');
+      }
+      if(firstName === ''){
+        setFirstName('');
+      } 
+      if(state === ''){
+        setState('');
+      }       
+      return;
+    }
+
     let url = "/api/txreqtopayu";
     let body = {
       phone: contactNo,
@@ -58,11 +79,11 @@ const OrderSummary = () => {
     };
 
     let response = await axios.post(url, body).then(response=>window.location.href=response?.data.responseUrl);
-    setEmail("");
-    setFirstName("");
-    setLastName("");
-    setContactNo("");
-    setState("");
+    setEmail('  ');
+    setFirstName('  ');
+    setLastName('  ');
+    setContactNo('  ');
+    setState('  ');
   };
 
   return (
@@ -118,7 +139,7 @@ const OrderSummary = () => {
                 Contact Information
               </Text>
               <VStack spacing={3}>
-                <FormControl>
+                <FormControl  isInvalid={isErrorEmail}>
                   <FormLabel color={"darkGray"}>
                     Email{" "}
                     <Box as="span" color={"red"}>
@@ -126,7 +147,7 @@ const OrderSummary = () => {
                     </Box>
                   </FormLabel>
                   <Input
-                    type="email"
+                    type='email'
                     borderColor={"themeGray"}
                     size={"md"}
                     placeholder={"Enter your email address here"}
@@ -136,7 +157,7 @@ const OrderSummary = () => {
                   <FormErrorMessage>Email is required.</FormErrorMessage>
                 </FormControl>
 
-                <FormControl>
+                <FormControl isInvalid={isErrorFirstName}>
                   <FormLabel color={"darkGray"}>
                     Name{" "}
                     <Box as="span" color={"red"}>
@@ -145,14 +166,15 @@ const OrderSummary = () => {
                   </FormLabel>
                   <Flex flexDir={{ base: "column", sm: "row" }} gap={3}>
                     <Box>
-                      <Input
+                      <Input 
+                        type='text'
                         borderColor={"themeGray"}
                         size={"md"}
                         placeholder={"First Name"}
                         value={firstName}
                         onChange={firstNameHandleChange}
                       />
-                      <FormErrorMessage>Email is required.</FormErrorMessage>
+                      <FormErrorMessage>Name is required.</FormErrorMessage>
                     </Box>
                     <Box>
                       <Input
@@ -161,8 +183,7 @@ const OrderSummary = () => {
                         placeholder={"Last Name"}
                         value={lastName}
                         onChange={lastNameHandleChange}
-                      />
-                      <FormErrorMessage>Email is required.</FormErrorMessage>
+                      />                      
                     </Box>
                   </Flex>
                 </FormControl>
@@ -182,7 +203,7 @@ const OrderSummary = () => {
                       disabled
                     />
                   </FormControl>
-                  <FormControl>
+                  <FormControl  isInvalid={isErrorContactNo}>
                     <FormLabel color={"darkGray"}>
                       Contact No
                       <Box as="span" color={"red"}>
@@ -196,10 +217,10 @@ const OrderSummary = () => {
                       value={contactNo}
                       onChange={contactNoHandleChange}
                     />
-                    <FormErrorMessage>Email is required.</FormErrorMessage>
+                    <FormErrorMessage>Contact no is required.</FormErrorMessage>
                   </FormControl>
                 </Flex>
-                <FormControl>
+                <FormControl isInvalid={isErrorState}>
                   <FormLabel color={"darkGray"}>
                     State
                     <Box as="span" color={"red"}>
@@ -207,7 +228,7 @@ const OrderSummary = () => {
                     </Box>
                   </FormLabel>
                   <Input
-                    type="email"
+                    type='text'
                     borderColor={"themeGray"}
                     size={"md"}
                     placeholder={
@@ -216,7 +237,7 @@ const OrderSummary = () => {
                     value={state}
                     onChange={stateHandleChange}
                   />
-                  <FormErrorMessage>Email is required.</FormErrorMessage>
+                  <FormErrorMessage>State is required.</FormErrorMessage>
                 </FormControl>
               </VStack>
             </Box>
