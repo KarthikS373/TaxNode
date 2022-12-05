@@ -28,9 +28,10 @@ export default async function handler(req, res) {
       });
     });
     data = data.fields;
+    const { firstname, email, phone, state } = data;
 
     //! Basic Validation
-    if (!(data?.firstname && data?.email && data?.phone && data?.state)) {
+    if (!(firstname && email && phone && state)) {
       console.log("Error: Missing Value(s)");
       return res.status(400).send({
         status: false,
@@ -42,7 +43,7 @@ export default async function handler(req, res) {
     //TODO: PHASE2 DATA VALIDATION for security
 
     // txnid
-    let txnid = data.email.substring(0, 3) + short.generate();
+    let txnid = email.substring(0, 3) + short.generate();
     // error handling: txnid max length allowed = 25
     if (txnid.length > 25) {
       txnid = txnid.substring(0, 25);
@@ -64,8 +65,8 @@ export default async function handler(req, res) {
       txnid: txnid,
       amount: amount,
       productinfo: process.env.PRODUCT_INFO,
-      firstname: data.firstname,
-      email: data.email,
+      firstname: firstname,
+      email: email,
     });
 
     //! Initiating transaction request to PayU
@@ -74,10 +75,10 @@ export default async function handler(req, res) {
     form.append("txnid", txnid);
     form.append("amount", amount);
     form.append("productinfo", productinfo);
-    form.append("firstname", data.firstname);
-    form.append("email", data.email);
-    form.append("phone", data.phone);
-    form.append("state", data.state);
+    form.append("firstname", firstname);
+    form.append("email", email);
+    form.append("phone", phone);
+    form.append("state", state);
     form.append("surl", surl);
     form.append("furl", furl);
     form.append("hash", hash);
@@ -99,10 +100,10 @@ export default async function handler(req, res) {
         txnid: txnid,
         amount: amount,
         productinfo: productinfo,
-        firstname: data.firstname,
-        email: data.email,
-        phone: data.phone,
-        state: data.state,
+        firstname: firstname,
+        email: email,
+        phone: phone,
+        state: state,
         surl: surl,
         furl: furl,
         hash: hash,
