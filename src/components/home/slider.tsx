@@ -33,10 +33,10 @@ const Slider = () => {
             ml={[-2, 0]}
             mr={[2, 0]}
             _focus={{
-              outline:'none'
+              outline: "none",
             }}
             _focusWithin={{
-              outline:'none'
+              outline: "none",
             }}
           >
             <Image src={"/leftArrow.svg"} alt={""} width={16} height={32} />
@@ -54,10 +54,12 @@ const Slider = () => {
               <Flex
                 borderRadius={["lg", null, "xl", null, "2xl"]}
                 flexDir={{ base: "column", sm: "row" }}
-                alignItems={'center'}
-                textAlign={{base:'center',sm:'left'}}
+                alignItems={"center"}
+                textAlign={{ base: "center", sm: "left" }}
                 justifyContent={"center"}
-                p={[6, 7, 8, 9, 10]}
+                px={[6, 7, 8, 9, 10]}
+                pb={[6, 7, 8, 9, 10]}
+                pt={10}
                 bg={"white"}
                 gap={[10, 12, 14, 16, 20]}
               >
@@ -67,7 +69,7 @@ const Slider = () => {
                   width={144}
                   height={136}
                 />
-                <Box>
+                <Box mt={[-5, 0]}>
                   <Text size={"lg"} fontWeight={"semibold"}>
                     Robust Tax Reconciliation Engine
                   </Text>
@@ -88,10 +90,12 @@ const Slider = () => {
               <Flex
                 borderRadius={["lg", null, "xl", null, "2xl"]}
                 flexDir={{ base: "column", sm: "row" }}
-                alignItems={'center'}
-                textAlign={{base:'center',sm:'left'}}
+                alignItems={"center"}
+                textAlign={{ base: "center", sm: "left" }}
                 justifyContent={"center"}
-                p={[6, 7, 8, 9, 10]}
+                px={[6, 7, 8, 9, 10]}
+                pb={[6, 7, 8, 9, 10]}
+                pt={10}
                 bg={"white"}
                 gap={[10, 12, 14, 16, 20]}
               >
@@ -101,7 +105,7 @@ const Slider = () => {
                   width={144}
                   height={136}
                 />
-                <Box>
+                <Box mt={[-5, 0]}>
                   <Text size={"lg"} fontWeight={"semibold"}>
                     100% India Tax Compliant Reports
                   </Text>
@@ -122,10 +126,12 @@ const Slider = () => {
               <Flex
                 borderRadius={["lg", null, "xl", null, "2xl"]}
                 flexDir={{ base: "column", sm: "row" }}
-                alignItems={'center'}
-                textAlign={{base:'center',sm:'left'}}
+                alignItems={"center"}
+                textAlign={{ base: "center", sm: "left" }}
                 justifyContent={"center"}
-                p={[6, 7, 8, 9, 10]}
+                px={[6, 7, 8, 9, 10]}
+                pb={[6, 7, 8, 9, 10]}
+                pt={10}
                 bg={"white"}
                 gap={[10, 12, 14, 16, 20]}
               >
@@ -135,7 +141,7 @@ const Slider = () => {
                   width={144}
                   height={136}
                 />
-                <Box>
+                <Box mt={[-5, 0]}>
                   <Text size={"lg"} fontWeight={"semibold"}>
                     State-of-the-art Security Protocols
                   </Text>
@@ -160,10 +166,10 @@ const Slider = () => {
             mr={[-2, 0]}
             ml={[2, 0]}
             _focus={{
-              outline:'none'
+              outline: "none",
             }}
             _focusWithin={{
-              outline:'none'
+              outline: "none",
             }}
           >
             <Image src={"/rightArrow.svg"} alt={""} width={16} height={32} />

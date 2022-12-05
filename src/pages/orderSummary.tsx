@@ -73,6 +73,10 @@ const OrderSummary = () => {
         maxW={"6xl"}
         pt={[24, 28, 32, 36, 40]}
         pb={[10, 12, 14, 16, 20]}
+        minH={"93vh"}
+        display={"flex"}
+        alignItems={"center"}
+        justifyContent={"center"}
       >
         <Flex
           alignItems={"center"}
