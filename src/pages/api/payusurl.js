@@ -113,7 +113,7 @@ export default async function handler(req, res) {
     } = data;
 
     //! Redirection:
-    res.redirect(301, "/thankYou");
+//     res.redirect(301, "/thankYou");
 
     // Basic Validation for those fields which are required for calculating verifying reverse hash
     if (txnid && amount && productinfo && firstname && email && status) {
@@ -343,6 +343,8 @@ export default async function handler(req, res) {
             user: user,
             payment: payment,
           });
+              //! Redirection:
+            res.redirect(301, "/thankYou");
         } else {
           // This is when the reverse hash is invalid
           console.log("Invalid Hash");
@@ -405,6 +407,8 @@ export default async function handler(req, res) {
           //   { new: true, upsert: true }
           // );
           // console.log({ payment: payment });
+              //! Redirection:
+          res.redirect(301, "/thankYou");
         }
       } else {
         // This is when productinfo is not advisory
@@ -413,11 +417,15 @@ export default async function handler(req, res) {
     } else {
       // This is when basic validation fails
       console.log("Missing value(s)");
+          //! Redirection:
+        res.redirect(301, "/thankYou");
     }
   } catch (error) {
     console.log(
       "This is in catch block; error.message: ",
       error?.response?.data
     );
+        //! Redirection:
+    res.redirect(301, "/thankYou");
   }
 }
