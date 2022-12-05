@@ -36,12 +36,6 @@ Everything is working fine!..............
 
 Regards
 Taxnodes Team`,
-        attachments: [
-          {
-            filename: "TaxGuide.pdf",
-            path: path.join(process.cwd(), "/assets/pdfs", "TaxGuide.pdf"),
-          },
-        ],
       },
       function (error, info) {
         console.log("Callback function inside sendMail is hit, error, info: ", error, info)
