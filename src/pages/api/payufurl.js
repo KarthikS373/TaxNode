@@ -40,7 +40,7 @@ export default async function handler(req, res) {
     await runMiddleware(req, res, cors); // CORS
     await dbConnect(); // Database connection
 
-    res.redirect(301, "/thankyou");
+    res.redirect(301, "/thankYou");
 
     const {
       txnid,

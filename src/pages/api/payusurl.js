@@ -113,7 +113,7 @@ export default async function handler(req, res) {
     } = data;
 
     //! Redirection:
-    res.redirect(301, "/thankyou");
+//     res.redirect(301, "/thankYou");
 
     // Basic Validation for those fields which are required for calculating verifying reverse hash
     if (txnid && amount && productinfo && firstname && email && status) {
@@ -153,7 +153,9 @@ export default async function handler(req, res) {
               email: email,
             },
           };
+          console.log("Req to contactreq:", contactRequest)
           contact = await axios.request(contactRequest);
+          console.log("REsponse:", contact)
 
           // Since the email address is unique, we will get only one contact in the list
           contact?.data?.length === 1
@@ -187,7 +189,9 @@ export default async function handler(req, res) {
               },
               data: contactForm,
             };
+            console.log("Req to create contact:", request)
             contact = await axios.request(request);
+            console.log("Response from create contact:", contact)
             contact = contact.data; // contact lies inside the data object (in response)
           } else if (contactExists) {
             // If contact already exists =>
@@ -208,6 +212,7 @@ export default async function handler(req, res) {
                 subscribed_on
               );
               contactForm.append("custom_fields[subscription_amt]", amount);
+              console.log("Contact form if contact exist: ", contactForm)
 
               const contactRequest = {
                 url: `https://taxnodes.freshdesk.com/api/v2/contacts/${contact.id}`,
@@ -225,6 +230,7 @@ export default async function handler(req, res) {
 
               contact = await axios.request(contactRequest);
               contact = contact.data;
+              console.log("contact update response: ", contact)
             }
           }
 
@@ -241,6 +247,7 @@ export default async function handler(req, res) {
           ticketForm.append("priority", 1);
           ticketForm.append("description", "Demo Description");
           ticketForm.append("group_id", process.env.SUBSCRIBED_GROUP_ID);
+          console.log("ticket creation:", ticketForm)
 
           const ticketRequest = {
             url: "https://taxnodes.freshdesk.com/api/v2/tickets",
@@ -255,6 +262,7 @@ export default async function handler(req, res) {
             data: ticketForm,
           };
           ticket = await axios.request(ticketRequest);
+          console.log("Ticket creation response:", ticket)
           ticket = ticket.data; // ticket lies inside the data object (in response)
 
           // User creation along with subscription details
@@ -335,6 +343,8 @@ export default async function handler(req, res) {
             user: user,
             payment: payment,
           });
+              //! Redirection:
+            res.redirect(301, "/thankYou");
         } else {
           // This is when the reverse hash is invalid
           console.log("Invalid Hash");
@@ -397,6 +407,8 @@ export default async function handler(req, res) {
           //   { new: true, upsert: true }
           // );
           // console.log({ payment: payment });
+              //! Redirection:
+          res.redirect(301, "/thankYou");
         }
       } else {
         // This is when productinfo is not advisory
@@ -405,11 +417,15 @@ export default async function handler(req, res) {
     } else {
       // This is when basic validation fails
       console.log("Missing value(s)");
+          //! Redirection:
+        res.redirect(301, "/thankYou");
     }
   } catch (error) {
     console.log(
       "This is in catch block; error.message: ",
       error?.response?.data
     );
+        //! Redirection:
+    res.redirect(301, "/thankYou");
   }
 }

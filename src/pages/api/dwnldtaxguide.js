@@ -13,16 +13,17 @@ export default async function handler(req, res) {
       });
     }
 
-    //TODO: Understand the concepts of port and secure from Chinmay
     const mailer = nodemailer.createTransport({
       host: process.env.AWS_SMTP_HOST,
-      port: process.env.AWS_SMTP_PORT || 465,
-      secure: true,
+      port: process.env.AWS_SMTP_PORT || 587,
+      secure: false,
       auth: {
         user: process.env.AWS_SMTP_USER,
         pass: process.env.AWS_SMTP_PASSWORD,
       },
     });
+    
+    console.log("sendMail is about to be hit")
 
     mailer.sendMail(
       {
@@ -35,14 +36,9 @@ Everything is working fine!..............
 
 Regards
 Taxnodes Team`,
-        attachments: [
-          {
-            filename: "taxguide.pdf",
-            path: path.join(process.cwd(), "/assets/pdfs", "taxguide.pdf"),
-          },
-        ],
       },
       function (error, info) {
+        console.log("Callback function inside sendMail is hit, error, info: ", error, info)
         if (error) {
           console.log("Error in sendMail: ", error);
         } else if (info) {
@@ -51,6 +47,7 @@ Taxnodes Team`,
       }
     );
 
+    console.log("Operation Succeeded")
     res.status(200).send({
       status: true,
       message: "Operation Succeeded",

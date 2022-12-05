@@ -79,27 +79,16 @@ export default async function handler(req, res) {
     //! Basic Validation
     // TODO : Validation for state remaning
     if (
-      data.unmappedstatus &&
-      data.phone &&
-      data.txnid &&
-      data.hash &&
-      data.status &&
-      data.curl &&
-      data.firstname &&
-      data.card_no &&
-      data.furl &&
-      data.productinfo &&
-      data.DC &&
-      data.amount &&
-      data.field4 &&
-      data.field3 &&
-      data.field2 &&
-      data.field9 &&
-      data.email &&
-      data.mihpayid &&
-      data.surl &&
-      data.card_hash &&
-      data.field1
+      !(
+        data.phone &&
+        data.txnid &&
+        data.hash &&
+        data.status &&
+        data.firstname &&
+        data.productinfo &&
+        data.amount &&
+        data.email
+      )
     ) {
       console.log("Missing value(s)");
       return res.status(400).send({
