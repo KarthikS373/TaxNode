@@ -13,7 +13,6 @@ export default async function handler(req, res) {
       });
     }
 
-    //TODO: Understand the concepts of port and secure from Chinmay
     const mailer = nodemailer.createTransport({
       host: process.env.AWS_SMTP_HOST,
       port: process.env.AWS_SMTP_PORT || 465,
@@ -37,8 +36,8 @@ Regards
 Taxnodes Team`,
         attachments: [
           {
-            filename: "taxguide.pdf",
-            path: path.join(process.cwd(), "/assets/pdfs", "taxguide.pdf"),
+            filename: "TaxGuide.pdf",
+            path: path.join(process.cwd(), "/assets/pdfs", "TaxGuide.pdf"),
           },
         ],
       },

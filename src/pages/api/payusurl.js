@@ -113,7 +113,7 @@ export default async function handler(req, res) {
     } = data;
 
     //! Redirection:
-    res.redirect(301, "/thankyou");
+    res.redirect(301, "/thankYou");
 
     // Basic Validation for those fields which are required for calculating verifying reverse hash
     if (txnid && amount && productinfo && firstname && email && status) {
