@@ -75,7 +75,11 @@ const DownloadGuide = () => {
               <FormErrorMessage>Name is required.</FormErrorMessage>
             </FormControl>
             <FormControl>
+<<<<<<< HEAD
               <Input type = "email" placeholder="Email" variant={"secondary"} value={email} onChange={emailHandleChange}/>
+=======
+              <Input placeholder="Email" variant={"secondary"} value={email} onChange={emailHandleChange}/>
+>>>>>>> taxnodes/payu-backend
               <FormErrorMessage>Email is required.</FormErrorMessage>
             </FormControl>
           </Flex>
