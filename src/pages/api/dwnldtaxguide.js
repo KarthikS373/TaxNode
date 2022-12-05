@@ -2,7 +2,7 @@ import AWS from "aws-sdk";
 import nodemailer from "nodemailer";
 import path from "path";
 
-export default async function handler(req, res) {
+export default function handler(req, res) {
   try {
     const data = req.query;
     // Basic Validation
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       });
     }
 
-    const mailer = await nodemailer.createTransport({
+    const mailer = nodemailer.createTransport({
       host: process.env.AWS_SMTP_HOST,
       port: process.env.AWS_SMTP_PORT || 587,
       secure: false,
@@ -25,7 +25,7 @@ export default async function handler(req, res) {
     
     console.log("sendMail is about to be hit")
 
-    await mailer.sendMail(
+    mailer.sendMail(
       {
         from: process.env.SMTP_SENDER_EMAIL,
         to: data.email,
