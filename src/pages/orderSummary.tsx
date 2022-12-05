@@ -267,7 +267,7 @@ const OrderSummary = () => {
                 </Text>
               </Flex>
               <Text size={"xs"} color={"blacOpac"} my={[3, null, 4, null, 5]}>
-                Service Provider's GSTIN:{" "}
+                Service Providers GSTIN:{" "}
                 <Box as="span" fontWeight={"bold"} color={"black"}>
                   29AAECC3822D1ZY
                 </Box>

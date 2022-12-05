@@ -185,7 +185,7 @@ const Faq = () => {
                   }}
                 >
                   <Box flex="1" textAlign="left">
-                    What if my queries don't get resolved in a single session?
+                    What if my queries dont get resolved in a single session?
                   </Box>
                   {isExpanded ? (
                     <MinusIcon fontSize="12px" color={"#4A00E0"} />
@@ -248,8 +248,8 @@ const Faq = () => {
                 >
                   Our team will be happy to assist you with customised offerings
                   wherein you can book multiple sessions with our experts.
-                  Please write to us at{" "}
-                  <Link href="mailto:care@taxnodes.com">care@taxnodes.com</Link>{" "}
+                  Please write to us at
+                  <Link href="mailto:care@taxnodes.com">care@taxnodes.com</Link>
                   for the same and we will assist you.
                 </AccordionPanel>
               </>
@@ -294,8 +294,8 @@ const Faq = () => {
                 >
                   Interested customers who want to know more about the services
                   can opt for ‘Request a Callback’ feature on our website or
-                  send email to us at{" "}
-                  <Link href="mailto:care@taxnodes.com">care@taxnodes.com</Link>{" "}
+                  send email to us at
+                  <Link href="mailto:care@taxnodes.com">care@taxnodes.com</Link>
                   to know more about our offerings
                 </AccordionPanel>
               </>
