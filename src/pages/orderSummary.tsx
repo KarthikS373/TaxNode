@@ -245,7 +245,20 @@ const OrderSummary = () => {
                   Plan Amount
                 </Text>
                 <Text fontWeight={"bold"} size={"md"} color={"black"}>
-                  ₹1,999
+                  ₹2,999
+                </Text>
+              </Flex>
+              <Flex
+                alignItems={"center"}
+                justifyContent={"space-between"}
+                gap={[3, null, 4, null, 5]}
+                my={[3, null, 4, null, 5]}
+              >
+                <Text fontWeight={"semibold"} size={"xs"} color={"blackOpac"}>
+                  Discount
+                </Text>
+                <Text fontWeight={"semibold"} size={"xs"} color={"black"}>
+                  ₹1000
                 </Text>
               </Flex>
               <Flex
@@ -293,11 +306,21 @@ const OrderSummary = () => {
                 }}
               >
                 I accept Taxnodes{" "}
-                <Link href="" target={"_blank"} color={"themeBlue"} mx={1}>
+                <Link
+                  href="/termsOfUse.pdf"
+                  target={"_blank"}
+                  color={"themeBlue"}
+                  mx={1}
+                >
                   Terms of use
                 </Link>
                 ,{" "}
-                <Link href="" color={"themeBlue"} target={"_blank"} mx={1}>
+                <Link
+                  href="/privacyPolicy.pdf"
+                  color={"themeBlue"}
+                  target={"_blank"}
+                  mx={1}
+                >
                   Privacy Policy
                 </Link>
               </Checkbox>
