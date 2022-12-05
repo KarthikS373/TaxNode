@@ -90,13 +90,12 @@ const DownloadGuide = () => {
           <Flex
             gap={[3, null, 4, null, 5]}
             flexDir={{ base: "column", md: "row" }}
-            alignItems={{ base: 'center', sm: "flex-start" }}
+            alignItems={{ base: 'center', sm: "center" }}
           >
             <Flex
               flex={1}
               gap={[3, null, 4, null, 5]}
               flexDir={{ base: "column", sm: "row" }}
-              alignItems={"flex-start"}
             >
               <FormControl isRequired isInvalid={isErrorName}>
                 <FormLabel>Name</FormLabel>
@@ -113,6 +112,7 @@ const DownloadGuide = () => {
             <Button
               variant={"tertiary"}
               onClick={() => apiDwnldtaxguideCall()}
+              mt={[1,2,8,]}
             >
               {isLoading ? (
                 <CircularProgress
