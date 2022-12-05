@@ -43,7 +43,7 @@ const ThankYou = () => {
           mb={[6, 7, 8, 9, 10]}
           color={'blackOpac'}
         >
-         Your payment has been recieved, please check your email for further steps. We are happy to have you.
+         Your payment is being verified, please check your email for further steps. We are happy to have you.
         </Text>
       </Container>
     </>
