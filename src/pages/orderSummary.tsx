@@ -237,7 +237,7 @@ const OrderSummary = () => {
                   Plan Amount
                 </Text>
                 <Text fontWeight={"bold"} size={"md"} color={"black"}>
-                  ₹2,999
+                  ₹1,999
                 </Text>
               </Flex>
               <Flex
@@ -250,7 +250,7 @@ const OrderSummary = () => {
                   Goods and Services Tax @ 18%
                 </Text>
                 <Text fontWeight={"semibold"} size={"xs"} color={"black"}>
-                  ₹539.82
+                  ₹359.82
                 </Text>
               </Flex>
               <Flex
@@ -263,13 +263,13 @@ const OrderSummary = () => {
                   Total
                 </Text>
                 <Text fontWeight={"bold"} size={"md"} color={"black"}>
-                  ₹3538.82
+                  ₹2358.82
                 </Text>
               </Flex>
               <Text size={"xs"} color={"blacOpac"} my={[3, null, 4, null, 5]}>
                 Service Providers GSTIN:{" "}
                 <Box as="span" fontWeight={"bold"} color={"black"}>
-                  29AAECC3822D1ZY
+                  24AAPCM2255H1ZE
                 </Box>
               </Text>
               <Checkbox
@@ -291,10 +291,6 @@ const OrderSummary = () => {
                 ,{" "}
                 <Link href="" color={"themeBlue"} target={"_blank"} mx={1}>
                   Privacy Policy
-                </Link>
-                and{" "}
-                <Link href="" color={"themeBlue"} target={"_blank"} mx={1}>
-                  Refund Policy
                 </Link>
               </Checkbox>
               <Button variant={"gradient"} w={"100%"} onClick = {()=>apiTxreqtopayuCall()} >
