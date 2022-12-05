@@ -15,8 +15,8 @@ export default async function handler(req, res) {
 
     const mailer = nodemailer.createTransport({
       host: process.env.AWS_SMTP_HOST,
-      port: process.env.AWS_SMTP_PORT || 465,
-      secure: true,
+      port: process.env.AWS_SMTP_PORT || 587,
+      secure: false,
       auth: {
         user: process.env.AWS_SMTP_USER,
         pass: process.env.AWS_SMTP_PASSWORD,
