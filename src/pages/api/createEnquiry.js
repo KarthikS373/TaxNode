@@ -16,7 +16,6 @@ export default async function handler(req, res) {
         message: "Operation Failed",
       });
     }
-
     // Declaring below variables for storing responses
     let contactExists, contact, ticket, user;
 

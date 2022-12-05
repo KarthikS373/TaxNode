@@ -34,8 +34,8 @@ const DownloadGuide = () => {
 
   const apiDwnldtaxguideCall = async () => {
 
-    const re = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
-    const emailValidation = re.test(email);
+    const email_regex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
+    const emailValidation = email_regex.test(email);
     if (!emailValidation || email === null ||  name === null) {       
       if ( name === null) {
         setName('');
@@ -64,8 +64,8 @@ const DownloadGuide = () => {
       duration: 9000,
       isClosable: true,
     })
-    setName('');
-    setEmail('');
+    setName(' ');
+    setEmail(' ');
     setIsLoading(false);
   }
 
