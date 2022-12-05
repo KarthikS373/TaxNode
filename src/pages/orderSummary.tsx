@@ -1,5 +1,6 @@
 import React from "react";
 import { NextSeo } from "next-seo";
+import ThankYou from "./thankYou"
 import {
   Box,
   Text,
@@ -17,8 +18,46 @@ import {
   Checkbox,
   Link,
 } from "@chakra-ui/react";
+import axios from "axios";
 
 const OrderSummary = () => {
+
+  const [firstName, setFirstName] = React.useState("");
+  const [lastName, setLastName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [contactNo, setContactNo] = React.useState("");
+  const [state, setState] = React.useState("");
+
+
+  const emailHandleChange = (event:any)=>{ setEmail(event.target.value);}
+  const firstNameHandleChange = (event:any)=>{ setFirstName(event.target.value);}
+  const lastNameHandleChange = (event:any)=>{ setLastName(event.target.value);}
+  const contactNoHandleChange = (event:any)=>{ setContactNo(event.target.value);}
+  const stateHandleChange = (event:any)=>{ setState(event.target.value);}
+
+  const  apiTxreqtopayuCall = async()=>{
+
+    let url = 'http://localhost:3000/api/txreqtopayu';
+    let body= {
+      phone:contactNo,
+      email:email,
+      firstname:firstName,
+      state:state
+    }
+
+    let response =await axios.post(url,body)
+    console.log("response00::",response);
+    setEmail('');
+    setFirstName('');
+    setLastName('');
+    setContactNo('');
+    setState('');
+    return (
+    <>
+    <ThankYou/>
+    </>);
+  }
+
   return (
     <>
       <NextSeo title="Order Summary" />
@@ -80,6 +119,8 @@ const OrderSummary = () => {
                     borderColor={"themeGray"}
                     size={"md"}
                     placeholder={"Enter your email address here"}
+                    value={email}
+                    onChange={emailHandleChange}
                   />
                   <FormErrorMessage>Email is required.</FormErrorMessage>
                 </FormControl>
@@ -97,6 +138,8 @@ const OrderSummary = () => {
                         borderColor={"themeGray"}
                         size={"md"}
                         placeholder={"First Name"}
+                        value={firstName}
+                        onChange={firstNameHandleChange}
                       />
                       <FormErrorMessage>Email is required.</FormErrorMessage>
                     </Box>
@@ -105,6 +148,8 @@ const OrderSummary = () => {
                         borderColor={"themeGray"}
                         size={"md"}
                         placeholder={"Last Name"}
+                        value={lastName}
+                        onChange={lastNameHandleChange}
                       />
                       <FormErrorMessage>Email is required.</FormErrorMessage>
                     </Box>
@@ -137,6 +182,8 @@ const OrderSummary = () => {
                       borderColor={"themeGray"}
                       size={"md"}
                       placeholder={"*** *** ****"}
+                      value={contactNo}
+                      onChange={contactNoHandleChange}
                     />
                     <FormErrorMessage>Email is required.</FormErrorMessage>
                   </FormControl>
@@ -155,6 +202,8 @@ const OrderSummary = () => {
                     placeholder={
                       "Please select your state of residence / operation"
                     }
+                    value={state}
+                    onChange={stateHandleChange}
                   />
                   <FormErrorMessage>Email is required.</FormErrorMessage>
                 </FormControl>
@@ -218,7 +267,7 @@ const OrderSummary = () => {
                 </Text>
               </Flex>
               <Text size={"xs"} color={"blacOpac"} my={[3, null, 4, null, 5]}>
-                Service Provider's GSTIN:{" "}
+                Service Providers GSTIN:{" "}
                 <Box as="span" fontWeight={"bold"} color={"black"}>
                   29AAECC3822D1ZY
                 </Box>
@@ -248,7 +297,7 @@ const OrderSummary = () => {
                   Refund Policy
                 </Link>
               </Checkbox>
-              <Button variant={"gradient"} w={"100%"}>
+              <Button variant={"gradient"} w={"100%"} onClick = {()=>apiTxreqtopayuCall()} >
                 Proceed to Payment
               </Button>
             </Box>

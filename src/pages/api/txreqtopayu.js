@@ -119,12 +119,14 @@ export default async function handler(req, res) {
         status: true,
         responseUrl: response?.request?.res?.responseUrl,
         message: "Operation Succeeded",
+        
       });
     }
     res.status(400).send({
       status: false,
       message: "Operation Failed",
     });
+    
   } catch (error) {
     console.log("This is in catch block; error.message: ", error.message);
     res.status(500).send({
