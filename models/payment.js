@@ -3,10 +3,10 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const schema = new mongoose.Schema(
   {
-    user_id: { type: ObjectId, required: true },
+    user_id: { type: ObjectId },
     unmappedstatus: String,
     phone: Number,
-    txnid: String,
+    txnid: { type: String, required: true },
     hash: String,
     status: String,
     curl: String,
@@ -25,6 +25,7 @@ const schema = new mongoose.Schema(
     surl: String,
     card_hash: String,
     field1: String,
+    confirmed_status: { default: null, type: Boolean },
   },
   {
     timestamps: {

@@ -1,32 +1,23 @@
-const formData = require("form-data");
-const axios = require("axios");
-const short = require("short-uuid");
+import formData from "form-data";
+import axios from "axios";
+import short from "short-uuid";
+import dbConnect from "../../../lib/dbConnect";
+import paymentModel from "../../../models/payment";
 
+// PayU
 const payu = require("../../../lib/payu")({
   key: process.env.PAYU_KEY,
   salt: process.env.PAYU_SALT,
 });
 
+// Formidable
 const formidable = require("formidable");
-
 export const config = {
   api: {
     bodyParser: false,
   },
 };
 
-function runMiddleware(req, res, fn) {
-  return new Promise((resolve, reject) => {
-    fn(req, res, (result) => {
-      if (result instanceof Error) {
-        return reject(result);
-      }
-      return resolve(result);
-    });
-  });
-}
-
-//! DEFAULT FUNCTION
 export default async function handler(req, res) {
   try {
     let data = await new Promise((resolve, reject) => {
@@ -47,23 +38,28 @@ export default async function handler(req, res) {
       });
     }
 
-    //TODO: PHASE2 What about address1 and country in case of cardless emi option ?
+    //TODO: PHASE2 DATA VALIDATION for address1 and country in case of cardless EMI option
     //TODO: PHASE2 DATA VALIDATION for security
 
-    //! Generating txnid
+    // txnid
     let txnid = data.email.substring(0, 3) + short.generate();
     // error handling: txnid max length allowed = 25
     if (txnid.length > 25) {
       txnid = txnid.substring(0, 25);
     }
-
-    // Amount
-    const amount = (
-      parseInt(process.env.AMOUNT) -
-      parseInt(process.env.DISCOUNT) * 1.18
-    ).toString();
-
-    //! Generating hash
+    // amount
+    const amount = Number(
+      Number(Number(process.env.AMOUNT) - Number(process.env.DISCOUNT)) * 1.18
+    )
+      .toFixed(2)
+      .toString();
+    // productinfo
+    const productinfo = process.env.PRODUCT_INFO;
+    // surl
+    const surl = process.env.PAYU_SURL;
+    // furl
+    const furl = process.env.PAYU_FURL;
+    // hash
     const hash = payu.hasher.generateHash({
       txnid: txnid,
       amount: amount,
@@ -72,17 +68,18 @@ export default async function handler(req, res) {
       email: data.email,
     });
 
+    //! Initiating transaction request to PayU
     const form = new formData();
     form.append("key", process.env.PAYU_KEY);
     form.append("txnid", txnid);
     form.append("amount", amount);
-    form.append("productinfo", process.env.PRODUCT_INFO);
+    form.append("productinfo", productinfo);
     form.append("firstname", data.firstname);
     form.append("email", data.email);
     form.append("phone", data.phone);
     form.append("state", data.state);
-    form.append("surl", process.env.PAYU_SURL);
-    form.append("furl", process.env.PAYU_FURL);
+    form.append("surl", surl);
+    form.append("furl", furl);
     form.append("hash", hash);
 
     const request = {
@@ -95,6 +92,24 @@ export default async function handler(req, res) {
     };
     const response = await axios.request(request);
     if (response?.request?.res?.responseUrl) {
+      //! Extra code added after webhook didn't work--------------------------------
+      await dbConnect(); // Database connection
+      // Storing only those fields in the database which are required (For security)
+      await paymentModel.create({
+        txnid: txnid,
+        amount: amount,
+        productinfo: productinfo,
+        firstname: data.firstname,
+        email: data.email,
+        phone: data.phone,
+        state: data.state,
+        surl: surl,
+        furl: furl,
+        hash: hash,
+        confirmed_status: null,
+      });
+      //! --------------------------------------------------------------------------
+
       console.log(
         "This is the responseUrl: ",
         response?.request?.res?.responseUrl
