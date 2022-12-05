@@ -82,6 +82,7 @@ export default async function handler(req, res) {
     form.append("surl", surl);
     form.append("furl", furl);
     form.append("hash", hash);
+    console.log("SURL: ", surl,"\nFURL: ", furl, "\n PAYU URL: ",process.env.PAYU_URL)
 
     const request = {
       url: process.env.PAYU_URL,
