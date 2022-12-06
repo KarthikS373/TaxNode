@@ -15,9 +15,10 @@ import {
   Button,
   Checkbox,
   Link,
+  CircularProgress,
+  Select,
 } from "@chakra-ui/react";
 import axios from "axios";
-
 
 const OrderSummary = () => {
   const [firstName, setFirstName] = React.useState(null as any);
@@ -25,8 +26,8 @@ const OrderSummary = () => {
   const [email, setEmail] = React.useState(null as any);
   const [contactNo, setContactNo] = React.useState(null as any);
   const [state, setState] = React.useState(null as any);
-  
-  
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [tnc, setTnc] = React.useState(null as any);
 
   const emailHandleChange = (event: any) => {
     setEmail(event.target.value);
@@ -44,32 +45,55 @@ const OrderSummary = () => {
     setState(event.target.value);
   };
 
-  const isErrorEmail = email === '';
-  const isErrorContactNo = contactNo === '';
-  const isErrorFirstName = firstName ==='';
-  const isErrorState = state ==='';
+  const tncHandleChange = (event: any) => {
+    setTnc(event.target.checked);
+  };
+
+  const isErrorEmail = email === "";
+  const isErrorContactNo = contactNo === "";// || !/^[0-9]{10}$/.test(contactNo);
+  const isErrorFirstName = firstName === "";// || firstName === null;
+  const isErrorState = state === "";// || state === null;
+  const isTncUnchecked = tnc === false;
 
   const apiTxreqtopayuCall = async () => {
-    const mob_regex = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/;
+    const mob_regex_old = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/;
+    const mob_regex = /^[0-9]{10}$/;
     const mobileValidation = mob_regex.test(contactNo);
-    const email_regex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/;
+    const email_regex =
+      /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/;
     const emailValidation = email_regex.test(email);
-    if (!mobileValidation || !emailValidation || email === '' || contactNo === '' || firstName ==='' || state === '') {
-      if (contactNo === '' || !mobileValidation) {
-        setContactNo('');
-      }      
-      if (!emailValidation || email === '' ) {
-        setEmail('');
+
+    console.log("TNC: ", tnc);
+    if (
+      !tnc ||
+      !mobileValidation ||
+      !emailValidation ||
+      email === "" ||
+      contactNo === "" ||
+      firstName === null ||
+      firstName.trim() === "" ||
+      state === null ||
+      state.trim() === ""
+    ) {
+      if (firstName === null || firstName.trim() === "") {
+        setFirstName("");
       }
-      if(firstName === ''){
-        setFirstName('');
-      } 
-      if(state === ''){
-        setState('');
-      }       
+      if (state === null || state.trim() === "") {
+        setState("");
+      }
+      if (contactNo === "" || !mobileValidation) {
+        setContactNo("");
+      }
+      if (!emailValidation || email === "") {
+        setEmail("");
+      }
+      if(tnc === null) {
+        setTnc(false)
+      }
+
       return;
     }
-
+    setIsLoading(true);
     let url = "/api/txreqtopayu";
     let body = {
       phone: contactNo,
@@ -78,12 +102,15 @@ const OrderSummary = () => {
       state: state,
     };
 
-    let response = await axios.post(url, body).then(response=>window.location.href=response?.data.responseUrl);
-    setEmail('  ');
-    setFirstName('  ');
-    setLastName('  ');
-    setContactNo('  ');
-    setState('  ');
+    let response = await axios
+      .post(url, body)
+      .then((response) => (window.location.href = response?.data.responseUrl));
+    setEmail("  ");
+    setFirstName("  ");
+    setLastName("  ");
+    setContactNo("");
+    setState("  ");
+    setIsLoading(false);
   };
 
   return (
@@ -139,7 +166,7 @@ const OrderSummary = () => {
                 Contact Information
               </Text>
               <VStack spacing={3}>
-                <FormControl  isInvalid={isErrorEmail}>
+                <FormControl isInvalid={isErrorEmail}>
                   <FormLabel color={"darkGray"}>
                     Email{" "}
                     <Box as="span" color={"red"}>
@@ -147,14 +174,16 @@ const OrderSummary = () => {
                     </Box>
                   </FormLabel>
                   <Input
-                    type='email'
+                    type="email"
                     borderColor={"themeGray"}
                     size={"md"}
                     placeholder={"Enter your email address here"}
                     value={email}
                     onChange={emailHandleChange}
                   />
-                  <FormErrorMessage>Email is required.</FormErrorMessage>
+                  <FormErrorMessage>
+                    Please enter a valid Email ID
+                  </FormErrorMessage>
                 </FormControl>
 
                 <FormControl isInvalid={isErrorFirstName}>
@@ -166,15 +195,17 @@ const OrderSummary = () => {
                   </FormLabel>
                   <Flex flexDir={{ base: "column", sm: "row" }} gap={3}>
                     <Box>
-                      <Input 
-                        type='text'
+                      <Input
+                        type="text"
                         borderColor={"themeGray"}
                         size={"md"}
                         placeholder={"First Name"}
                         value={firstName}
                         onChange={firstNameHandleChange}
                       />
-                      <FormErrorMessage>Name is required.</FormErrorMessage>
+                      <FormErrorMessage>
+                        Please enter a valid name
+                      </FormErrorMessage>
                     </Box>
                     <Box>
                       <Input
@@ -183,7 +214,7 @@ const OrderSummary = () => {
                         placeholder={"Last Name"}
                         value={lastName}
                         onChange={lastNameHandleChange}
-                      />                      
+                      />
                     </Box>
                   </Flex>
                 </FormControl>
@@ -203,7 +234,7 @@ const OrderSummary = () => {
                       disabled
                     />
                   </FormControl>
-                  <FormControl  isInvalid={isErrorContactNo}>
+                  <FormControl isInvalid={isErrorContactNo}>
                     <FormLabel color={"darkGray"}>
                       Contact No
                       <Box as="span" color={"red"}>
@@ -211,16 +242,19 @@ const OrderSummary = () => {
                       </Box>
                     </FormLabel>
                     <Input
-                      type="tel"
+                      type="number"
                       borderColor={"themeGray"}
                       size={"md"}
                       placeholder={"*** *** ****"}
                       value={contactNo}
                       onChange={contactNoHandleChange}
                     />
-                    <FormErrorMessage>Contact no is required.</FormErrorMessage>
+                    <FormErrorMessage>
+                      Please enter a valid mobile number
+                    </FormErrorMessage>
                   </FormControl>
                 </Flex>
+
                 <FormControl isInvalid={isErrorState}>
                   <FormLabel color={"darkGray"}>
                     State
@@ -229,7 +263,7 @@ const OrderSummary = () => {
                     </Box>
                   </FormLabel>
                   <Input
-                    type='text'
+                    type="text"
                     borderColor={"themeGray"}
                     size={"md"}
                     placeholder={
@@ -238,8 +272,26 @@ const OrderSummary = () => {
                     value={state}
                     onChange={stateHandleChange}
                   />
-                  <FormErrorMessage>State is required.</FormErrorMessage>
+                  <FormErrorMessage>
+                    Please enter a valid state name
+                  </FormErrorMessage>
                 </FormControl>
+                {/* <FormControl isInvalid={isErrorState}>
+                  <FormLabel color={"darkGray"}>
+                    State
+                    <Box as="span" color={"red"}>
+                      *
+                    </Box>
+                  </FormLabel>
+                  <Select placeholder='Select option'>
+                    <option value='option1'>Option 1</option>
+                    <option value='option2'>Option 2</option>
+                    <option value='option3'>Option 3</option>
+                    onChange={stateHandleChange}
+                    value={state}                  
+                  </Select> 
+                  <FormErrorMessage>State is required.</FormErrorMessage>
+                </FormControl> */}
               </VStack>
             </Box>
             <Box
@@ -318,43 +370,49 @@ const OrderSummary = () => {
                   24AAPCM2255H1ZE
                 </Box>
               </Text>
-              <Checkbox
+              <FormControl
+                isInvalid={isTncUnchecked}
                 my={[3, null, 4, null, 5]}
-                borderColor={"black"}
-                color={"blackOpac"}
-                alignItems={"flex-start"}
-                colorScheme={"facebook"}
-                sx={{
-                  "& .chakra-checkbox__label": {
-                    ml: [4, 5, 6, 7, 8],
-                  },
-                }}
               >
-                I accept Taxnodes{" "}
-                <Link
-                  href="/termsOfUse.pdf"
-                  target={"_blank"}
-                  color={"themeBlue"}
-                  mx={1}
+                <Checkbox
+                  checked={tnc}
+                  onChange={tncHandleChange}
+                  borderColor={"black"}
+                  color={"blackOpac"}
+                  alignItems={"flex-start"}
+                  colorScheme={"facebook"}
                 >
-                  Terms of use
-                </Link>
-                ,{" "}
-                <Link
-                  href="/privacyPolicy.pdf"
-                  color={"themeBlue"}
-                  target={"_blank"}
-                  mx={1}
-                >
-                  Privacy Policy
-                </Link>
-              </Checkbox>
+                  I accept Taxnodes{" "}
+                  <Link
+                    href="/termsOfUse.pdf"
+                    target={"_blank"}
+                    color={"themeBlue"}
+                    mx={1}
+                  >
+                    Terms of use
+                  </Link>
+                  ,{" "}
+                  <Link
+                    href="/privacyPolicy.pdf"
+                    color={"themeBlue"}
+                    target={"_blank"}
+                    mx={1}
+                  >
+                    Privacy Policy
+                  </Link>
+                </Checkbox>
+                <FormErrorMessage>Required</FormErrorMessage>
+              </FormControl>
               <Button
                 variant={"gradient"}
                 w={"100%"}
                 onClick={() => apiTxreqtopayuCall()}
               >
-                Proceed to Payment
+                {isLoading ? (
+                  <CircularProgress isIndeterminate size="24px" color="teal" />
+                ) : (
+                  "Proceed to Payment "
+                )}
               </Button>
             </Box>
           </Flex>
