@@ -15,6 +15,7 @@ import {
   Button,
   Checkbox,
   Link,
+  CircularProgress
 } from "@chakra-ui/react";
 import axios from "axios";
 
@@ -25,6 +26,7 @@ const OrderSummary = () => {
   const [email, setEmail] = React.useState(null as any);
   const [contactNo, setContactNo] = React.useState(null as any);
   const [state, setState] = React.useState(null as any);
+  const [isLoading, setIsLoading] = React.useState(false);
   
   
 
@@ -69,7 +71,7 @@ const OrderSummary = () => {
       }       
       return;
     }
-
+    setIsLoading(true);
     let url = "/api/txreqtopayu";
     let body = {
       phone: contactNo,
@@ -84,6 +86,7 @@ const OrderSummary = () => {
     setLastName('  ');
     setContactNo('  ');
     setState('  ');
+    setIsLoading(false);
   };
 
   return (
@@ -211,7 +214,7 @@ const OrderSummary = () => {
                       </Box>
                     </FormLabel>
                     <Input
-                      type="tel"
+                      type='tel'
                       borderColor={"themeGray"}
                       size={"md"}
                       placeholder={"*** *** ****"}
@@ -354,8 +357,18 @@ const OrderSummary = () => {
                 w={"100%"}
                 onClick={() => apiTxreqtopayuCall()}
               >
-                Proceed to Payment
+                
+                {isLoading ? (
+                <CircularProgress
+                  isIndeterminate
+                  size="24px"
+                  color="teal"
+                />
+              ) : (
+                'Proceed to Payment '
+              )}
               </Button>
+
             </Box>
           </Flex>
         </Flex>
