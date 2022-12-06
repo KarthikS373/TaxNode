@@ -78,7 +78,7 @@ const OrderSummary = () => {
       if (firstName === null || firstName.trim() === "") {
         setFirstName("");
       }
-      if (state === "") {
+      if (state === null || state.trim() === "") {
         setState("");
       }
       if (contactNo === "" || !mobileValidation) {
