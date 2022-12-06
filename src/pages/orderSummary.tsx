@@ -53,7 +53,8 @@ const OrderSummary = () => {
   const isErrorState = state === '' || state === null;
 
   const apiTxreqtopayuCall = async () => {
-    const mob_regex = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/;
+    const mob_regex_old = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/;
+    const mob_regex = /^[0-9]{10}$/;
     const mobileValidation = mob_regex.test(contactNo);
     const email_regex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/;
     const emailValidation = email_regex.test(email);
