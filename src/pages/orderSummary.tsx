@@ -15,7 +15,8 @@ import {
   Button,
   Checkbox,
   Link,
-  CircularProgress
+  CircularProgress,
+  Select
 } from "@chakra-ui/react";
 import axios from "axios";
 
@@ -27,8 +28,8 @@ const OrderSummary = () => {
   const [contactNo, setContactNo] = React.useState(null as any);
   const [state, setState] = React.useState(null as any);
   const [isLoading, setIsLoading] = React.useState(false);
-  
-  
+
+
 
   const emailHandleChange = (event: any) => {
     setEmail(event.target.value);
@@ -48,27 +49,30 @@ const OrderSummary = () => {
 
   const isErrorEmail = email === '';
   const isErrorContactNo = contactNo === '';
-  const isErrorFirstName = firstName ==='';
-  const isErrorState = state ==='';
+  const isErrorFirstName = firstName === '';
+  const isErrorState = state === '';
 
   const apiTxreqtopayuCall = async () => {
     const mob_regex = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/;
     const mobileValidation = mob_regex.test(contactNo);
     const email_regex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/;
     const emailValidation = email_regex.test(email);
-    if (!mobileValidation || !emailValidation || email === '' || contactNo === '' || firstName ==='' || state === '') {
+
+    console.log((firstName));
+    if (!mobileValidation || !emailValidation || email === '' || contactNo === '' || firstName === '' || state === '') {
+      if (firstName === '') {
+        setFirstName('');
+      }
+      if (state === '') {
+        setState('');
+      }
       if (contactNo === '' || !mobileValidation) {
         setContactNo('');
-      }      
-      if (!emailValidation || email === '' ) {
+      }
+      if (!emailValidation || email === '') {
         setEmail('');
       }
-      if(firstName === ''){
-        setFirstName('');
-      } 
-      if(state === ''){
-        setState('');
-      }       
+
       return;
     }
     setIsLoading(true);
@@ -80,7 +84,7 @@ const OrderSummary = () => {
       state: state,
     };
 
-    let response = await axios.post(url, body).then(response=>window.location.href=response?.data.responseUrl);
+    let response = await axios.post(url, body).then(response => window.location.href = response?.data.responseUrl);
     setEmail('  ');
     setFirstName('  ');
     setLastName('  ');
@@ -142,7 +146,7 @@ const OrderSummary = () => {
                 Contact Information
               </Text>
               <VStack spacing={3}>
-                <FormControl  isInvalid={isErrorEmail}>
+                <FormControl isInvalid={isErrorEmail}>
                   <FormLabel color={"darkGray"}>
                     Email{" "}
                     <Box as="span" color={"red"}>
@@ -169,7 +173,7 @@ const OrderSummary = () => {
                   </FormLabel>
                   <Flex flexDir={{ base: "column", sm: "row" }} gap={3}>
                     <Box>
-                      <Input 
+                      <Input
                         type='text'
                         borderColor={"themeGray"}
                         size={"md"}
@@ -186,7 +190,7 @@ const OrderSummary = () => {
                         placeholder={"Last Name"}
                         value={lastName}
                         onChange={lastNameHandleChange}
-                      />                      
+                      />
                     </Box>
                   </Flex>
                 </FormControl>
@@ -206,7 +210,7 @@ const OrderSummary = () => {
                       disabled
                     />
                   </FormControl>
-                  <FormControl  isInvalid={isErrorContactNo}>
+                  <FormControl isInvalid={isErrorContactNo}>
                     <FormLabel color={"darkGray"}>
                       Contact No
                       <Box as="span" color={"red"}>
@@ -214,7 +218,7 @@ const OrderSummary = () => {
                       </Box>
                     </FormLabel>
                     <Input
-                      type='tel'
+                      type='number'
                       borderColor={"themeGray"}
                       size={"md"}
                       placeholder={"*** *** ****"}
@@ -224,6 +228,7 @@ const OrderSummary = () => {
                     <FormErrorMessage>Contact no is required.</FormErrorMessage>
                   </FormControl>
                 </Flex>
+
                 <FormControl isInvalid={isErrorState}>
                   <FormLabel color={"darkGray"}>
                     State
@@ -243,6 +248,22 @@ const OrderSummary = () => {
                   />
                   <FormErrorMessage>State is required.</FormErrorMessage>
                 </FormControl>
+                {/* <FormControl isInvalid={isErrorState}>
+                  <FormLabel color={"darkGray"}>
+                    State
+                    <Box as="span" color={"red"}>
+                      *
+                    </Box>
+                  </FormLabel>
+                  <Select placeholder='Select option'>
+                    <option value='option1'>Option 1</option>
+                    <option value='option2'>Option 2</option>
+                    <option value='option3'>Option 3</option>
+                    onChange={stateHandleChange}
+                    value={state}                  
+                  </Select> 
+                  <FormErrorMessage>State is required.</FormErrorMessage>
+                </FormControl> */}
               </VStack>
             </Box>
             <Box
@@ -357,16 +378,16 @@ const OrderSummary = () => {
                 w={"100%"}
                 onClick={() => apiTxreqtopayuCall()}
               >
-                
+
                 {isLoading ? (
-                <CircularProgress
-                  isIndeterminate
-                  size="24px"
-                  color="teal"
-                />
-              ) : (
-                'Proceed to Payment '
-              )}
+                  <CircularProgress
+                    isIndeterminate
+                    size="24px"
+                    color="teal"
+                  />
+                ) : (
+                  'Proceed to Payment '
+                )}
               </Button>
 
             </Box>
