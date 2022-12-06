@@ -135,7 +135,7 @@ const RequestCallBack = () => {
                 value={contactNo}
                 onChange={contactNoHandleChange}
               />
-              <FormErrorMessage>Enter your mobile</FormErrorMessage>
+              <FormErrorMessage>Enter 10 digit mobile number</FormErrorMessage>
             </FormControl>
           </Flex>
 
