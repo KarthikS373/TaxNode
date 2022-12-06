@@ -49,7 +49,7 @@ const OrderSummary = () => {
   };
   
   const tncHandleChange = (event: any) => {
-    setTnc(!tnc);
+    setTnc(event.target.checked);
   }
 
 
