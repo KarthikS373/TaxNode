@@ -75,7 +75,7 @@ const OrderSummary = () => {
       state === null ||
       state.trim() === ""
     ) {
-      if (firstName === "") {
+      if (firstName === null || firstName.trim() === "") {
         setFirstName("");
       }
       if (state === "") {
