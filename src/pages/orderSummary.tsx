@@ -87,6 +87,9 @@ const OrderSummary = () => {
       if (!emailValidation || email === "") {
         setEmail("");
       }
+      if(tnc === null) {
+        setTnc(false)
+      }
 
       return;
     }
