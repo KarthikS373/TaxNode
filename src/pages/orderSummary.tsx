@@ -48,7 +48,7 @@ const OrderSummary = () => {
   };
 
   const isErrorEmail = email === '';
-  const isErrorContactNo = contactNo === '';
+  const isErrorContactNo = contactNo === '' || !(/^[0-9]{10}$/.test(contactNo)) ;
   const isErrorFirstName = firstName === '' || firstName === null;
   const isErrorState = state === '' || state === null;
 
@@ -89,7 +89,7 @@ const OrderSummary = () => {
     setEmail('  ');
     setFirstName('  ');
     setLastName('  ');
-    setContactNo('  ');
+    setContactNo('');
     setState('  ');
     setIsLoading(false);
   };
