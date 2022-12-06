@@ -54,8 +54,8 @@ const RequestCallBack = () => {
     console.log("response:::", response);
 
     toast({
-      title: "Account created.",
-      description: "We've created your account for you.",
+      title: "Request Successful",
+      description: "We will contact you shortly.",
       status: "success", //error for error
       duration: 9000,
       isClosable: true,

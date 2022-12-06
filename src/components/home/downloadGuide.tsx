@@ -58,8 +58,8 @@ const DownloadGuide = () => {
     let response = await axios.get(url, { params: params })
 
     toast({
-      title: "Account created.",
-      description: "We've created your account for you.",
+      title: "Tax Guide",
+      description: "Please check your email for download link.",
       status: "success", //error for error
       duration: 9000,
       isClosable: true,
