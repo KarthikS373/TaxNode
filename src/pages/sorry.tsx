@@ -34,7 +34,7 @@ const Sorry = () => {
         textAlign={'center'}
       >
         <Heading as={"h1"} size={"3xl"} fontWeight={"semibold"}>
-        Sorry
+        Payment Cancelled or Failed
         </Heading>
         <Text
           size={"md"}
@@ -43,7 +43,7 @@ const Sorry = () => {
           mb={[6, 7, 8, 9, 10]}
           color={'blackOpac'}
         >
-         Your payment seems to have failed. Please try again. If the amount was debited from your account, please write to us at care[at]taxnodes.com
+         Please try again. If the amount was debited from your account, please write to us at care[at]taxnodes.com.
         </Text>
       </Container>
     </>
