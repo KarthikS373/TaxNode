@@ -46,7 +46,7 @@ const BuyNow = () => (
           lineHeight={"normal"}
           mb={{ base: -2, sm: -3, xl: -4 }}
         >
-          ₹1,999
+          ₹499
         </Text>
       </Box>
       <Link href="/orderSummary">
