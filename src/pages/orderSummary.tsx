@@ -89,7 +89,7 @@ const OrderSummary = () => {
     setEmail('  ');
     setFirstName('  ');
     setLastName('  ');
-    setContactNo('  ');
+    setContactNo('');
     setState('  ');
     setIsLoading(false);
   };
