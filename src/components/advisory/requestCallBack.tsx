@@ -13,6 +13,7 @@ import {
   useToast,
   CircularProgress,
   FormLabel,
+  Spinner,
 } from "@chakra-ui/react";
 import axios from "axios";
 
@@ -137,18 +138,28 @@ const RequestCallBack = () => {
               <FormErrorMessage>Phone Number is required.</FormErrorMessage>
             </FormControl>
           </Flex>
-          <Button
-            mt={[3, null, 4, null, 5]}
-            variant={"outline"}
-            fontWeight={"semibold"}
-            onClick={() => apiCreateEnquiryCall()}
-          >
-            {isLoading ? (
-              <CircularProgress isIndeterminate size="24px" color="teal" />
-            ) : (
-              "Request a Callback"
-            )}
-          </Button>
+
+          {isLoading ? (
+            <Button
+              variant={"outline"}
+              fontWeight={"semibold"}
+              onClick={() => apiCreateEnquiryCall()}
+              mt={[3, null, 4, null, 5]}
+              disabled
+              rightIcon={<Spinner size={"sm"} />}
+            >
+              Request a Callback
+            </Button>
+          ) : (
+            <Button
+              variant={"outline"}
+              fontWeight={"semibold"}
+              onClick={() => apiCreateEnquiryCall()}
+              mt={[3, null, 4, null, 5]}
+            >
+              Request a Callback
+            </Button>
+          )}
         </Box>
       </Container>
     </Box>

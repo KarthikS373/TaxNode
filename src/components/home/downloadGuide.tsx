@@ -10,6 +10,7 @@ import {
   FormErrorMessage,
   CircularProgress,
   FormLabel,
+  Spinner,
 } from "@chakra-ui/react";
 import "swiper/css";
 import { useToast } from "@chakra-ui/react";
@@ -93,7 +94,6 @@ const DownloadGuide = () => {
           <Flex
             gap={[3, null, 4, null, 5]}
             flexDir={{ base: "column", md: "row" }}
-            alignItems={{ base: "center", sm: "center" }}
           >
             <Flex
               flex={1}
@@ -123,17 +123,38 @@ const DownloadGuide = () => {
                 <FormErrorMessage>Email is required.</FormErrorMessage>
               </FormControl>
             </Flex>
-            <Button
+
+            {/* <Button
               variant={"tertiary"}
               onClick={() => apiDwnldtaxguideCall()}
               mt={[1, 2, 8]}
+              disabled
             >
               {isLoading ? (
                 <CircularProgress isIndeterminate size="24px" color="teal" />
               ) : (
                 "Download FreeTax Guide "
               )}
-            </Button>
+            </Button> */}
+            {isLoading ? (
+              <Button
+                variant={"tertiary"}
+                onClick={() => apiDwnldtaxguideCall()}
+                mt={[1, 2, 8]}
+                disabled
+                rightIcon={<Spinner size={"sm"} />}
+              >
+                Download FreeTax Guide
+              </Button>
+            ) : (
+              <Button
+                variant={"tertiary"}
+                onClick={() => apiDwnldtaxguideCall()}
+                mt={[1, 2, 8]}
+              >
+                Download FreeTax Guide
+              </Button>
+            )}
           </Flex>
         </Container>
       </form>

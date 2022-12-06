@@ -40,6 +40,10 @@ const Button: ThemeComponents["Button"] = {
         background: "white",
         color: "purple",
         boxShadow: "xl",
+        _disabled: {
+          background: "purple",
+          color: "white",
+        },
       },
     },
     outline: {
@@ -56,6 +60,11 @@ const Button: ThemeComponents["Button"] = {
           color: "white",
         },
       },
+      _disabled: {
+        _hover: {
+          color: "purple",
+        },
+      },
     },
     outlinePrimary: {
       borderColor: "white",
@@ -66,7 +75,7 @@ const Button: ThemeComponents["Button"] = {
       fontWeight: "normal",
       _hover: {
         backgroundColor: "white",
-        color:'purple',
+        color: "purple",
       },
     },
     gradient: {
