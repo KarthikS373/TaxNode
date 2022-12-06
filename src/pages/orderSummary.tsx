@@ -16,10 +16,9 @@ import {
   Checkbox,
   Link,
   CircularProgress,
-  Select
+  Select,
 } from "@chakra-ui/react";
 import axios from "axios";
-
 
 const OrderSummary = () => {
   const [firstName, setFirstName] = React.useState(null as any);
@@ -29,8 +28,6 @@ const OrderSummary = () => {
   const [state, setState] = React.useState(null as any);
   const [isLoading, setIsLoading] = React.useState(false);
   const [tnc, setTnc] = React.useState(false);
-
-
 
   const emailHandleChange = (event: any) => {
     setEmail(event.target.value);
@@ -47,38 +44,48 @@ const OrderSummary = () => {
   const stateHandleChange = (event: any) => {
     setState(event.target.value);
   };
-  
+
   const tncHandleChange = (event: any) => {
     setTnc(event.target.checked);
-  }
+  };
 
-
-  const isErrorEmail = email === '';
-  const isErrorContactNo = contactNo === '' || !(/^[0-9]{10}$/.test(contactNo)) ;
-  const isErrorFirstName = firstName === '' || firstName === null;
-  const isErrorState = state === '' || state === null;
+  const isErrorEmail = email === "";
+  const isErrorContactNo = contactNo === "" || !/^[0-9]{10}$/.test(contactNo);
+  const isErrorFirstName = firstName === "" || firstName === null;
+  const isErrorState = state === "" || state === null;
   const isTncUnchecked = !tnc;
 
   const apiTxreqtopayuCall = async () => {
     const mob_regex_old = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/;
     const mob_regex = /^[0-9]{10}$/;
     const mobileValidation = mob_regex.test(contactNo);
-    const email_regex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/;
+    const email_regex =
+      /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/;
     const emailValidation = email_regex.test(email);
 
     console.log("TNC: ", tnc);
-    if (!tnc || !mobileValidation || !emailValidation || email === '' || contactNo === '' || (firstName === null || firstName.trim === '') || (state === null || state.trim() === '')) {
-      if (firstName === '') {
-        setFirstName('');
+    if (
+      !tnc ||
+      !mobileValidation ||
+      !emailValidation ||
+      email === "" ||
+      contactNo === "" ||
+      firstName === null ||
+      firstName.trim === "" ||
+      state === null ||
+      state.trim() === ""
+    ) {
+      if (firstName === "") {
+        setFirstName("");
       }
-      if (state === '') {
-        setState('');
+      if (state === "") {
+        setState("");
       }
-      if (contactNo === '' || !mobileValidation) {
-        setContactNo('');
+      if (contactNo === "" || !mobileValidation) {
+        setContactNo("");
       }
-      if (!emailValidation || email === '') {
-        setEmail('');
+      if (!emailValidation || email === "") {
+        setEmail("");
       }
 
       return;
@@ -92,12 +99,14 @@ const OrderSummary = () => {
       state: state,
     };
 
-    let response = await axios.post(url, body).then(response => window.location.href = response?.data.responseUrl);
-    setEmail('  ');
-    setFirstName('  ');
-    setLastName('  ');
-    setContactNo('');
-    setState('  ');
+    let response = await axios
+      .post(url, body)
+      .then((response) => (window.location.href = response?.data.responseUrl));
+    setEmail("  ");
+    setFirstName("  ");
+    setLastName("  ");
+    setContactNo("");
+    setState("  ");
     setIsLoading(false);
   };
 
@@ -162,14 +171,16 @@ const OrderSummary = () => {
                     </Box>
                   </FormLabel>
                   <Input
-                    type='email'
+                    type="email"
                     borderColor={"themeGray"}
                     size={"md"}
                     placeholder={"Enter your email address here"}
                     value={email}
                     onChange={emailHandleChange}
                   />
-                  <FormErrorMessage>Please enter a valid Email ID</FormErrorMessage>
+                  <FormErrorMessage>
+                    Please enter a valid Email ID
+                  </FormErrorMessage>
                 </FormControl>
 
                 <FormControl isInvalid={isErrorFirstName}>
@@ -182,14 +193,16 @@ const OrderSummary = () => {
                   <Flex flexDir={{ base: "column", sm: "row" }} gap={3}>
                     <Box>
                       <Input
-                        type='text'
+                        type="text"
                         borderColor={"themeGray"}
                         size={"md"}
                         placeholder={"First Name"}
                         value={firstName}
                         onChange={firstNameHandleChange}
                       />
-                      <FormErrorMessage>Please enter a valid name</FormErrorMessage>
+                      <FormErrorMessage>
+                        Please enter a valid name
+                      </FormErrorMessage>
                     </Box>
                     <Box>
                       <Input
@@ -226,14 +239,16 @@ const OrderSummary = () => {
                       </Box>
                     </FormLabel>
                     <Input
-                      type='number'
+                      type="number"
                       borderColor={"themeGray"}
                       size={"md"}
                       placeholder={"*** *** ****"}
                       value={contactNo}
                       onChange={contactNoHandleChange}
                     />
-                    <FormErrorMessage>Please enter a valid mobile number</FormErrorMessage>
+                    <FormErrorMessage>
+                      Please enter a valid mobile number
+                    </FormErrorMessage>
                   </FormControl>
                 </Flex>
 
@@ -245,7 +260,7 @@ const OrderSummary = () => {
                     </Box>
                   </FormLabel>
                   <Input
-                    type='text'
+                    type="text"
                     borderColor={"themeGray"}
                     size={"md"}
                     placeholder={
@@ -254,7 +269,9 @@ const OrderSummary = () => {
                     value={state}
                     onChange={stateHandleChange}
                   />
-                  <FormErrorMessage>Please enter a valid state name</FormErrorMessage>
+                  <FormErrorMessage>
+                    Please enter a valid state name
+                  </FormErrorMessage>
                 </FormControl>
                 {/* <FormControl isInvalid={isErrorState}>
                   <FormLabel color={"darkGray"}>
@@ -350,20 +367,17 @@ const OrderSummary = () => {
                   24AAPCM2255H1ZE
                 </Box>
               </Text>
-              <FormControl isInvalid={isTncUnchecked}>
+              <FormControl
+                isInvalid={isTncUnchecked}
+                my={[3, null, 4, null, 5]}
+              >
                 <Checkbox
                   checked={tnc}
                   onChange={tncHandleChange}
-                  my={[3, null, 4, null, 5]}
                   borderColor={"black"}
                   color={"blackOpac"}
                   alignItems={"flex-start"}
                   colorScheme={"facebook"}
-                  sx={{
-                    "& .chakra-checkbox__label": {
-                      ml: [4, 5, 6, 7, 8],
-                    },
-                  }}
                 >
                   I accept Taxnodes{" "}
                   <Link
@@ -391,18 +405,12 @@ const OrderSummary = () => {
                 w={"100%"}
                 onClick={() => apiTxreqtopayuCall()}
               >
-
                 {isLoading ? (
-                  <CircularProgress
-                    isIndeterminate
-                    size="24px"
-                    color="teal"
-                  />
+                  <CircularProgress isIndeterminate size="24px" color="teal" />
                 ) : (
-                  'Proceed to Payment '
+                  "Proceed to Payment "
                 )}
               </Button>
-
             </Box>
           </Flex>
         </Flex>
