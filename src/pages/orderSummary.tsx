@@ -47,6 +47,11 @@ const OrderSummary = () => {
   const stateHandleChange = (event: any) => {
     setState(event.target.value);
   };
+  
+  const tncHandleChange = (event: any) => {
+    setTnc(!tnc);
+  }
+
 
   const isErrorEmail = email === '';
   const isErrorContactNo = contactNo === '' || !(/^[0-9]{10}$/.test(contactNo)) ;
