@@ -49,8 +49,8 @@ const OrderSummary = () => {
 
   const isErrorEmail = email === '';
   const isErrorContactNo = contactNo === '';
-  const isErrorFirstName = firstName === '';
-  const isErrorState = state === '';
+  const isErrorFirstName = firstName === '' || firstName === null;
+  const isErrorState = state === '' || state === null;
 
   const apiTxreqtopayuCall = async () => {
     const mob_regex = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/;
@@ -59,7 +59,7 @@ const OrderSummary = () => {
     const emailValidation = email_regex.test(email);
 
     console.log((firstName));
-    if (!mobileValidation || !emailValidation || email === '' || contactNo === '' || firstName === '' || state === '') {
+    if (!mobileValidation || !emailValidation || email === '' || contactNo === '' || (firstName === null || firstName.trim === '') || (state === null || state.trim() === '')) {
       if (firstName === '') {
         setFirstName('');
       }
