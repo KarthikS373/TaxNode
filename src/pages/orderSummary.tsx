@@ -53,7 +53,7 @@ const OrderSummary = () => {
   const isErrorContactNo = contactNo === "";// || !/^[0-9]{10}$/.test(contactNo);
   const isErrorFirstName = firstName === "";// || firstName === null;
   const isErrorState = state === "";// || state === null;
-  const isTncUnchecked = !tnc;
+  const isTncUnchecked = tnc === false;
 
   const apiTxreqtopayuCall = async () => {
     const mob_regex_old = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/;
