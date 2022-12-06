@@ -245,7 +245,7 @@ export default async function handler(req, res) {
           ticketForm.append("type", "Subscription");
           ticketForm.append("status", 2);
           ticketForm.append("priority", 1);
-          ticketForm.append("description", "Demo Description");
+//           ticketForm.append("description", "Payment Processed");
           ticketForm.append("group_id", process.env.SUBSCRIBED_GROUP_ID);
           console.log("ticket creation:", ticketForm)
 
