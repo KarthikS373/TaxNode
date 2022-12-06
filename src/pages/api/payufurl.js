@@ -40,7 +40,18 @@ export default async function handler(req, res) {
     await runMiddleware(req, res, cors); // CORS
     await dbConnect(); // Database connection
 
+    // Redirection
     res.redirect(301, "/thankYou");
+
+    // Formidable
+    let data = await new Promise((resolve, reject) => {
+      const form = formidable();
+      form.parse(req, (err, fields, files) => {
+        if (err) reject({ err });
+        resolve({ err, fields, files });
+      });
+    });
+    data = data.fields;
 
     const {
       txnid,
