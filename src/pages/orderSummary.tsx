@@ -50,9 +50,9 @@ const OrderSummary = () => {
   };
 
   const isErrorEmail = email === "";
-  const isErrorContactNo = contactNo === "" || !/^[0-9]{10}$/.test(contactNo);
-  const isErrorFirstName = firstName === "" || firstName === null;
-  const isErrorState = state === "" || state === null;
+  const isErrorContactNo = contactNo === "";// || !/^[0-9]{10}$/.test(contactNo);
+  const isErrorFirstName = firstName === "";// || firstName === null;
+  const isErrorState = state === "";// || state === null;
   const isTncUnchecked = !tnc;
 
   const apiTxreqtopayuCall = async () => {
