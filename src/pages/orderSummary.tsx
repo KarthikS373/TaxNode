@@ -27,7 +27,7 @@ const OrderSummary = () => {
   const [contactNo, setContactNo] = React.useState(null as any);
   const [state, setState] = React.useState(null as any);
   const [isLoading, setIsLoading] = React.useState(false);
-  const [tnc, setTnc] = React.useState(false);
+  const [tnc, setTnc] = React.useState(null as any);
 
   const emailHandleChange = (event: any) => {
     setEmail(event.target.value);
