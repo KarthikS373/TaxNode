@@ -211,6 +211,7 @@ const OrderSummary = () => {
                       </Box>
                     </FormLabel>
                     <Input
+                      type="tel"
                       borderColor={"themeGray"}
                       size={"md"}
                       placeholder={"*** *** ****"}
