@@ -162,7 +162,7 @@ const OrderSummary = () => {
                     value={email}
                     onChange={emailHandleChange}
                   />
-                  <FormErrorMessage>Email is required.</FormErrorMessage>
+                  <FormErrorMessage>Please enter a valid Email ID</FormErrorMessage>
                 </FormControl>
 
                 <FormControl isInvalid={isErrorFirstName}>
@@ -182,7 +182,7 @@ const OrderSummary = () => {
                         value={firstName}
                         onChange={firstNameHandleChange}
                       />
-                      <FormErrorMessage>Name is required.</FormErrorMessage>
+                      <FormErrorMessage>Please enter a valid name</FormErrorMessage>
                     </Box>
                     <Box>
                       <Input
@@ -226,7 +226,7 @@ const OrderSummary = () => {
                       value={contactNo}
                       onChange={contactNoHandleChange}
                     />
-                    <FormErrorMessage>Contact no is required.</FormErrorMessage>
+                    <FormErrorMessage>Please enter a valid mobile number</FormErrorMessage>
                   </FormControl>
                 </Flex>
 
@@ -247,7 +247,7 @@ const OrderSummary = () => {
                     value={state}
                     onChange={stateHandleChange}
                   />
-                  <FormErrorMessage>State is required.</FormErrorMessage>
+                  <FormErrorMessage>Please enter a valid state name</FormErrorMessage>
                 </FormControl>
                 {/* <FormControl isInvalid={isErrorState}>
                   <FormLabel color={"darkGray"}>
@@ -344,6 +344,7 @@ const OrderSummary = () => {
                 </Box>
               </Text>
               <Checkbox
+                required
                 my={[3, null, 4, null, 5]}
                 borderColor={"black"}
                 color={"blackOpac"}
