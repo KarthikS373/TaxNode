@@ -59,6 +59,7 @@ const OrderSummary = () => {
   const isErrorContactNo = contactNo === '' || !(/^[0-9]{10}$/.test(contactNo)) ;
   const isErrorFirstName = firstName === '' || firstName === null;
   const isErrorState = state === '' || state === null;
+  const isTncUnchecked = tnc;
 
   const apiTxreqtopayuCall = async () => {
     const mob_regex_old = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/;
@@ -351,39 +352,42 @@ const OrderSummary = () => {
                   24AAPCM2255H1ZE
                 </Box>
               </Text>
-              <Checkbox
-                checked={tnc}
-                onChange={tncHandleChange}
-                my={[3, null, 4, null, 5]}
-                borderColor={"black"}
-                color={"blackOpac"}
-                alignItems={"flex-start"}
-                colorScheme={"facebook"}
-                sx={{
-                  "& .chakra-checkbox__label": {
-                    ml: [4, 5, 6, 7, 8],
-                  },
-                }}
-              >
-                I accept Taxnodes{" "}
-                <Link
-                  href="/termsOfUse.pdf"
-                  target={"_blank"}
-                  color={"themeBlue"}
-                  mx={1}
+              <FormControl isInvalid={isTncUnchecked}>
+                <Checkbox
+                  checked={tnc}
+                  onChange={tncHandleChange}
+                  my={[3, null, 4, null, 5]}
+                  borderColor={"black"}
+                  color={"blackOpac"}
+                  alignItems={"flex-start"}
+                  colorScheme={"facebook"}
+                  sx={{
+                    "& .chakra-checkbox__label": {
+                      ml: [4, 5, 6, 7, 8],
+                    },
+                  }}
                 >
-                  Terms of use
-                </Link>
-                ,{" "}
-                <Link
-                  href="/privacyPolicy.pdf"
-                  color={"themeBlue"}
-                  target={"_blank"}
-                  mx={1}
-                >
-                  Privacy Policy
-                </Link>
-              </Checkbox>
+                  I accept Taxnodes{" "}
+                  <Link
+                    href="/termsOfUse.pdf"
+                    target={"_blank"}
+                    color={"themeBlue"}
+                    mx={1}
+                  >
+                    Terms of use
+                  </Link>
+                  ,{" "}
+                  <Link
+                    href="/privacyPolicy.pdf"
+                    color={"themeBlue"}
+                    target={"_blank"}
+                    mx={1}
+                  >
+                    Privacy Policy
+                  </Link>
+                </Checkbox>
+                <FormErrorMessage>Required</FormErrorMessage>
+              </FormControl>
               <Button
                 variant={"gradient"}
                 w={"100%"}
