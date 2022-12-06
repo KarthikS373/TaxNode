@@ -28,6 +28,7 @@ const OrderSummary = () => {
   const [contactNo, setContactNo] = React.useState(null as any);
   const [state, setState] = React.useState(null as any);
   const [isLoading, setIsLoading] = React.useState(false);
+  const [tnc, setTnc] = React.useState(false);
 
 
 
@@ -60,7 +61,7 @@ const OrderSummary = () => {
     const emailValidation = email_regex.test(email);
 
     console.log((firstName));
-    if (!mobileValidation || !emailValidation || email === '' || contactNo === '' || (firstName === null || firstName.trim === '') || (state === null || state.trim() === '')) {
+    if (!tnc || !mobileValidation || !emailValidation || email === '' || contactNo === '' || (firstName === null || firstName.trim === '') || (state === null || state.trim() === '')) {
       if (firstName === '') {
         setFirstName('');
       }
@@ -344,7 +345,7 @@ const OrderSummary = () => {
                 </Box>
               </Text>
               <Checkbox
-                required
+                checked={tnc}
                 my={[3, null, 4, null, 5]}
                 borderColor={"black"}
                 color={"blackOpac"}
