@@ -125,7 +125,7 @@ const RequestCallBack = () => {
                 value={email}
                 onChange={emailHandleChange}
               />
-              <FormErrorMessage>Email is required.</FormErrorMessage>
+              <FormErrorMessage>Enter your email ID</FormErrorMessage>
             </FormControl>
             <FormControl isRequired isInvalid={isErrorContactNo}>
               <FormLabel>PhoneNo</FormLabel>
@@ -135,7 +135,7 @@ const RequestCallBack = () => {
                 value={contactNo}
                 onChange={contactNoHandleChange}
               />
-              <FormErrorMessage>Phone Number is required.</FormErrorMessage>
+              <FormErrorMessage>Enter your mobile</FormErrorMessage>
             </FormControl>
           </Flex>
 
