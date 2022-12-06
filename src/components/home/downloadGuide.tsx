@@ -1,4 +1,4 @@
-import React, { } from "react";
+import React from "react";
 import {
   Box,
   Heading,
@@ -9,7 +9,7 @@ import {
   Flex,
   FormErrorMessage,
   CircularProgress,
-  FormLabel
+  FormLabel,
 } from "@chakra-ui/react";
 import "swiper/css";
 import { useToast } from "@chakra-ui/react";
@@ -19,43 +19,46 @@ const DownloadGuide = () => {
   const [email, setEmail] = React.useState(null as any);
   const [name, setName] = React.useState(null as any);
   const [isLoading, setIsLoading] = React.useState(false);
-  const handleSubmit = (event: { preventDefault: () => void; }) => {
+  const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     alert(`email: ${email} & name: ${name}`);
   };
   const toast = useToast();
 
-  const emailHandleChange = (event: any) => { setEmail(event.target.value); }
-  const nameHandleChange = (event: any) => { setName(event.target.value); }
+  const emailHandleChange = (event: any) => {
+    setEmail(event.target.value);
+  };
+  const nameHandleChange = (event: any) => {
+    setName(event.target.value);
+  };
 
-  const isErrorEmail = email === '';
-  const isErrorName = name === '';
-  
+  const isErrorEmail = email === "";
+  const isErrorName = name === "";
 
   const apiDwnldtaxguideCall = async () => {
-
-    const email_regex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
+    const email_regex =
+      /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/;
     const emailValidation = email_regex.test(email);
-    if (!emailValidation || email === null ||  name === null) {       
-      if ( name === null) {
-        setName('');
+    if (!emailValidation || email === null || name === null) {
+      if (name === null) {
+        setName("");
       }
       if (!emailValidation) {
-        setEmail('');
+        setEmail("");
       }
       if (email === null) {
-        setEmail('');
+        setEmail("");
       }
       return;
     }
     setIsLoading(true);
-    let url = '/api/dwnldtaxguide';
+    let url = "/api/dwnldtaxguide";
     let params = {
       name: name,
-      email: email
-    }
+      email: email,
+    };
 
-    let response = await axios.get(url, { params: params })
+    let response = await axios.get(url, { params: params });
 
     toast({
       title: "Tax Guide",
@@ -63,11 +66,11 @@ const DownloadGuide = () => {
       status: "success", //error for error
       duration: 9000,
       isClosable: true,
-    })
-    setName(' ');
-    setEmail(' ');
+    });
+    setName(" ");
+    setEmail(" ");
     setIsLoading(false);
-  }
+  };
 
   return (
     <Box
@@ -90,7 +93,7 @@ const DownloadGuide = () => {
           <Flex
             gap={[3, null, 4, null, 5]}
             flexDir={{ base: "column", md: "row" }}
-            alignItems={{ base: 'center', sm: "center" }}
+            alignItems={{ base: "center", sm: "center" }}
           >
             <Flex
               flex={1}
@@ -99,29 +102,36 @@ const DownloadGuide = () => {
             >
               <FormControl isRequired isInvalid={isErrorName}>
                 <FormLabel>Name</FormLabel>
-                <Input placeholder="Name" variant={"secondary"} value={name} onChange={nameHandleChange} />
+                <Input
+                  placeholder="Name"
+                  variant={"secondary"}
+                  value={name}
+                  onChange={nameHandleChange}
+                />
                 <FormErrorMessage>Name is required.</FormErrorMessage>
               </FormControl>
 
               <FormControl isRequired isInvalid={isErrorEmail}>
                 <FormLabel>Email</FormLabel>
-                <Input type='email' placeholder="Email" variant={"secondary"} value={email} onChange={emailHandleChange} />
+                <Input
+                  type="email"
+                  placeholder="Email"
+                  variant={"secondary"}
+                  value={email}
+                  onChange={emailHandleChange}
+                />
                 <FormErrorMessage>Email is required.</FormErrorMessage>
               </FormControl>
             </Flex>
             <Button
               variant={"tertiary"}
               onClick={() => apiDwnldtaxguideCall()}
-              mt={[1,2,8,]}
+              mt={[1, 2, 8]}
             >
               {isLoading ? (
-                <CircularProgress
-                  isIndeterminate
-                  size="24px"
-                  color="teal"
-                />
+                <CircularProgress isIndeterminate size="24px" color="teal" />
               ) : (
-                'Download FreeTax Guide '
+                "Download FreeTax Guide "
               )}
             </Button>
           </Flex>
