@@ -353,6 +353,7 @@ const OrderSummary = () => {
               </Text>
               <Checkbox
                 checked={tnc}
+                onChange={tncHandleChange}
                 my={[3, null, 4, null, 5]}
                 borderColor={"black"}
                 color={"blackOpac"}
