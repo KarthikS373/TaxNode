@@ -282,7 +282,7 @@ const OrderSummary = () => {
                   Discount
                 </Text>
                 <Text fontWeight={"semibold"} size={"xs"} color={"black"}>
-                  ₹1000
+                  ₹2500
                 </Text>
               </Flex>
               <Flex
@@ -295,7 +295,7 @@ const OrderSummary = () => {
                   Goods and Services Tax @ 18%
                 </Text>
                 <Text fontWeight={"semibold"} size={"xs"} color={"black"}>
-                  ₹359.82
+                  ₹89.82
                 </Text>
               </Flex>
               <Flex
@@ -308,7 +308,7 @@ const OrderSummary = () => {
                   Total
                 </Text>
                 <Text fontWeight={"bold"} size={"md"} color={"black"}>
-                  ₹2358.82
+                  ₹588.82
                 </Text>
               </Flex>
               <Text size={"xs"} color={"blacOpac"} my={[3, null, 4, null, 5]}>
