@@ -49,6 +49,8 @@ const OrderSummary = () => {
   };
   
   const tncHandleChange = (event: any) => {
+    console.log(event)
+    console.log(tnc)
     setTnc(event.target.checked);
   }
 
@@ -65,7 +67,7 @@ const OrderSummary = () => {
     const email_regex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/;
     const emailValidation = email_regex.test(email);
 
-    console.log((firstName));
+    console.log("TNC: ", tnc);
     if (!tnc || !mobileValidation || !emailValidation || email === '' || contactNo === '' || (firstName === null || firstName.trim === '') || (state === null || state.trim() === '')) {
       if (firstName === '') {
         setFirstName('');
