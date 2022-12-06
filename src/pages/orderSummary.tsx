@@ -28,6 +28,7 @@ const OrderSummary = () => {
   const [contactNo, setContactNo] = React.useState(null as any);
   const [state, setState] = React.useState(null as any);
   const [isLoading, setIsLoading] = React.useState(false);
+  const [tnc, setTnc] = React.useState(false);
 
 
 
@@ -46,11 +47,17 @@ const OrderSummary = () => {
   const stateHandleChange = (event: any) => {
     setState(event.target.value);
   };
+  
+  const tncHandleChange = (event: any) => {
+    setTnc(event.target.checked);
+  }
+
 
   const isErrorEmail = email === '';
   const isErrorContactNo = contactNo === '' || !(/^[0-9]{10}$/.test(contactNo)) ;
   const isErrorFirstName = firstName === '' || firstName === null;
   const isErrorState = state === '' || state === null;
+  const isTncUnchecked = !tnc;
 
   const apiTxreqtopayuCall = async () => {
     const mob_regex_old = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/;
@@ -59,8 +66,8 @@ const OrderSummary = () => {
     const email_regex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/;
     const emailValidation = email_regex.test(email);
 
-    console.log((firstName));
-    if (!mobileValidation || !emailValidation || email === '' || contactNo === '' || (firstName === null || firstName.trim === '') || (state === null || state.trim() === '')) {
+    console.log("TNC: ", tnc);
+    if (!tnc || !mobileValidation || !emailValidation || email === '' || contactNo === '' || (firstName === null || firstName.trim === '') || (state === null || state.trim() === '')) {
       if (firstName === '') {
         setFirstName('');
       }
@@ -162,7 +169,7 @@ const OrderSummary = () => {
                     value={email}
                     onChange={emailHandleChange}
                   />
-                  <FormErrorMessage>Email is required.</FormErrorMessage>
+                  <FormErrorMessage>Please enter a valid Email ID</FormErrorMessage>
                 </FormControl>
 
                 <FormControl isInvalid={isErrorFirstName}>
@@ -182,7 +189,7 @@ const OrderSummary = () => {
                         value={firstName}
                         onChange={firstNameHandleChange}
                       />
-                      <FormErrorMessage>Name is required.</FormErrorMessage>
+                      <FormErrorMessage>Please enter a valid name</FormErrorMessage>
                     </Box>
                     <Box>
                       <Input
@@ -226,7 +233,7 @@ const OrderSummary = () => {
                       value={contactNo}
                       onChange={contactNoHandleChange}
                     />
-                    <FormErrorMessage>Contact no is required.</FormErrorMessage>
+                    <FormErrorMessage>Please enter a valid mobile number</FormErrorMessage>
                   </FormControl>
                 </Flex>
 
@@ -247,7 +254,7 @@ const OrderSummary = () => {
                     value={state}
                     onChange={stateHandleChange}
                   />
-                  <FormErrorMessage>State is required.</FormErrorMessage>
+                  <FormErrorMessage>Please enter a valid state name</FormErrorMessage>
                 </FormControl>
                 {/* <FormControl isInvalid={isErrorState}>
                   <FormLabel color={"darkGray"}>
@@ -343,37 +350,42 @@ const OrderSummary = () => {
                   24AAPCM2255H1ZE
                 </Box>
               </Text>
-              <Checkbox
-                my={[3, null, 4, null, 5]}
-                borderColor={"black"}
-                color={"blackOpac"}
-                alignItems={"flex-start"}
-                colorScheme={"facebook"}
-                sx={{
-                  "& .chakra-checkbox__label": {
-                    ml: [4, 5, 6, 7, 8],
-                  },
-                }}
-              >
-                I accept Taxnodes{" "}
-                <Link
-                  href="/termsOfUse.pdf"
-                  target={"_blank"}
-                  color={"themeBlue"}
-                  mx={1}
+              <FormControl isInvalid={isTncUnchecked}>
+                <Checkbox
+                  checked={tnc}
+                  onChange={tncHandleChange}
+                  my={[3, null, 4, null, 5]}
+                  borderColor={"black"}
+                  color={"blackOpac"}
+                  alignItems={"flex-start"}
+                  colorScheme={"facebook"}
+                  sx={{
+                    "& .chakra-checkbox__label": {
+                      ml: [4, 5, 6, 7, 8],
+                    },
+                  }}
                 >
-                  Terms of use
-                </Link>
-                ,{" "}
-                <Link
-                  href="/privacyPolicy.pdf"
-                  color={"themeBlue"}
-                  target={"_blank"}
-                  mx={1}
-                >
-                  Privacy Policy
-                </Link>
-              </Checkbox>
+                  I accept Taxnodes{" "}
+                  <Link
+                    href="/termsOfUse.pdf"
+                    target={"_blank"}
+                    color={"themeBlue"}
+                    mx={1}
+                  >
+                    Terms of use
+                  </Link>
+                  ,{" "}
+                  <Link
+                    href="/privacyPolicy.pdf"
+                    color={"themeBlue"}
+                    target={"_blank"}
+                    mx={1}
+                  >
+                    Privacy Policy
+                  </Link>
+                </Checkbox>
+                <FormErrorMessage>Required</FormErrorMessage>
+              </FormControl>
               <Button
                 variant={"gradient"}
                 w={"100%"}
