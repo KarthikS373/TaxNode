@@ -241,7 +241,7 @@ export default async function handler(req, res) {
           ticketForm.append("name", firstname);
           ticketForm.append("email", email);
           ticketForm.append("phone", phone);
-          ticketForm.append("subject", "Welcome");
+          ticketForm.append("subject", "Welcome to Taxnodes!");
           ticketForm.append("type", "Subscription");
           ticketForm.append("status", 2);
           ticketForm.append("priority", 1);
