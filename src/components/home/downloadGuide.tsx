@@ -108,7 +108,7 @@ const DownloadGuide = () => {
                   value={name}
                   onChange={nameHandleChange}
                 />
-                <FormErrorMessage>Name is required.</FormErrorMessage>
+                <FormErrorMessage>Enter your name</FormErrorMessage>
               </FormControl>
 
               <FormControl isRequired isInvalid={isErrorEmail}>
@@ -120,7 +120,7 @@ const DownloadGuide = () => {
                   value={email}
                   onChange={emailHandleChange}
                 />
-                <FormErrorMessage>Email is required.</FormErrorMessage>
+                <FormErrorMessage>Enter your email ID</FormErrorMessage>
               </FormControl>
             </Flex>
 
