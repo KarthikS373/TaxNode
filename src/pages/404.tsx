@@ -27,7 +27,7 @@ const Custom404 = () => (
         />
         <Button colorScheme="facebook" size="lg">
           <NextLink href="/">
-            <a>Back to home page.</a>
+            Back to home page.
           </NextLink>
         </Button>
       </Box>
