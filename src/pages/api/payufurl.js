@@ -41,7 +41,7 @@ export default async function handler(req, res) {
     await dbConnect(); // Database connection
 
     // Redirection
-    res.redirect(301, "/thankYou");
+    res.redirect(301, "/sorry");
 
     // Formidable
     let data = await new Promise((resolve, reject) => {
