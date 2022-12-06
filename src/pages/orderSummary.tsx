@@ -71,7 +71,7 @@ const OrderSummary = () => {
       email === "" ||
       contactNo === "" ||
       firstName === null ||
-      firstName.trim === "" ||
+      firstName.trim() === "" ||
       state === null ||
       state.trim() === ""
     ) {
