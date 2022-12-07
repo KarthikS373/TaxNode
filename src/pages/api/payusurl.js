@@ -116,7 +116,7 @@ export default async function handler(req, res) {
 //     res.redirect(301, "/thankYou");
 
     // Basic Validation for those fields which are required for calculating verifying reverse hash
-    if (txnid && amount && productinfo && firstname && email && status) {
+    if (txnid && amount && productinfo && firstname && email && status && status === 'success') {
       if (productinfo === "advisory") {
         //! VERIFYING REVERSE HASH (Reverse hash is hash received after payment from payu)
         const isValidHash = payu.hasher.validateHash(hash, {
@@ -347,7 +347,7 @@ export default async function handler(req, res) {
             res.redirect(301, "/thankYou");
         } else {
           // This is when the reverse hash is invalid
-          console.log("Invalid Hash");
+          console.log("Invalid Hash or pending payment");
           // TODO:  Payment updation : update { confirmed_status : false } (payment document (MongoDB)) ?
           // payment = await paymentModel.findOneAndUpdate(
           //   { txnid: txnid },
