@@ -37,11 +37,14 @@ const DownloadGuide = () => {
   const isErrorName = name === "";
 
   const apiDwnldtaxguideCall = async () => {
+    const name_regex = /^[a-zA-Z ]+$/;
+    const nameValidation = name_regex.test(name);
     const email_regex =
       /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/;
     const emailValidation = email_regex.test(email);
-    if (!emailValidation || email === null || name === null) {
-      if (name === null) {
+    
+    if (!emailValidation || email === null || name === null || !nameValidation || name.trim() === "") {
+      if (name === null || !nameValidation || name.trim() === "") {
         setName("");
       }
       if (!emailValidation) {
