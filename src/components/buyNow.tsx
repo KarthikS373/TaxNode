@@ -27,7 +27,7 @@ const BuyNow = () => (
         {" "}
         <Image src={"/zebpay.svg"} alt={""} width={80} height={18} />
       </Box>
-      customers
+      employees
     </Text>
     <Flex gap={[3, null, 4, null, 5]} alignItems={"flex-end"} w={"fit-content"}>
       <Box>
