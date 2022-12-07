@@ -107,7 +107,7 @@ export default async function handler(req, res) {
     } = data;
 
     // Payment updation
-    payment = await paymentModel.findOneAndUpdate(
+    await paymentModel.findOneAndUpdate(
       { txnid: txnid },
       {
         mihpayid: mihpayid,
@@ -166,9 +166,5 @@ export default async function handler(req, res) {
     );
   } catch (error) {
     console.log("This is in catch block; error.message: ", error.message);
-    res.status(400).send({
-      status: false,
-      message: "Operation Failed",
-    });
   }
 }
