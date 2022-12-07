@@ -210,15 +210,6 @@ const OrderSummary = () => {
                         Please enter a valid name
                       </FormErrorMessage>
                     </Box>
-<!--                     <Box>
-                      <Input
-                        borderColor={"themeGray"}
-                        size={"md"}
-                        placeholder={"Last Name"}
-                        value={lastName}
-                        onChange={lastNameHandleChange}
-                      />
-                    </Box> -->
                   </Flex>
                 </FormControl>
 
