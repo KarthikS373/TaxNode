@@ -130,7 +130,7 @@ export default async function handler(req, res) {
     });
     
   } catch (error) {
-    console.log("This is in catch block; error.message: ", error.message);
+    console.log("This is in catch block; error.message: ", error.message, error);
     res.status(500).send({
       status: false,
       message: "Operation Failed",
