@@ -376,9 +376,7 @@ const Faq = () => {
                   pr={[8, 12, 16, 20, 24]}
                 >
                   You can access the latest tax news in the Resources section on
-                  the Taxnodes homepage I have kept the stripped down version
-                  next to the original figma file with the modification
-                  requested by samir
+                  the Taxnodes homepage
                 </AccordionPanel>
               </>
             )}
