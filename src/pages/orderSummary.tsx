@@ -64,6 +64,7 @@ const OrderSummary = () => {
       /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/;
     const emailValidation = email_regex.test(email);
     const nameValidation = name_regex.test(firstName);
+    const stateValidation = name_regex.test(state);
 
     console.log("TNC: ", tnc);
     if (
@@ -76,12 +77,12 @@ const OrderSummary = () => {
       firstName.trim() === "" ||
       !nameValidation ||
       state === null ||
-      state.trim() === ""
+      state.trim() === "" || !stateValidation
     ) {
       if (firstName === null || firstName.trim() === "" || !nameValidation) {
         setFirstName("");
       }
-      if (state === null || state.trim() === "") {
+      if (state === null || state.trim() === "" || !stateValidation) {
         setState("");
       }
       if (contactNo === "" || !mobileValidation) {
