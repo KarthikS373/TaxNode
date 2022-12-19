@@ -5,7 +5,7 @@ import { theme } from "../components/theme";
 const Document = () => {
   return (
     <Html lang="en">
-      <Head></Head>
+      <Head />
       <body>
         <ColorModeScript initialColorMode={theme.config.initialColorMode} />
         <Main />

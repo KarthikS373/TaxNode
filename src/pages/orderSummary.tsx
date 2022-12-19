@@ -58,10 +58,13 @@ const OrderSummary = () => {
   const apiTxreqtopayuCall = async () => {
     const mob_regex_old = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/;
     const mob_regex = /^[0-9]{10}$/;
+    const name_regex = /^[a-zA-Z ]+$/;
     const mobileValidation = mob_regex.test(contactNo);
     const email_regex =
       /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/;
     const emailValidation = email_regex.test(email);
+    const nameValidation = name_regex.test(firstName);
+    const stateValidation = name_regex.test(state);
 
     console.log("TNC: ", tnc);
     if (
@@ -72,13 +75,14 @@ const OrderSummary = () => {
       contactNo === "" ||
       firstName === null ||
       firstName.trim() === "" ||
+      !nameValidation ||
       state === null ||
-      state.trim() === ""
+      state.trim() === "" || !stateValidation
     ) {
-      if (firstName === null || firstName.trim() === "") {
+      if (firstName === null || firstName.trim() === "" || !nameValidation) {
         setFirstName("");
       }
-      if (state === null || state.trim() === "") {
+      if (state === null || state.trim() === "" || !stateValidation) {
         setState("");
       }
       if (contactNo === "" || !mobileValidation) {
@@ -199,22 +203,13 @@ const OrderSummary = () => {
                         type="text"
                         borderColor={"themeGray"}
                         size={"md"}
-                        placeholder={"First Name"}
+                        placeholder={"Name"}
                         value={firstName}
                         onChange={firstNameHandleChange}
                       />
                       <FormErrorMessage>
                         Please enter a valid name
                       </FormErrorMessage>
-                    </Box>
-                    <Box>
-                      <Input
-                        borderColor={"themeGray"}
-                        size={"md"}
-                        placeholder={"Last Name"}
-                        value={lastName}
-                        onChange={lastNameHandleChange}
-                      />
                     </Box>
                   </Flex>
                 </FormControl>
