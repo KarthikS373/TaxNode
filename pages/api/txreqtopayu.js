@@ -1,11 +1,11 @@
 import formData from "form-data";
 import axios from "axios";
 import short from "short-uuid";
-import dbConnect from "../../../lib/dbConnect";
-import paymentModel from "../../../models/payment";
+import dbConnect from "../../lib/dbConnect";
+import paymentModel from "../../models/payment";
 
 // PayU
-const payu = require("../../../lib/payu")({
+const payu = require("../../lib/payu")({
   key: process.env.PAYU_KEY,
   salt: process.env.PAYU_SALT,
 });

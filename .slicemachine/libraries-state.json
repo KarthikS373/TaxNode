@@ -107,7 +107,7 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/pritam/Taxnodes/slices/DownloadFreeTaxGuide/default/preview.png",
+            "path": "/home/abhinay/WebstormProjects/Taxnodes/slices/DownloadFreeTaxGuide/default/preview.png",
             "width": 1552,
             "height": 378
           }
@@ -189,7 +189,7 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/pritam/Taxnodes/slices/Faq/default/preview.png",
+            "path": "/home/abhinay/WebstormProjects/Taxnodes/slices/Faq/default/preview.png",
             "width": 1348,
             "height": 922
           }
@@ -263,7 +263,7 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/pritam/Taxnodes/slices/LeftTextRightBuyNow/default/preview.png",
+            "path": "/home/abhinay/WebstormProjects/Taxnodes/slices/LeftTextRightBuyNow/default/preview.png",
             "width": 2118,
             "height": 696
           }
@@ -347,7 +347,7 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/pritam/Taxnodes/slices/LeftTextRightImage/default/preview.png",
+            "path": "/home/abhinay/WebstormProjects/Taxnodes/slices/LeftTextRightImage/default/preview.png",
             "width": 1650,
             "height": 734
           }
@@ -422,7 +422,7 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/pritam/Taxnodes/slices/LogoSlider/default/preview.png",
+            "path": "/home/abhinay/WebstormProjects/Taxnodes/slices/LogoSlider/default/preview.png",
             "width": 1466,
             "height": 506
           }
@@ -496,7 +496,7 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/pritam/Taxnodes/slices/ProcessStep/default/preview.png",
+            "path": "/home/abhinay/WebstormProjects/Taxnodes/slices/ProcessStep/default/preview.png",
             "width": 2124,
             "height": 722
           }
@@ -636,7 +636,7 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/pritam/Taxnodes/slices/RequestCallBack/default/preview.png",
+            "path": "/home/abhinay/WebstormProjects/Taxnodes/slices/RequestCallBack/default/preview.png",
             "width": 1744,
             "height": 870
           }
@@ -682,7 +682,7 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/pritam/Taxnodes/slices/Team/default/preview.png",
+            "path": "/home/abhinay/WebstormProjects/Taxnodes/slices/Team/default/preview.png",
             "width": 1604,
             "height": 572
           }
@@ -788,7 +788,7 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/pritam/Taxnodes/slices/TitleSubtitleCta/default/preview.png",
+            "path": "/home/abhinay/WebstormProjects/Taxnodes/slices/TitleSubtitleCta/default/preview.png",
             "width": 1650,
             "height": 510
           }
@@ -887,7 +887,7 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/pritam/Taxnodes/slices/TitleSubtitleWithRepeatableTabSwitch/default/preview.png",
+            "path": "/home/abhinay/WebstormProjects/Taxnodes/slices/TitleSubtitleWithRepeatableTabSwitch/default/preview.png",
             "width": 1448,
             "height": 696
           }
@@ -986,7 +986,7 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/pritam/Taxnodes/slices/TitleWithGridCard/default/preview.png",
+            "path": "/home/abhinay/WebstormProjects/Taxnodes/slices/TitleWithGridCard/default/preview.png",
             "width": 2098,
             "height": 1052
           }
@@ -1077,7 +1077,7 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/pritam/Taxnodes/slices/TitleWithRepeatableGridCard/default/preview.png",
+            "path": "/home/abhinay/WebstormProjects/Taxnodes/slices/TitleWithRepeatableGridCard/default/preview.png",
             "width": 2060,
             "height": 812
           }
@@ -1174,7 +1174,7 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/pritam/Taxnodes/slices/TitleWithRepeatableTextImage/default/preview.png",
+            "path": "/home/abhinay/WebstormProjects/Taxnodes/slices/TitleWithRepeatableTextImage/default/preview.png",
             "width": 1448,
             "height": 1328
           }

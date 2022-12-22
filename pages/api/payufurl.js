@@ -1,5 +1,5 @@
-import dbConnect from "../../../lib/dbConnect";
-import paymentModel from "../../../models/payment";
+import dbConnect from "../../lib/dbConnect";
+import paymentModel from "../../models/payment";
 import formData from "form-data";
 
 // CORS

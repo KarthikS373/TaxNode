@@ -7,10 +7,10 @@ import { ReCaptchaProvider } from "next-recaptcha-v3";
 import TagManager from "react-gtm-module";
 
 import Layout from "../components/layout";
-import SEO from "../../next-seo.config";
+import SEO from "../next-seo.config";
 import { PrismicProvider } from "@prismicio/react";
 import { PrismicPreview } from "@prismicio/next";
-import { repositoryName } from "../../prismicio";
+import { repositoryName } from "../prismicio";
 
 import "@fontsource/poppins/100.css";
 import "@fontsource/poppins/200.css";
@@ -30,7 +30,7 @@ import "@fontsource/montserrat/600.css";
 import "@fontsource/montserrat/700.css";
 import "@fontsource/montserrat/800.css";
 import "@fontsource/montserrat/900.css";
-import theme from "../../theme";
+import theme from "../theme";
 import { useEffect } from "react";
 import React from "react";
 import Link from "next/link";

@@ -1,8 +1,8 @@
-import model from "../../../models/user";
+import model from "../../models/user";
 import axios from "axios";
 import formData from "form-data";
 import moment from "moment";
-import dbConnect from "../../../lib/dbConnect";
+import dbConnect from "../../lib/dbConnect";
 
 export default async function handler(req, res) {
   try {

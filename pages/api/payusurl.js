@@ -1,12 +1,12 @@
-import dbConnect from "../../../lib/dbConnect";
-import userModel from "../../../models/user";
-import paymentModel from "../../../models/payment";
+import dbConnect from "../../lib/dbConnect";
+import userModel from "../../models/user";
+import paymentModel from "../../models/payment";
 import moment from "moment";
 import axios from "axios";
 import formData from "form-data";
 
 // PayU
-const payu = require("../../../lib/payu")({
+const payu = require("../../lib/payu")({
   key: process.env.PAYU_KEY,
   salt: process.env.PAYU_SALT,
 });

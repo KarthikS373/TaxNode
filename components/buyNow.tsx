@@ -49,7 +49,7 @@ const BuyNow = () => (
           ₹499
         </Text>
       </Box>
-      <Link href="/orderSummary">
+      <Link href="/pages/orderSummary">
         <Button variant={"gradient"}>Buy Now</Button>
       </Link>
     </Flex>
