@@ -1,0 +1,75 @@
+{
+  "id": "download_free_tax_guide",
+  "type": "SharedSlice",
+  "name": "DownloadFreeTaxGuide",
+  "description": "DownloadFreeTaxGuide",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "DownloadFreeTaxGuide",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "name_placeholder": {
+          "type": "Text",
+          "config": {
+            "label": "Name Placeholder",
+            "placeholder": ""
+          }
+        },
+        "name_error_text": {
+          "type": "Text",
+          "config": {
+            "label": "Name Error Text",
+            "placeholder": ""
+          }
+        },
+        "email_placeholder": {
+          "type": "Text",
+          "config": {
+            "label": "Email Placeholder",
+            "placeholder": ""
+          }
+        },
+        "email_error_text": {
+          "type": "Text",
+          "config": {
+            "label": "Email Error Text",
+            "placeholder": ""
+          }
+        },
+        "cta_label": {
+          "type": "Text",
+          "config": {
+            "label": "CTA Label",
+            "placeholder": ""
+          }
+        },
+        "error_text": {
+          "type": "Text",
+          "config": {
+            "label": "Error Text",
+            "placeholder": ""
+          }
+        },
+        "success_text": {
+          "type": "Text",
+          "config": {
+            "label": "Success Text",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {},
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}

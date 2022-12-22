@@ -1,0 +1,45 @@
+{
+  "id": "team_member",
+  "label": "Team Member",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "profile_image": {
+        "type": "Image",
+        "config": {
+          "label": "Profile Image",
+          "constraint": {
+            "width": 382,
+            "height": 382
+          },
+          "thumbnails": []
+        }
+      },
+      "name": {
+        "type": "Text",
+        "config": {
+          "label": "Name",
+          "placeholder": ""
+        }
+      },
+      "designation": {
+        "type": "Text",
+        "config": {
+          "label": "Designation",
+          "placeholder": ""
+        }
+      },
+      "select_team_category": {
+        "type": "Link",
+        "config": {
+          "label": "Select Team Category",
+          "select": "document",
+          "customtypes": [
+            "teamcategroy"
+          ]
+        }
+      }
+    }
+  }
+}

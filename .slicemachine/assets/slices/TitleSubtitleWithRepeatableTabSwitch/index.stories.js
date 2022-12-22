@@ -1,0 +1,9 @@
+import MyComponent from '../../../../slices/TitleSubtitleWithRepeatableTabSwitch';
+
+export default {
+  title: 'slices/TitleSubtitleWithRepeatableTabSwitch'
+}
+
+
+export const _Default = () => <MyComponent slice={{"variation":"default","version":"sktwi1xtmkfgx8626","items":[{"tab_text":"way","featured_image":{"dimensions":{"width":900,"height":500},"alt":null,"copyright":null,"url":"https://images.unsplash.com/photo-1586952518485-11b180e92764"},"featured_image_text":"wet"}],"primary":{"title":"bowl","subtitle":"however"},"slice_type":"title_subtitle_with_repeatable_tab_switch","id":"_Default"}} />
+_Default.storyName = ''

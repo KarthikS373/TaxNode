@@ -1,0 +1,72 @@
+{
+  "_cts": {
+    "page": {},
+    "teamcategroy": {},
+    "team_member": {}
+  },
+  "slices": {
+    "TitleSubtitleCta": {
+      "default": {
+        "primary": {
+          "title": {
+            "config": {
+              "patternType": "HEADING",
+              "blocks": 1
+            }
+          }
+        }
+      }
+    },
+    "LeftTextRightImage": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "TitleWithRepeatableTextImage": {
+      "default": {
+        "primary": {},
+        "items": {
+          "richText": {
+            "config": {
+              "patternType": "HEADING",
+              "blocks": 1
+            }
+          }
+        }
+      }
+    },
+    "TitleSubtitleWithRepeatableTabSwitch": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "DownloadFreeTaxGuide": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "LogoSlider": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "Faq": {
+      "default": {
+        "primary": {},
+        "items": {
+          "answer": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
+        }
+      }
+    },
+    "Team": {
+      "default": {
+        "primary": {}
+      }
+    }
+  }
+}

@@ -5,8 +5,12 @@ import { DefaultSeo } from "next-seo";
 import { ChakraProvider } from "@chakra-ui/react";
 import { ReCaptchaProvider } from "next-recaptcha-v3";
 import TagManager from "react-gtm-module";
+
 import Layout from "../components/layout";
 import SEO from "../../next-seo.config";
+import { PrismicProvider } from "@prismicio/react";
+import { PrismicPreview } from "@prismicio/next";
+import { repositoryName } from "../../prismicio";
 
 import "@fontsource/poppins/100.css";
 import "@fontsource/poppins/200.css";
@@ -28,6 +32,8 @@ import "@fontsource/montserrat/800.css";
 import "@fontsource/montserrat/900.css";
 import theme from "../../theme";
 import { useEffect } from "react";
+import React from "react";
+import Link from "next/link";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
@@ -37,11 +43,15 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     <>
       <DefaultSeo {...SEO} />
       <ReCaptchaProvider reCaptchaKey="[6LcRSUsjAAAAANkFZrDqjNqolelqkZSXZlqmqnrq]">
-        <ChakraProvider theme={theme}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </ChakraProvider>
+        <PrismicProvider internalLinkComponent={(props) => <Link {...props} />}>
+          <PrismicPreview repositoryName={repositoryName}>
+            <ChakraProvider theme={theme}>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </ChakraProvider>
+          </PrismicPreview>
+        </PrismicProvider>
       </ReCaptchaProvider>
     </>
   );

@@ -1,0 +1,697 @@
+{
+  "slices": {
+    "components": {
+      "download_free_tax_guide": {
+        "library": "slices",
+        "id": "download_free_tax_guide",
+        "name": "DownloadFreeTaxGuide",
+        "description": "DownloadFreeTaxGuide",
+        "model": {
+          "id": "download_free_tax_guide",
+          "type": "SharedSlice",
+          "name": "DownloadFreeTaxGuide",
+          "description": "DownloadFreeTaxGuide",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "DownloadFreeTaxGuide",
+              "primary": {
+                "title": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Title",
+                    "placeholder": ""
+                  }
+                },
+                "name_placeholder": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Name Placeholder",
+                    "placeholder": ""
+                  }
+                },
+                "name_error_text": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Name Error Text",
+                    "placeholder": ""
+                  }
+                },
+                "email_placeholder": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Email Placeholder",
+                    "placeholder": ""
+                  }
+                },
+                "email_error_text": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Email Error Text",
+                    "placeholder": ""
+                  }
+                },
+                "cta_label": {
+                  "type": "Text",
+                  "config": {
+                    "label": "CTA Label",
+                    "placeholder": ""
+                  }
+                },
+                "error_text": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Error Text",
+                    "placeholder": ""
+                  }
+                },
+                "success_text": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Success Text",
+                    "placeholder": ""
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {}
+            ],
+            "primary": {
+              "title": "machinery",
+              "name_placeholder": "invented",
+              "name_error_text": "week",
+              "email_placeholder": "so",
+              "email_error_text": "tail",
+              "cta_label": "when",
+              "error_text": "dropped",
+              "success_text": "automobile"
+            },
+            "slice_type": "download_free_tax_guide"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "js"
+        },
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/pritam/Taxnodes/slices/DownloadFreeTaxGuide/default/preview.png",
+            "width": 1552,
+            "height": 378
+          }
+        }
+      },
+      "faq": {
+        "library": "slices",
+        "id": "faq",
+        "name": "Faq",
+        "description": "Faq",
+        "model": {
+          "id": "faq",
+          "type": "SharedSlice",
+          "name": "Faq",
+          "description": "Faq",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Faq",
+              "primary": {
+                "title": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Title",
+                    "placeholder": ""
+                  }
+                }
+              },
+              "items": {
+                "question": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Question",
+                    "placeholder": ""
+                  }
+                },
+                "answer": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Answer",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "multi": "paragraph,strong,hyperlink,list-item,o-list-item"
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {
+                "question": "sort",
+                "answer": [
+                  {
+                    "type": "paragraph",
+                    "text": "Elit dolor ex deserunt sunt officia minim consequat mollit eiusmod occaecat sint voluptate reprehenderit. Adipisicing excepteur veniam nisi laborum Lorem dolor esse eu excepteur ut.",
+                    "spans": []
+                  }
+                ]
+              }
+            ],
+            "primary": {
+              "title": "lose"
+            },
+            "slice_type": "faq"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "js"
+        },
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/pritam/Taxnodes/slices/Faq/default/preview.png",
+            "width": 1348,
+            "height": 922
+          }
+        }
+      },
+      "left_text_right_image": {
+        "library": "slices",
+        "id": "left_text_right_image",
+        "name": "LeftTextRightImage",
+        "description": "LeftTextRightImage",
+        "model": {
+          "id": "left_text_right_image",
+          "type": "SharedSlice",
+          "name": "LeftTextRightImage",
+          "description": "LeftTextRightImage",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "LeftTextRightImage",
+              "primary": {
+                "title": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Title",
+                    "placeholder": ""
+                  }
+                },
+                "subtitle": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Subtitle",
+                    "placeholder": ""
+                  }
+                },
+                "featuredimage": {
+                  "type": "Image",
+                  "config": {
+                    "label": "FeaturedImage",
+                    "constraint": {
+                      "width": 1334,
+                      "height": 1328
+                    },
+                    "thumbnails": []
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {}
+            ],
+            "primary": {
+              "title": "night",
+              "subtitle": "end",
+              "featuredimage": {
+                "dimensions": {
+                  "width": 1334,
+                  "height": 1328
+                },
+                "alt": null,
+                "copyright": null,
+                "url": "https://images.unsplash.com/photo-1607582278038-6bebbd4d7b72"
+              }
+            },
+            "slice_type": "left_text_right_image"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "js"
+        },
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/pritam/Taxnodes/slices/LeftTextRightImage/default/preview.png",
+            "width": 1650,
+            "height": 734
+          }
+        }
+      },
+      "logo_slider": {
+        "library": "slices",
+        "id": "logo_slider",
+        "name": "LogoSlider",
+        "description": "LogoSlider",
+        "model": {
+          "id": "logo_slider",
+          "type": "SharedSlice",
+          "name": "LogoSlider",
+          "description": "LogoSlider",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "LogoSlider",
+              "primary": {
+                "title": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Title",
+                    "placeholder": ""
+                  }
+                }
+              },
+              "items": {
+                "logo": {
+                  "type": "Image",
+                  "config": {
+                    "label": "Logo",
+                    "constraint": {},
+                    "thumbnails": []
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {
+                "logo": {
+                  "dimensions": {
+                    "width": 900,
+                    "height": 500
+                  },
+                  "alt": null,
+                  "copyright": null,
+                  "url": "https://images.unsplash.com/photo-1491975474562-1f4e30bc9468"
+                }
+              }
+            ],
+            "primary": {
+              "title": "compound"
+            },
+            "slice_type": "logo_slider"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "js"
+        },
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/pritam/Taxnodes/slices/LogoSlider/default/preview.png",
+            "width": 1466,
+            "height": 506
+          }
+        }
+      },
+      "team": {
+        "library": "slices",
+        "id": "team",
+        "name": "Team",
+        "description": "Team",
+        "model": {
+          "id": "team",
+          "type": "SharedSlice",
+          "name": "Team",
+          "description": "Team",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Team",
+              "primary": {},
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {}
+            ],
+            "primary": {},
+            "slice_type": "team"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "js"
+        },
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/pritam/Taxnodes/slices/Team/default/preview.png",
+            "width": 1604,
+            "height": 572
+          }
+        }
+      },
+      "title_subtitle_cta": {
+        "library": "slices",
+        "id": "title_subtitle_cta",
+        "name": "TitleSubtitleCta",
+        "description": "TitleSubtitleCta",
+        "model": {
+          "id": "title_subtitle_cta",
+          "type": "SharedSlice",
+          "name": "TitleSubtitleCta",
+          "description": "TitleSubtitleCta",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "TitleSubtitleCta",
+              "primary": {
+                "title": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Title",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "multi": "heading1",
+                    "labels": [
+                      "highlight"
+                    ]
+                  }
+                },
+                "subtitle": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Subtitle",
+                    "placeholder": ""
+                  }
+                },
+                "cta_link": {
+                  "type": "Link",
+                  "config": {
+                    "label": "CTA Link",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "select": null
+                  }
+                },
+                "cta_label": {
+                  "type": "Text",
+                  "config": {
+                    "label": "CTA Label",
+                    "placeholder": ""
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {}
+            ],
+            "primary": {
+              "title": [
+                {
+                  "type": "heading1",
+                  "text": "Direction",
+                  "spans": []
+                }
+              ],
+              "subtitle": "body",
+              "cta_link": {
+                "link_type": "Web",
+                "url": "https://slicemachine.dev"
+              },
+              "cta_label": "town"
+            },
+            "slice_type": "title_subtitle_cta"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "js"
+        },
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/pritam/Taxnodes/slices/TitleSubtitleCta/default/preview.png",
+            "width": 1650,
+            "height": 510
+          }
+        }
+      },
+      "title_subtitle_with_repeatable_tab_switch": {
+        "library": "slices",
+        "id": "title_subtitle_with_repeatable_tab_switch",
+        "name": "TitleSubtitleWithRepeatableTabSwitch",
+        "description": "TitleSubtitleWithRepeatableTabSwitch",
+        "model": {
+          "id": "title_subtitle_with_repeatable_tab_switch",
+          "type": "SharedSlice",
+          "name": "TitleSubtitleWithRepeatableTabSwitch",
+          "description": "TitleSubtitleWithRepeatableTabSwitch",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "TitleSubtitleWithRepeatableTabSwitch",
+              "primary": {
+                "title": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Title",
+                    "placeholder": ""
+                  }
+                },
+                "subtitle": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Subtitle",
+                    "placeholder": ""
+                  }
+                }
+              },
+              "items": {
+                "tab_text": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Tab Text",
+                    "placeholder": ""
+                  }
+                },
+                "featured_image": {
+                  "type": "Image",
+                  "config": {
+                    "label": "Featured Image",
+                    "constraint": {},
+                    "thumbnails": []
+                  }
+                },
+                "featured_image_text": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Featured Image Text",
+                    "placeholder": ""
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {
+                "tab_text": "way",
+                "featured_image": {
+                  "dimensions": {
+                    "width": 900,
+                    "height": 500
+                  },
+                  "alt": null,
+                  "copyright": null,
+                  "url": "https://images.unsplash.com/photo-1586952518485-11b180e92764"
+                },
+                "featured_image_text": "wet"
+              }
+            ],
+            "primary": {
+              "title": "bowl",
+              "subtitle": "however"
+            },
+            "slice_type": "title_subtitle_with_repeatable_tab_switch"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "js"
+        },
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/pritam/Taxnodes/slices/TitleSubtitleWithRepeatableTabSwitch/default/preview.png",
+            "width": 1448,
+            "height": 696
+          }
+        }
+      },
+      "title_with_repeatable_text_image": {
+        "library": "slices",
+        "id": "title_with_repeatable_text_image",
+        "name": "TitleWithRepeatableTextImage",
+        "description": "TitleWithRepeatableTextImage",
+        "model": {
+          "id": "title_with_repeatable_text_image",
+          "type": "SharedSlice",
+          "name": "TitleWithRepeatableTextImage",
+          "description": "TitleWithRepeatableTextImage",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "TitleWithRepeatableTextImage",
+              "primary": {
+                "title": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Title",
+                    "placeholder": ""
+                  }
+                }
+              },
+              "items": {
+                "featuredimage": {
+                  "type": "Image",
+                  "config": {
+                    "label": "FeaturedImage",
+                    "constraint": {
+                      "height": 1052,
+                      "width": 1624
+                    },
+                    "thumbnails": []
+                  }
+                },
+                "richText": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Rich Text",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "multi": "list-item,em,strong,heading3",
+                    "labels": [
+                      "highlight"
+                    ]
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {
+                "featuredimage": {
+                  "dimensions": {
+                    "width": 1624,
+                    "height": 1052
+                  },
+                  "alt": null,
+                  "copyright": null,
+                  "url": "https://images.unsplash.com/photo-1571126770897-2d612d1f7b89"
+                },
+                "richText": [
+                  {
+                    "type": "heading3",
+                    "text": "Behavior",
+                    "spans": []
+                  }
+                ]
+              }
+            ],
+            "primary": {
+              "title": "memory"
+            },
+            "slice_type": "title_with_repeatable_text_image"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "js"
+        },
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/pritam/Taxnodes/slices/TitleWithRepeatableTextImage/default/preview.png",
+            "width": 1448,
+            "height": 1328
+          }
+        }
+      }
+    }
+  }
+}
