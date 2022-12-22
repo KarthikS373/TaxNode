@@ -2,31 +2,46 @@
 
 import DownloadFreeTaxGuide from './DownloadFreeTaxGuide';
 import Faq from './Faq';
+import LeftTextRightBuyNow from './LeftTextRightBuyNow';
 import LeftTextRightImage from './LeftTextRightImage';
 import LogoSlider from './LogoSlider';
+import ProcessStep from './ProcessStep';
+import RequestCallBack from './RequestCallBack';
 import Team from './Team';
 import TitleSubtitleCta from './TitleSubtitleCta';
 import TitleSubtitleWithRepeatableTabSwitch from './TitleSubtitleWithRepeatableTabSwitch';
+import TitleWithGridCard from './TitleWithGridCard';
+import TitleWithRepeatableGridCard from './TitleWithRepeatableGridCard';
 import TitleWithRepeatableTextImage from './TitleWithRepeatableTextImage';
 
 export {
 	DownloadFreeTaxGuide,
 	Faq,
+	LeftTextRightBuyNow,
 	LeftTextRightImage,
 	LogoSlider,
+	ProcessStep,
+	RequestCallBack,
 	Team,
 	TitleSubtitleCta,
 	TitleSubtitleWithRepeatableTabSwitch,
+	TitleWithGridCard,
+	TitleWithRepeatableGridCard,
 	TitleWithRepeatableTextImage,
 };
 
 export const components = {
 	download_free_tax_guide: DownloadFreeTaxGuide,
 	faq: Faq,
+	left_text_right_buy_now: LeftTextRightBuyNow,
 	left_text_right_image: LeftTextRightImage,
 	logo_slider: LogoSlider,
+	process_step: ProcessStep,
+	request_call_back: RequestCallBack,
 	team: Team,
 	title_subtitle_cta: TitleSubtitleCta,
 	title_subtitle_with_repeatable_tab_switch: TitleSubtitleWithRepeatableTabSwitch,
+	title_with_grid_card: TitleWithGridCard,
+	title_with_repeatable_grid_card: TitleWithRepeatableGridCard,
 	title_with_repeatable_text_image: TitleWithRepeatableTextImage,
 };

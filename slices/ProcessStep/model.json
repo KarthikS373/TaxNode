@@ -1,0 +1,41 @@
+{
+  "id": "process_step",
+  "type": "SharedSlice",
+  "name": "ProcessStep",
+  "description": "ProcessStep",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "ProcessStep",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "Subtitle",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {
+        "process_title": {
+          "type": "Text",
+          "config": {
+            "label": "Process Title",
+            "placeholder": ""
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}

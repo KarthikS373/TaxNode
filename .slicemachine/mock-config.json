@@ -2,7 +2,8 @@
   "_cts": {
     "page": {},
     "teamcategroy": {},
-    "team_member": {}
+    "team_member": {},
+    "buy_now": {}
   },
   "slices": {
     "TitleSubtitleCta": {
@@ -64,6 +65,31 @@
       }
     },
     "Team": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "RequestCallBack": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "TitleWithGridCard": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "TitleWithRepeatableGridCard": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "ProcessStep": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "LeftTextRightBuyNow": {
       "default": {
         "primary": {}
       }

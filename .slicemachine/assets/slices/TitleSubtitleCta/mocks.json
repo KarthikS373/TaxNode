@@ -9,16 +9,17 @@
       "title": [
         {
           "type": "heading1",
-          "text": "Direction",
+          "text": "Clock",
           "spans": []
         }
       ],
-      "subtitle": "body",
+      "subtitle": "cream",
       "cta_link": {
         "link_type": "Web",
-        "url": "https://slicemachine.dev"
+        "url": "http://google.com"
       },
-      "cta_label": "town"
+      "cta_label": "tail",
+      "show_buy_now": false
     },
     "slice_type": "title_subtitle_cta"
   }

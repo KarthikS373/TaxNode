@@ -1,0 +1,9 @@
+import MyComponent from '../../../../slices/TitleWithGridCard';
+
+export default {
+  title: 'slices/TitleWithGridCard'
+}
+
+
+export const _Default = () => <MyComponent slice={{"variation":"default","version":"sktwi1xtmkfgx8626","items":[{"icon":{"dimensions":{"width":900,"height":500},"alt":null,"copyright":null,"url":"https://images.unsplash.com/photo-1601933973783-43cf8a7d4c5f"},"title":"herd","description":"rather"}],"primary":{"title":"swept","note":"talk"},"slice_type":"title_with_grid_card","id":"_Default"}} />
+_Default.storyName = ''

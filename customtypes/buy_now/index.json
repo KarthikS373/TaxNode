@@ -1,0 +1,46 @@
+{
+  "id": "buy_now",
+  "label": "Buy Now",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "description": {
+        "type": "Text",
+        "config": {
+          "label": "Description",
+          "placeholder": ""
+        }
+      },
+      "actual_amount": {
+        "type": "Number",
+        "config": {
+          "label": "Actual Amount",
+          "placeholder": ""
+        }
+      },
+      "discount": {
+        "type": "Number",
+        "config": {
+          "label": "Discount",
+          "placeholder": ""
+        }
+      },
+      "cta_link": {
+        "type": "Link",
+        "config": {
+          "label": "CTA Link",
+          "placeholder": "",
+          "select": null
+        }
+      },
+      "cta_label": {
+        "type": "Text",
+        "config": {
+          "label": "CTA Label",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}

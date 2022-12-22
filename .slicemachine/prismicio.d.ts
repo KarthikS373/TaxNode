@@ -6,6 +6,74 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = {
     [KeyType in keyof T]: T[KeyType];
 };
+/** Content for Buy Now documents */
+interface BuyNowDocumentData {
+    /**
+     * Description field in *Buy Now*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: buy_now.description
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    description: prismicT.KeyTextField;
+    /**
+     * Actual Amount field in *Buy Now*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: buy_now.actual_amount
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/number
+     *
+     */
+    actual_amount: prismicT.NumberField;
+    /**
+     * Discount field in *Buy Now*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: buy_now.discount
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/number
+     *
+     */
+    discount: prismicT.NumberField;
+    /**
+     * CTA Link field in *Buy Now*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: buy_now.cta_link
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    cta_link: prismicT.LinkField;
+    /**
+     * CTA Label field in *Buy Now*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: buy_now.cta_label
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    cta_label: prismicT.KeyTextField;
+}
+/**
+ * Buy Now document from Prismic
+ *
+ * - **API ID**: `buy_now`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BuyNowDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<BuyNowDocumentData>, "buy_now", Lang>;
 /** Content for Page documents */
 interface PageDocumentData {
     /**
@@ -116,7 +184,7 @@ interface TeamcategroyDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type TeamcategroyDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<TeamcategroyDocumentData>, "teamcategroy", Lang>;
-export type AllDocumentTypes = PageDocument | TeamMemberDocument | TeamcategroyDocument;
+export type AllDocumentTypes = BuyNowDocument | PageDocument | TeamMemberDocument | TeamcategroyDocument;
 /**
  * Primary content in DownloadFreeTaxGuide → Primary
  *
@@ -292,6 +360,66 @@ type FaqSliceVariation = FaqSliceDefault;
  */
 export type FaqSlice = prismicT.SharedSlice<"faq", FaqSliceVariation>;
 /**
+ * Primary content in LeftTextRightBuyNow → Primary
+ *
+ */
+interface LeftTextRightBuyNowSliceDefaultPrimary {
+    /**
+     * Title field in *LeftTextRightBuyNow → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: left_text_right_buy_now.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Subtitle field in *LeftTextRightBuyNow → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: left_text_right_buy_now.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    subtitle: prismicT.KeyTextField;
+    /**
+     * Buy Now field in *LeftTextRightBuyNow → Primary*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: left_text_right_buy_now.primary.buy_now
+     * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+     *
+     */
+    buy_now: prismicT.BooleanField;
+}
+/**
+ * Default variation for LeftTextRightBuyNow Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `LeftTextRightBuyNow`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type LeftTextRightBuyNowSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<LeftTextRightBuyNowSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *LeftTextRightBuyNow*
+ *
+ */
+type LeftTextRightBuyNowSliceVariation = LeftTextRightBuyNowSliceDefault;
+/**
+ * LeftTextRightBuyNow Shared Slice
+ *
+ * - **API ID**: `left_text_right_buy_now`
+ * - **Description**: `LeftTextRightBuyNow`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type LeftTextRightBuyNowSlice = prismicT.SharedSlice<"left_text_right_buy_now", LeftTextRightBuyNowSliceVariation>;
+/**
  * Primary content in LeftTextRightImage → Primary
  *
  */
@@ -406,6 +534,210 @@ type LogoSliderSliceVariation = LogoSliderSliceDefault;
  */
 export type LogoSliderSlice = prismicT.SharedSlice<"logo_slider", LogoSliderSliceVariation>;
 /**
+ * Primary content in ProcessStep → Primary
+ *
+ */
+interface ProcessStepSliceDefaultPrimary {
+    /**
+     * Title field in *ProcessStep → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: process_step.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Subtitle field in *ProcessStep → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: process_step.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    subtitle: prismicT.KeyTextField;
+}
+/**
+ * Item in ProcessStep → Items
+ *
+ */
+export interface ProcessStepSliceDefaultItem {
+    /**
+     * Process Title field in *ProcessStep → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: process_step.items[].process_title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    process_title: prismicT.KeyTextField;
+}
+/**
+ * Default variation for ProcessStep Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `ProcessStep`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ProcessStepSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ProcessStepSliceDefaultPrimary>, Simplify<ProcessStepSliceDefaultItem>>;
+/**
+ * Slice variation for *ProcessStep*
+ *
+ */
+type ProcessStepSliceVariation = ProcessStepSliceDefault;
+/**
+ * ProcessStep Shared Slice
+ *
+ * - **API ID**: `process_step`
+ * - **Description**: `ProcessStep`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ProcessStepSlice = prismicT.SharedSlice<"process_step", ProcessStepSliceVariation>;
+/**
+ * Primary content in RequestCallBack → Primary
+ *
+ */
+interface RequestCallBackSliceDefaultPrimary {
+    /**
+     * Title field in *RequestCallBack → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: request_call_back.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Subtitle field in *RequestCallBack → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: request_call_back.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    subtitle: prismicT.KeyTextField;
+    /**
+     * Form Text field in *RequestCallBack → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: request_call_back.primary.form_text
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    form_text: prismicT.KeyTextField;
+    /**
+     * Name Placeholder field in *RequestCallBack → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: request_call_back.primary.name_placeholder
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    name_placeholder: prismicT.KeyTextField;
+    /**
+     * Name Error field in *RequestCallBack → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: request_call_back.primary.name_error
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    name_error: prismicT.KeyTextField;
+    /**
+     * Email Placeholder field in *RequestCallBack → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: request_call_back.primary.email_placeholder
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    email_placeholder: prismicT.KeyTextField;
+    /**
+     * Email Error field in *RequestCallBack → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: request_call_back.primary.email_error
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    email_error: prismicT.KeyTextField;
+    /**
+     * CTA Link field in *RequestCallBack → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: request_call_back.primary.cta_link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    cta_link: prismicT.LinkField;
+    /**
+     * CTA Label field in *RequestCallBack → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: request_call_back.primary.cta_label
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    cta_label: prismicT.KeyTextField;
+    /**
+     * Success Toast field in *RequestCallBack → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: request_call_back.primary.success_toast
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    success_toast: prismicT.KeyTextField;
+    /**
+     * Error Toast field in *RequestCallBack → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: request_call_back.primary.error_toast
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    error_toast: prismicT.KeyTextField;
+}
+/**
+ * Default variation for RequestCallBack Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `RequestCallBack`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type RequestCallBackSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<RequestCallBackSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *RequestCallBack*
+ *
+ */
+type RequestCallBackSliceVariation = RequestCallBackSliceDefault;
+/**
+ * RequestCallBack Shared Slice
+ *
+ * - **API ID**: `request_call_back`
+ * - **Description**: `RequestCallBack`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type RequestCallBackSlice = prismicT.SharedSlice<"request_call_back", RequestCallBackSliceVariation>;
+/**
  * Default variation for Team Slice
  *
  * - **API ID**: `default`
@@ -473,6 +805,17 @@ interface TitleSubtitleCtaSliceDefaultPrimary {
      *
      */
     cta_label: prismicT.KeyTextField;
+    /**
+     * Show Buy Now field in *TitleSubtitleCta → Primary*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: title_subtitle_cta.primary.show_buy_now
+     * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+     *
+     */
+    show_buy_now: prismicT.BooleanField;
 }
 /**
  * Default variation for TitleSubtitleCta Slice
@@ -583,6 +926,166 @@ type TitleSubtitleWithRepeatableTabSwitchSliceVariation = TitleSubtitleWithRepea
  */
 export type TitleSubtitleWithRepeatableTabSwitchSlice = prismicT.SharedSlice<"title_subtitle_with_repeatable_tab_switch", TitleSubtitleWithRepeatableTabSwitchSliceVariation>;
 /**
+ * Primary content in TitleWithGridCard → Primary
+ *
+ */
+interface TitleWithGridCardSliceDefaultPrimary {
+    /**
+     * Title field in *TitleWithGridCard → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: title_with_grid_card.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Note field in *TitleWithGridCard → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: title_with_grid_card.primary.note
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    note: prismicT.KeyTextField;
+}
+/**
+ * Item in TitleWithGridCard → Items
+ *
+ */
+export interface TitleWithGridCardSliceDefaultItem {
+    /**
+     * Icon field in *TitleWithGridCard → Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: title_with_grid_card.items[].icon
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    icon: prismicT.ImageField<never>;
+    /**
+     * Title field in *TitleWithGridCard → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: title_with_grid_card.items[].title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Description field in *TitleWithGridCard → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: title_with_grid_card.items[].description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    description: prismicT.KeyTextField;
+}
+/**
+ * Default variation for TitleWithGridCard Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `TitleWithGridCard`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TitleWithGridCardSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<TitleWithGridCardSliceDefaultPrimary>, Simplify<TitleWithGridCardSliceDefaultItem>>;
+/**
+ * Slice variation for *TitleWithGridCard*
+ *
+ */
+type TitleWithGridCardSliceVariation = TitleWithGridCardSliceDefault;
+/**
+ * TitleWithGridCard Shared Slice
+ *
+ * - **API ID**: `title_with_grid_card`
+ * - **Description**: `TitleWithGridCard`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TitleWithGridCardSlice = prismicT.SharedSlice<"title_with_grid_card", TitleWithGridCardSliceVariation>;
+/**
+ * Primary content in TitleWithRepeatableGridCard → Primary
+ *
+ */
+interface TitleWithRepeatableGridCardSliceDefaultPrimary {
+    /**
+     * Title field in *TitleWithRepeatableGridCard → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: title_with_repeatable_grid_card.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+}
+/**
+ * Item in TitleWithRepeatableGridCard → Items
+ *
+ */
+export interface TitleWithRepeatableGridCardSliceDefaultItem {
+    /**
+     * icon field in *TitleWithRepeatableGridCard → Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: title_with_repeatable_grid_card.items[].icon
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    icon: prismicT.ImageField<never>;
+    /**
+     * title field in *TitleWithRepeatableGridCard → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: title_with_repeatable_grid_card.items[].title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Subtitle field in *TitleWithRepeatableGridCard → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: title_with_repeatable_grid_card.items[].subtitle
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    subtitle: prismicT.KeyTextField;
+}
+/**
+ * Default variation for TitleWithRepeatableGridCard Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `TitleWithRepeatableGridCard`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TitleWithRepeatableGridCardSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<TitleWithRepeatableGridCardSliceDefaultPrimary>, Simplify<TitleWithRepeatableGridCardSliceDefaultItem>>;
+/**
+ * Slice variation for *TitleWithRepeatableGridCard*
+ *
+ */
+type TitleWithRepeatableGridCardSliceVariation = TitleWithRepeatableGridCardSliceDefault;
+/**
+ * TitleWithRepeatableGridCard Shared Slice
+ *
+ * - **API ID**: `title_with_repeatable_grid_card`
+ * - **Description**: `TitleWithRepeatableGridCard`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TitleWithRepeatableGridCardSlice = prismicT.SharedSlice<"title_with_repeatable_grid_card", TitleWithRepeatableGridCardSliceVariation>;
+/**
  * Primary content in TitleWithRepeatableTextImage → Primary
  *
  */
@@ -652,6 +1155,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, TeamMemberDocumentData, TeamMemberDocument, TeamcategroyDocumentData, TeamcategroyDocument, AllDocumentTypes, DownloadFreeTaxGuideSliceDefaultPrimary, DownloadFreeTaxGuideSliceDefault, DownloadFreeTaxGuideSliceVariation, DownloadFreeTaxGuideSlice, FaqSliceDefaultPrimary, FaqSliceDefaultItem, FaqSliceDefault, FaqSliceVariation, FaqSlice, LeftTextRightImageSliceDefaultPrimary, LeftTextRightImageSliceDefault, LeftTextRightImageSliceVariation, LeftTextRightImageSlice, LogoSliderSliceDefaultPrimary, LogoSliderSliceDefaultItem, LogoSliderSliceDefault, LogoSliderSliceVariation, LogoSliderSlice, TeamSliceDefault, TeamSliceVariation, TeamSlice, TitleSubtitleCtaSliceDefaultPrimary, TitleSubtitleCtaSliceDefault, TitleSubtitleCtaSliceVariation, TitleSubtitleCtaSlice, TitleSubtitleWithRepeatableTabSwitchSliceDefaultPrimary, TitleSubtitleWithRepeatableTabSwitchSliceDefaultItem, TitleSubtitleWithRepeatableTabSwitchSliceDefault, TitleSubtitleWithRepeatableTabSwitchSliceVariation, TitleSubtitleWithRepeatableTabSwitchSlice, TitleWithRepeatableTextImageSliceDefaultPrimary, TitleWithRepeatableTextImageSliceDefaultItem, TitleWithRepeatableTextImageSliceDefault, TitleWithRepeatableTextImageSliceVariation, TitleWithRepeatableTextImageSlice };
+        export type { BuyNowDocumentData, BuyNowDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, TeamMemberDocumentData, TeamMemberDocument, TeamcategroyDocumentData, TeamcategroyDocument, AllDocumentTypes, DownloadFreeTaxGuideSliceDefaultPrimary, DownloadFreeTaxGuideSliceDefault, DownloadFreeTaxGuideSliceVariation, DownloadFreeTaxGuideSlice, FaqSliceDefaultPrimary, FaqSliceDefaultItem, FaqSliceDefault, FaqSliceVariation, FaqSlice, LeftTextRightBuyNowSliceDefaultPrimary, LeftTextRightBuyNowSliceDefault, LeftTextRightBuyNowSliceVariation, LeftTextRightBuyNowSlice, LeftTextRightImageSliceDefaultPrimary, LeftTextRightImageSliceDefault, LeftTextRightImageSliceVariation, LeftTextRightImageSlice, LogoSliderSliceDefaultPrimary, LogoSliderSliceDefaultItem, LogoSliderSliceDefault, LogoSliderSliceVariation, LogoSliderSlice, ProcessStepSliceDefaultPrimary, ProcessStepSliceDefaultItem, ProcessStepSliceDefault, ProcessStepSliceVariation, ProcessStepSlice, RequestCallBackSliceDefaultPrimary, RequestCallBackSliceDefault, RequestCallBackSliceVariation, RequestCallBackSlice, TeamSliceDefault, TeamSliceVariation, TeamSlice, TitleSubtitleCtaSliceDefaultPrimary, TitleSubtitleCtaSliceDefault, TitleSubtitleCtaSliceVariation, TitleSubtitleCtaSlice, TitleSubtitleWithRepeatableTabSwitchSliceDefaultPrimary, TitleSubtitleWithRepeatableTabSwitchSliceDefaultItem, TitleSubtitleWithRepeatableTabSwitchSliceDefault, TitleSubtitleWithRepeatableTabSwitchSliceVariation, TitleSubtitleWithRepeatableTabSwitchSlice, TitleWithGridCardSliceDefaultPrimary, TitleWithGridCardSliceDefaultItem, TitleWithGridCardSliceDefault, TitleWithGridCardSliceVariation, TitleWithGridCardSlice, TitleWithRepeatableGridCardSliceDefaultPrimary, TitleWithRepeatableGridCardSliceDefaultItem, TitleWithRepeatableGridCardSliceDefault, TitleWithRepeatableGridCardSliceVariation, TitleWithRepeatableGridCardSlice, TitleWithRepeatableTextImageSliceDefaultPrimary, TitleWithRepeatableTextImageSliceDefaultItem, TitleWithRepeatableTextImageSliceDefault, TitleWithRepeatableTextImageSliceVariation, TitleWithRepeatableTextImageSlice };
     }
 }
