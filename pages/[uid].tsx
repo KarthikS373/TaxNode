@@ -10,37 +10,38 @@ import BuyNow from "../components/advisory/buyNow";
 import { createClient } from "../prismicio";
 import * as prismicH from '@prismicio/helpers'
 const UIDPage = ({page}:any) => {
-    page = {
-        "id": "Y6OrvBEAACMAdIK3",
-        "uid": "home",
-        "url": "/home",
-        "type": "page",
-        "href": "https://taxnodes.cdn.prismic.io/api/v2/documents/search?ref=Y6QlixEAACAAdT6R&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y6OrvBEAACMAdIK3%22%29+%5D%5D",
-        "tags": [],
-        "first_publication_date": "2022-12-22T00:58:40+0000",
-        "last_publication_date": "2022-12-22T00:58:40+0000",
-        "slugs": [
-        "home"
-    ],
-        "linked_documents": [],
-        "lang": "en-in",
-        "alternate_languages": [],
-        "data": {
-        "slices": []
-    }
-    }
-    // return (
-    //     <>
-    //         <NextSeo title="Advisory" />
-    //         <Hero />
-    //         <RequestCallBack />
-    //         <TaxCompliance />
-    //         <GetStarted />
-    //         <WhatIsRequired />
-    //         <BuyNow />
-    //         <FaqAdvisory />
-    //     </>
-    // );
+    // page = {
+    //     "id": "Y6OrvBEAACMAdIK3",
+    //     "uid": "home",
+    //     "url": "/home",
+    //     "type": "page",
+    //     "href": "https://taxnodes.cdn.prismic.io/api/v2/documents/search?ref=Y6QlixEAACAAdT6R&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y6OrvBEAACMAdIK3%22%29+%5D%5D",
+    //     "tags": [],
+    //     "first_publication_date": "2022-12-22T00:58:40+0000",
+    //     "last_publication_date": "2022-12-22T00:58:40+0000",
+    //     "slugs": [
+    //     "home"
+    // ],
+    //     "linked_documents": [],
+    //     "lang": "en-in",
+    //     "alternate_languages": [],
+    //     "data": {
+    //     "slices": []
+    // }
+    // }
+    console.log(page.data.slices)
+    return (
+        <>
+            <NextSeo title="Advisory" />
+            <Hero />
+            <RequestCallBack />
+            <TaxCompliance />
+            <GetStarted />
+            <WhatIsRequired />
+            <BuyNow />
+            <FaqAdvisory />
+        </>
+    );
 };
 
 export default UIDPage;
