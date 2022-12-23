@@ -9,6 +9,10 @@ import RequestCallBack from "../components/advisory/requestCallBack";
 import BuyNow from "../components/advisory/buyNow";
 import { createClient } from "../prismicio";
 import * as prismicH from '@prismicio/helpers'
+import { SliceZone } from "@prismicio/react";
+import Layout from "../components/layout";
+import { components } from "../slices";
+
 const UIDPage = ({page}:any) => {
     // page = {
     //     "id": "Y6OrvBEAACMAdIK3",
@@ -31,16 +35,9 @@ const UIDPage = ({page}:any) => {
     // }
     console.log(page.data.slices)
     return (
-        <>
-            <NextSeo title="Advisory" />
-            <Hero />
-            <RequestCallBack />
-            <TaxCompliance />
-            <GetStarted />
-            <WhatIsRequired />
-            <BuyNow />
-            <FaqAdvisory />
-        </>
+        // <Layout>
+            <SliceZone components={components} slices={page.data?.slices}/>
+        // </Layout>
     );
 };
 

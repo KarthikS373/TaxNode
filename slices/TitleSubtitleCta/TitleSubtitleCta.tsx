@@ -16,7 +16,7 @@ const TitleSubtitleCta: React.FC<{ slice: TitleSubtitleCtaSlice }> = ({
           lineHeight={"normal"}
           color={"black"}
         >
-          {primary.title}
+          {(primary.title as any)[0]['text']}
         </Text>
       </Box>
     </>
