@@ -42,8 +42,14 @@ const DownloadGuide = () => {
     const email_regex =
       /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/;
     const emailValidation = email_regex.test(email);
-    
-    if (!emailValidation || email === null || name === null || !nameValidation || name.trim() === "") {
+
+    if (
+      !emailValidation ||
+      email === null ||
+      name === null ||
+      !nameValidation ||
+      name.trim() === ""
+    ) {
       if (name === null || !nameValidation || name.trim() === "") {
         setName("");
       }
@@ -108,7 +114,7 @@ const DownloadGuide = () => {
                 <Input
                   placeholder="Name"
                   variant={"secondary"}
-                  value={name}
+                  value={name || ""}
                   onChange={nameHandleChange}
                 />
                 <FormErrorMessage>Enter your name</FormErrorMessage>
@@ -120,7 +126,7 @@ const DownloadGuide = () => {
                   type="email"
                   placeholder="Email"
                   variant={"secondary"}
-                  value={email}
+                  value={email || ""}
                   onChange={emailHandleChange}
                 />
                 <FormErrorMessage>Enter your email ID</FormErrorMessage>

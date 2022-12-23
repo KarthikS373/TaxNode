@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Box, Container, Text, Heading, Flex, VStack } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 
@@ -7,6 +8,7 @@ import Image from "next/image";
 const TitleSubtitleCta: React.FC<{
   slice: TitleSubtitleWithRepeatableTabSwitchSlice;
 }> = ({ slice }) => {
+  const [selection, setSelection] = useState<number>(0);
   const { primary, items } = slice;
 
   return (
@@ -50,6 +52,8 @@ const TitleSubtitleCta: React.FC<{
                     borderWidth={1}
                     borderStyle={"solid"}
                     bgColor={"white"}
+                    onClick={() => setSelection(i)}
+                    onMouseEnter={() => selection !== i && setSelection(i)}
                     p={[2, null, 3, null, 4]}
                     borderRadius={"xl"}
                     display={"flex"}
@@ -117,48 +121,44 @@ const TitleSubtitleCta: React.FC<{
               bgColor={"white"}
               p={[10, 12, 14, 16, 20]}
             >
-              {items &&
-                items.map((item, i) => (
-                  <Box
-                    key={i}
-                    display={"flex"}
-                    flexDir={"column"}
-                    alignItems={"center"}
-                    justifyContent={"center"}
-                    textAlign={"center"}
-                  >
-                    <Box
-                      p={[7, null, 8, null, 9]}
-                      bg={
-                        "linear-gradient(120.1deg, rgba(223, 171, 255, 0.5) 2.05%, rgba(163, 233, 255, 0.5) 103.81%);"
-                      }
-                      transform={"matrix(-1, 0, 0, 1, 0, 0)"}
-                      borderRadius={["xl", null, "4xl", "3xl", 36]}
-                      w={[28, null, 32, null, 36]}
-                      h={[28, null, 32, null, 36]}
-                      display={"flex"}
-                      alignItems={"center"}
-                      justifyContent={"center"}
-                    >
-                      <Image
-                        src={item.featured_image.url}
-                        alt={item.featured_image.alt}
-                        sizes={"100vw"}
-                        width={item.featured_image.dimensions?.width}
-                        height={item.featured_image.dimensions?.height}
-                      />
-                    </Box>
-                    <Text
-                      color={"themeDarkPurple"}
-                      size={"xs"}
-                      fontWeight={"medium"}
-                      maxW={"sm"}
-                      mt={[6, 7, 8, 9, 10]}
-                    >
-                      {item.featured_image_text}
-                    </Text>
-                  </Box>
-                ))}
+              <Box
+                display={"flex"}
+                flexDir={"column"}
+                alignItems={"center"}
+                justifyContent={"center"}
+                textAlign={"center"}
+              >
+                <Box
+                  p={[7, null, 8, null, 9]}
+                  bg={
+                    "linear-gradient(120.1deg, rgba(223, 171, 255, 0.5) 2.05%, rgba(163, 233, 255, 0.5) 103.81%);"
+                  }
+                  transform={"matrix(-1, 0, 0, 1, 0, 0)"}
+                  borderRadius={["xl", null, "4xl", "3xl", 36]}
+                  w={[28, null, 32, null, 36]}
+                  h={[28, null, 32, null, 36]}
+                  display={"flex"}
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                >
+                  <Image
+                    src={items[selection].featured_image.url!}
+                    alt={items[selection].featured_image.alt!}
+                    sizes={"100vw"}
+                    width={items[selection].featured_image.dimensions?.width}
+                    height={items[selection].featured_image.dimensions?.height}
+                  />
+                </Box>
+                <Text
+                  color={"themeDarkPurple"}
+                  size={"xs"}
+                  fontWeight={"medium"}
+                  maxW={"sm"}
+                  mt={[6, 7, 8, 9, 10]}
+                >
+                  {items[selection].featured_image_text}
+                </Text>
+              </Box>
             </Box>
           </Flex>
         </Container>
