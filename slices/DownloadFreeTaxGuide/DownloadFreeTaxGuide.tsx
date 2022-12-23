@@ -79,7 +79,7 @@ const TitleSubtitleCta: React.FC<{ slice: DownloadFreeTaxGuideSlice }> = ({
                 rightIcon={
                   <>
                     <DownloadIcon />
-                  </>
+                  </> 
                 }
                 onClick={() =>
                   toast({

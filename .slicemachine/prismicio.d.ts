@@ -74,6 +74,18 @@ interface BuyNowDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type BuyNowDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<BuyNowDocumentData>, "buy_now", Lang>;
+/** Content for Layout documents */
+type LayoutDocumentData = Record<string, never>;
+/**
+ * Layout document from Prismic
+ *
+ * - **API ID**: `layout`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type LayoutDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<LayoutDocumentData>, "layout", Lang>;
 /** Content for Page documents */
 interface PageDocumentData {
     /**
@@ -184,7 +196,7 @@ interface TeamcategroyDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type TeamcategroyDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<TeamcategroyDocumentData>, "teamcategroy", Lang>;
-export type AllDocumentTypes = BuyNowDocument | PageDocument | TeamMemberDocument | TeamcategroyDocument;
+export type AllDocumentTypes = BuyNowDocument | LayoutDocument | PageDocument | TeamMemberDocument | TeamcategroyDocument;
 /**
  * Primary content in DownloadFreeTaxGuide → Primary
  *
@@ -1145,6 +1157,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { BuyNowDocumentData, BuyNowDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, TeamMemberDocumentData, TeamMemberDocument, TeamcategroyDocumentData, TeamcategroyDocument, AllDocumentTypes, DownloadFreeTaxGuideSliceDefaultPrimary, DownloadFreeTaxGuideSliceDefault, DownloadFreeTaxGuideSliceVariation, DownloadFreeTaxGuideSlice, FaqSliceDefaultPrimary, FaqSliceDefaultItem, FaqSliceDefault, FaqSliceVariation, FaqSlice, LeftTextRightBuyNowSliceDefaultPrimary, LeftTextRightBuyNowSliceDefault, LeftTextRightBuyNowSliceVariation, LeftTextRightBuyNowSlice, LeftTextRightImageSliceDefaultPrimary, LeftTextRightImageSliceDefault, LeftTextRightImageSliceVariation, LeftTextRightImageSlice, LogoSliderSliceDefaultPrimary, LogoSliderSliceDefaultItem, LogoSliderSliceDefault, LogoSliderSliceVariation, LogoSliderSlice, ProcessStepSliceDefaultPrimary, ProcessStepSliceDefaultItem, ProcessStepSliceDefault, ProcessStepSliceVariation, ProcessStepSlice, RequestCallBackSliceDefaultPrimary, RequestCallBackSliceDefault, RequestCallBackSliceVariation, RequestCallBackSlice, TeamSliceDefault, TeamSliceVariation, TeamSlice, TitleSubtitleCtaSliceDefaultPrimary, TitleSubtitleCtaSliceDefault, TitleSubtitleCtaSliceVariation, TitleSubtitleCtaSlice, TitleSubtitleWithRepeatableTabSwitchSliceDefaultPrimary, TitleSubtitleWithRepeatableTabSwitchSliceDefaultItem, TitleSubtitleWithRepeatableTabSwitchSliceDefault, TitleSubtitleWithRepeatableTabSwitchSliceVariation, TitleSubtitleWithRepeatableTabSwitchSlice, TitleWithGridCardSliceDefaultPrimary, TitleWithGridCardSliceDefaultItem, TitleWithGridCardSliceDefault, TitleWithGridCardSliceVariation, TitleWithGridCardSlice, TitleWithRepeatableGridCardSliceDefaultPrimary, TitleWithRepeatableGridCardSliceDefaultItem, TitleWithRepeatableGridCardSliceDefault, TitleWithRepeatableGridCardSliceVariation, TitleWithRepeatableGridCardSlice, TitleWithRepeatableTextImageSliceDefaultPrimary, TitleWithRepeatableTextImageSliceDefaultItem, TitleWithRepeatableTextImageSliceDefault, TitleWithRepeatableTextImageSliceVariation, TitleWithRepeatableTextImageSlice };
+        export type { BuyNowDocumentData, BuyNowDocument, LayoutDocumentData, LayoutDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, TeamMemberDocumentData, TeamMemberDocument, TeamcategroyDocumentData, TeamcategroyDocument, AllDocumentTypes, DownloadFreeTaxGuideSliceDefaultPrimary, DownloadFreeTaxGuideSliceDefault, DownloadFreeTaxGuideSliceVariation, DownloadFreeTaxGuideSlice, FaqSliceDefaultPrimary, FaqSliceDefaultItem, FaqSliceDefault, FaqSliceVariation, FaqSlice, LeftTextRightBuyNowSliceDefaultPrimary, LeftTextRightBuyNowSliceDefault, LeftTextRightBuyNowSliceVariation, LeftTextRightBuyNowSlice, LeftTextRightImageSliceDefaultPrimary, LeftTextRightImageSliceDefault, LeftTextRightImageSliceVariation, LeftTextRightImageSlice, LogoSliderSliceDefaultPrimary, LogoSliderSliceDefaultItem, LogoSliderSliceDefault, LogoSliderSliceVariation, LogoSliderSlice, ProcessStepSliceDefaultPrimary, ProcessStepSliceDefaultItem, ProcessStepSliceDefault, ProcessStepSliceVariation, ProcessStepSlice, RequestCallBackSliceDefaultPrimary, RequestCallBackSliceDefault, RequestCallBackSliceVariation, RequestCallBackSlice, TeamSliceDefault, TeamSliceVariation, TeamSlice, TitleSubtitleCtaSliceDefaultPrimary, TitleSubtitleCtaSliceDefault, TitleSubtitleCtaSliceVariation, TitleSubtitleCtaSlice, TitleSubtitleWithRepeatableTabSwitchSliceDefaultPrimary, TitleSubtitleWithRepeatableTabSwitchSliceDefaultItem, TitleSubtitleWithRepeatableTabSwitchSliceDefault, TitleSubtitleWithRepeatableTabSwitchSliceVariation, TitleSubtitleWithRepeatableTabSwitchSlice, TitleWithGridCardSliceDefaultPrimary, TitleWithGridCardSliceDefaultItem, TitleWithGridCardSliceDefault, TitleWithGridCardSliceVariation, TitleWithGridCardSlice, TitleWithRepeatableGridCardSliceDefaultPrimary, TitleWithRepeatableGridCardSliceDefaultItem, TitleWithRepeatableGridCardSliceDefault, TitleWithRepeatableGridCardSliceVariation, TitleWithRepeatableGridCardSlice, TitleWithRepeatableTextImageSliceDefaultPrimary, TitleWithRepeatableTextImageSliceDefaultItem, TitleWithRepeatableTextImageSliceDefault, TitleWithRepeatableTextImageSliceVariation, TitleWithRepeatableTextImageSlice };
     }
 }
