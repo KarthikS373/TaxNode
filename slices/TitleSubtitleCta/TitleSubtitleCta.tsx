@@ -10,7 +10,12 @@ const TitleSubtitleCta: React.FC<{ slice: TitleSubtitleCtaSlice }> = ({
   return (
     <>
       <Box pos={"relative"} id={slice.id}>
-        <Text size={"4xl"} fontWeight={"bold"} lineHeight={"normal"} color={'black'}>
+        <Text
+          size={"4xl"}
+          fontWeight={"bold"}
+          lineHeight={"normal"}
+          color={"black"}
+        >
           {primary.title}
         </Text>
       </Box>
