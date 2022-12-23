@@ -29,6 +29,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "formidable": "^2.0.1",
+    "formik": "^2.2.9",
     "framer-motion": "^6",
     "hamburger-react": "^2.5.0",
     "lint-staged": "^13.0.4",
@@ -47,7 +48,8 @@
     "react-slick": "^0.29.0",
     "short-uuid": "^4.2.2",
     "slick-carousel": "^1.8.1",
-    "swiper": "^8.4.5"
+    "swiper": "^8.4.5",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@prismicio/types": "^0.2.7",
