@@ -1,7 +1,9 @@
 import { ThemeComponents } from '@chakra-ui/react'
 
 const Input: ThemeComponents['Input'] = {
-  baseStyle: {},
+  baseStyle: {
+    fontFamily:'Poppins'
+  },
   variants: {
     primary: {
       field: {
@@ -27,7 +29,7 @@ const Input: ThemeComponents['Input'] = {
           borderColor: 'red.400',
         },
         _placeholder: {
-          color: 'rgba(0, 0, 0, 0.25)',
+          color: 'placeholderColor',
         },
       },
     },

@@ -17,5 +17,7 @@ const colors = {
   pinkOpac:'rgba(89, 10, 224, 0.03)',
   themeBlue:'#1388F3',
   themeDarkPurple:'#2F1747',
+  themeLightPurple:'#8E2DE2',
+  placeholderColor:'#9498B3',
 };
 export default colors;
