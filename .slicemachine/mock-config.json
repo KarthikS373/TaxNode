@@ -3,7 +3,8 @@
     "page": {},
     "teamcategroy": {},
     "team_member": {},
-    "buy_now": {}
+    "buy_now": {},
+    "layout": {}
   },
   "slices": {
     "TitleSubtitleCta": {

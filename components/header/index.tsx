@@ -11,6 +11,10 @@ const Header = () => (
     w={"100%"}
     boxShadow={"xs"}
     zIndex={9}
+    top={0}
+    h={'74px'}
+    display={'flex'}
+    alignItems={'center'}
   >
     <Container maxW={"7xl"}>
       <HStack justifyContent={"space-between"}>

@@ -52,7 +52,7 @@ const TitleSubtitleCta: React.FC<{
                     borderWidth={1}
                     borderStyle={"solid"}
                     bgColor={"white"}
-                    onClick={() => setSelection(i)}
+                    // onClick={() => selection !== i && setSelection(i)}
                     onMouseEnter={() => selection !== i && setSelection(i)}
                     p={[2, null, 3, null, 4]}
                     borderRadius={"xl"}

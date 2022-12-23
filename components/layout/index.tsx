@@ -9,7 +9,7 @@ interface Props {
 const Layout = ({ children }: Props) => (
   <>
     <Header />
-    <Box as="main">{children}</Box>
+    <Box as="main" mt={'74px'}>{children}</Box>
     <Footer/>
   </>
 );
