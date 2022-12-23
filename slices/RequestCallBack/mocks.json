@@ -1,0 +1,64 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "title": {
+        "__TYPE__": "FieldContent",
+        "value": "first",
+        "type": "Text"
+      },
+      "subtitle": {
+        "__TYPE__": "FieldContent",
+        "value": "grandmother",
+        "type": "Text"
+      },
+      "form_text": {
+        "__TYPE__": "FieldContent",
+        "value": "metal",
+        "type": "Text"
+      },
+      "name_placeholder": {
+        "__TYPE__": "FieldContent",
+        "value": "essential",
+        "type": "Text"
+      },
+      "name_error": {
+        "__TYPE__": "FieldContent",
+        "value": "spent",
+        "type": "Text"
+      },
+      "email_placeholder": {
+        "__TYPE__": "FieldContent",
+        "value": "member",
+        "type": "Text"
+      },
+      "email_error": {
+        "__TYPE__": "FieldContent",
+        "value": "labor",
+        "type": "Text"
+      },
+      "cta_label": {
+        "__TYPE__": "FieldContent",
+        "value": "twenty",
+        "type": "Text"
+      },
+      "success_toast": {
+        "__TYPE__": "FieldContent",
+        "value": "organized",
+        "type": "Text"
+      },
+      "error_toast": {
+        "__TYPE__": "FieldContent",
+        "value": "test",
+        "type": "Text"
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  }
+]

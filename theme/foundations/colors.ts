@@ -16,5 +16,6 @@ const colors = {
   blackOpac:'rgba(0, 0, 0, 0.6)',
   pinkOpac:'rgba(89, 10, 224, 0.03)',
   themeBlue:'#1388F3',
+  themeDarkPurple:'#2F1747',
 };
 export default colors;

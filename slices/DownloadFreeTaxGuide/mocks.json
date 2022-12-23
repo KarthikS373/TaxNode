@@ -1,0 +1,54 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "title": {
+        "__TYPE__": "FieldContent",
+        "value": "sold",
+        "type": "Text"
+      },
+      "name_placeholder": {
+        "__TYPE__": "FieldContent",
+        "value": "right",
+        "type": "Text"
+      },
+      "name_error_text": {
+        "__TYPE__": "FieldContent",
+        "value": "vegetable",
+        "type": "Text"
+      },
+      "email_placeholder": {
+        "__TYPE__": "FieldContent",
+        "value": "buffalo",
+        "type": "Text"
+      },
+      "email_error_text": {
+        "__TYPE__": "FieldContent",
+        "value": "bus",
+        "type": "Text"
+      },
+      "cta_label": {
+        "__TYPE__": "FieldContent",
+        "value": "secret",
+        "type": "Text"
+      },
+      "error_text": {
+        "__TYPE__": "FieldContent",
+        "value": "we",
+        "type": "Text"
+      },
+      "success_text": {
+        "__TYPE__": "FieldContent",
+        "value": "farmer",
+        "type": "Text"
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  }
+]

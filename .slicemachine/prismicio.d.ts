@@ -92,7 +92,7 @@ interface PageDocumentData {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = TitleSubtitleCtaSlice | LeftTextRightImageSlice | TitleWithRepeatableTextImageSlice | TitleSubtitleWithRepeatableTabSwitchSlice | TeamSlice | LogoSliderSlice | FaqSlice | DownloadFreeTaxGuideSlice;
+type PageDocumentDataSlicesSlice = TitleSubtitleCtaSlice | LeftTextRightImageSlice | TitleWithRepeatableTextImageSlice | TitleSubtitleWithRepeatableTabSwitchSlice | TeamSlice | LogoSliderSlice | FaqSlice | DownloadFreeTaxGuideSlice | LeftTextRightBuyNowSlice | ProcessStepSlice | TitleWithGridCardSlice | TitleWithRepeatableGridCardSlice | RequestCallBackSlice;
 /**
  * Page document from Prismic
  *
@@ -673,16 +673,6 @@ interface RequestCallBackSliceDefaultPrimary {
      *
      */
     email_error: prismicT.KeyTextField;
-    /**
-     * CTA Link field in *RequestCallBack → Primary*
-     *
-     * - **Field Type**: Link
-     * - **Placeholder**: *None*
-     * - **API ID Path**: request_call_back.primary.cta_link
-     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-     *
-     */
-    cta_link: prismicT.LinkField;
     /**
      * CTA Label field in *RequestCallBack → Primary*
      *

@@ -1,23 +1,29 @@
 {
-  "id": "mock-doc-id",
-  "url": null,
-  "type": "buy_now",
-  "href": null,
-  "tags": [],
-  "first_publication_date": "1970-01-01T00:00:01+0000",
-  "last_publication_date": "1970-01-01T00:00:01+0000",
-  "slugs": [],
-  "linked_documents": [],
-  "lang": "en-us",
-  "alternate_languages": [],
-  "data": {
-    "description": "using",
-    "actual_amount": 80,
-    "discount": 43,
-    "cta_link": {
-      "link_type": "Web",
+  "description": {
+    "__TYPE__": "FieldContent",
+    "value": "them",
+    "type": "Text"
+  },
+  "actual_amount": {
+    "__TYPE__": "FieldContent",
+    "value": "16",
+    "type": "Number"
+  },
+  "discount": {
+    "__TYPE__": "FieldContent",
+    "value": "25",
+    "type": "Number"
+  },
+  "cta_link": {
+    "__TYPE__": "LinkContent",
+    "value": {
+      "__TYPE__": "ExternalLink",
       "url": "https://slicemachine.dev"
-    },
-    "cta_label": "almost"
+    }
+  },
+  "cta_label": {
+    "__TYPE__": "FieldContent",
+    "value": "composed",
+    "type": "Text"
   }
 }

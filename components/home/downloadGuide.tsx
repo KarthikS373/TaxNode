@@ -127,18 +127,6 @@ const DownloadGuide = () => {
               </FormControl>
             </Flex>
 
-            {/* <Button
-              variant={"tertiary"}
-              onClick={() => apiDwnldtaxguideCall()}
-              mt={[1, 2, 8]}
-              disabled
-            >
-              {isLoading ? (
-                <CircularProgress isIndeterminate size="24px" color="teal" />
-              ) : (
-                "Download FreeTax Guide "
-              )}
-            </Button> */}
             {isLoading ? (
               <Button
                 variant={"tertiary"}

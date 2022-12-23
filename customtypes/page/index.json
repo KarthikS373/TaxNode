@@ -40,6 +40,21 @@
             },
             "download_free_tax_guide": {
               "type": "SharedSlice"
+            },
+            "left_text_right_buy_now": {
+              "type": "SharedSlice"
+            },
+            "process_step": {
+              "type": "SharedSlice"
+            },
+            "title_with_grid_card": {
+              "type": "SharedSlice"
+            },
+            "title_with_repeatable_grid_card": {
+              "type": "SharedSlice"
+            },
+            "request_call_back": {
+              "type": "SharedSlice"
             }
           }
         }
