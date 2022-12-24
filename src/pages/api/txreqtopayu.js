@@ -28,7 +28,7 @@ export default async function handler(req, res) {
       });
     });
     data = data.fields;
-    const { firstname, email, phone, state } = data;
+    const { firstname, email, phone, state, coupon } = data;
 
     //! Basic Validation
     if (!(firstname && email && phone && state)) {
@@ -48,18 +48,29 @@ export default async function handler(req, res) {
     if (txnid.length > 25) {
       txnid = txnid.substring(0, 25);
     }
+
     // amount
+    const couponDiscount =
+      coupon === process.env.COUPON ? process.env.COUPON_DISCOUNT : 0;
     const amount = Number(
-      Number(Number(process.env.AMOUNT) - Number(process.env.DISCOUNT)) * 1.18
+      Number(
+        Number(process.env.AMOUNT) -
+          Number(process.env.DISCOUNT) -
+          Number(couponDiscount)
+      ) * 1.18
     )
       .toFixed(2)
       .toString();
+
     // productinfo
     const productinfo = process.env.PRODUCT_INFO;
+
     // surl
     const surl = process.env.PAYU_SURL;
+
     // furl
     const furl = process.env.PAYU_FURL;
+
     // hash
     const hash = payu.hasher.generateHash({
       txnid: txnid,
@@ -68,6 +79,8 @@ export default async function handler(req, res) {
       firstname: firstname,
       email: email,
     });
+
+    console.log("This is hash", hash);
 
     //! Initiating transaction request to PayU
     const form = new formData();
@@ -82,11 +95,10 @@ export default async function handler(req, res) {
     form.append("surl", surl);
     form.append("furl", furl);
     form.append("hash", hash);
-    console.log("SURL: ", surl,"\nFURL: ", furl, "\n PAYU URL: ",process.env.PAYU_URL)
+    console.log("SURL: ", surl, "\nFURL: ", furl);
 
     const request = {
-//       url: process.env.PAYU_URL,
-      url: 'https://secure.payu.in/_payment',
+      url: process.env.PAYU_URL,
       headers: {
         Accept: "application/json",
       },
@@ -121,16 +133,14 @@ export default async function handler(req, res) {
         status: true,
         responseUrl: response?.request?.res?.responseUrl,
         message: "Operation Succeeded",
-        
       });
     }
     res.status(400).send({
       status: false,
       message: "Operation Failed",
     });
-    
   } catch (error) {
-    console.log("This is in catch block; error.message: ", error.message, error);
+    console.log("This is in catch block; error.message: ", error.message);
     res.status(500).send({
       status: false,
       message: "Operation Failed",
