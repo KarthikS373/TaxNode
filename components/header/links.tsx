@@ -3,7 +3,7 @@ import type { MouseEventHandler } from "react";
 
 import { Box, chakra } from "@chakra-ui/react";
 
-const links = [{ title: "Home", path: "/" }];
+const links = [{ title: "Home", path: "/home" }];
 
 interface Props {
   onClick: MouseEventHandler<HTMLAnchorElement> | undefined;
