@@ -2,6 +2,7 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 import * as Yup from "yup";
 import { useState } from "react";
 import { useFormik } from "formik";
+import "yup-phone";
 import {
   Box,
   Button,
@@ -33,13 +34,18 @@ const RequestCallBack: React.FC<{ slice: RequestCallBackSlice }> = ({
   const formik = useFormik({
     initialValues: {
       name: "",
+      phone: "",
       email: "",
     },
     validationSchema: Yup.object({
-      name: Yup.string().trim().required().matches(/^[aA-zZ\s]+$/),
+      name: Yup.string()
+        .trim()
+        .required()
+        .matches(/^[aA-zZ\s]+$/),
       email: Yup.string().trim().email().required(),
+      phone: Yup.string().trim().phone().required(),
     }),
-    onSubmit: async (value) => {  
+    onSubmit: async (value) => {
       setLoading(true);
 
       axios
@@ -48,7 +54,8 @@ const RequestCallBack: React.FC<{ slice: RequestCallBackSlice }> = ({
           {},
           {
             params: {
-              name: formik.values.name,
+              // name: formik.values.name,
+              phone: formik.values.phone,
               email: formik.values.email,
             },
           }
@@ -141,15 +148,21 @@ const RequestCallBack: React.FC<{ slice: RequestCallBackSlice }> = ({
                 <FormControl
                   isRequired
                   flex={1}
-                  isInvalid={formik.touched.name && !!formik.errors.name}
+                  // isInvalid={formik.touched.name && !!formik.errors.name}
+                  isInvalid={formik.touched.phone && !!formik.errors.phone}
                 >
                   <Input
+                    type={"number"}
                     placeholder={primary.name_placeholder || ""}
                     variant={"secondary"}
                     size={"lg"}
                     name="name"
-                    value={formik.values.name}
-                    onChange={formik.handleChange}
+                    // value={formik.values.name}
+                    // onChange={formik.handleChange}
+                    value={formik.values.phone}
+                    onChange={(e) => {
+                      formik.setFieldValue("phone", e.target.value);
+                    }}
                   />
                   <FormErrorMessage>{primary.name_error}</FormErrorMessage>
                 </FormControl>
