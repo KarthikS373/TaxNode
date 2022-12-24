@@ -13,7 +13,7 @@ import { SliceZone } from "@prismicio/react";
 import Layout from "../components/layout";
 import { components } from "../slices";
 
-const UIDPage = ({page}:any) => {
+const UIDPage = ({page, team_members}:any) => {
     // page = {
     //     "id": "Y6OrvBEAACMAdIK3",
     //     "uid": "home",
@@ -33,10 +33,9 @@ const UIDPage = ({page}:any) => {
     //     "slices": []
     // }
     // }
-    console.log(page.data.slices)
     return (
         // <Layout>
-            <SliceZone components={components} slices={page.data?.slices}/>
+            <SliceZone context={{team_members}} components={components} slices={page.data?.slices}/>
         // </Layout>
     );
 };
@@ -54,8 +53,9 @@ export async function getStaticProps({ params, previewData }:any) {
     const client = createClient({ previewData })
 
     const page = await client.getByUID('page', params.uid)
+    const team_members = await client.getAllByType('team_member',{fetchLinks:["teamcategroy.team_category_title"]})
 
     return {
-        props: { page },
+        props: { page, team_members },
     }
 }
