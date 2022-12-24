@@ -36,10 +36,10 @@ const RequestCallBack: React.FC<{ slice: RequestCallBackSlice }> = ({
       email: "",
     },
     validationSchema: Yup.object({
-      name: Yup.string().required(),
-      email: Yup.string().email().required(),
+      name: Yup.string().trim().required().matches(/^[aA-zZ\s]+$/),
+      email: Yup.string().trim().email().required(),
     }),
-    onSubmit: async (value) => {
+    onSubmit: async (value) => {  
       setLoading(true);
 
       axios

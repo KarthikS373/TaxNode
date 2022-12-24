@@ -35,8 +35,11 @@ const TitleSubtitleCta: React.FC<{ slice: DownloadFreeTaxGuideSlice }> = ({
       email: "",
     },
     validationSchema: Yup.object({
-      name: Yup.string().required(),
-      email: Yup.string().email().required(),
+      name: Yup.string()
+        .trim()
+        .required()
+        .matches(/^[aA-zZ\s]+$/),
+      email: Yup.string().trim().email().required(),
     }),
     onSubmit: async (value) => {
       setLoading(true);
