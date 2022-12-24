@@ -19,5 +19,6 @@ const colors = {
   themeDarkPurple:'#2F1747',
   themeLightPurple:'#8E2DE2',
   placeholderColor:'#9498B3',
+  lightCreamColor:'#FBFBFB',
 };
 export default colors;
