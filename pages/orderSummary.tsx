@@ -36,7 +36,6 @@ const COUPON =
 const COUPON_DISCOUNT = process.env.NEXT_PUBLIC_COUPON_DISCOUNT || 0;
 
 const OrderSummary = () => {
-  const [amount, setAmount] = useState(AMOUNT);
   const [coupon, setCoupon] = useState<string | null>(null);
   const [gst, setGst] = useState<string>("");
   const [total, setTotal] = useState<string>("");
@@ -105,23 +104,23 @@ const OrderSummary = () => {
   });
 
   useEffect(() => {
-    let total: number = +amount - +DISCOUNT;
+    let total: number = +AMOUNT - +DISCOUNT;
     if (formik.values.coupon) {
       total -= +COUPON_DISCOUNT;
     }
     const _gst: number = 0.18 * total;
 
     setGst((Math.round(_gst * 100) / 100).toFixed(2).toString());
-  }, [amount, formik.values.coupon]);
+  }, [formik.values.coupon]);
 
   useEffect(() => {
-    let _total: number = +amount - +DISCOUNT;
+    let _total: number = +AMOUNT - +DISCOUNT;
     if (formik.values.coupon) {
       _total -= +COUPON_DISCOUNT;
     }
 
     setTotal((Math.round(_total * 100) / 100).toFixed(2).toString());
-  }, [amount, formik.values.coupon]);
+  }, [formik.values.coupon]);
 
   return (
     <>
@@ -343,7 +342,7 @@ const OrderSummary = () => {
                     Plan Amount
                   </Text>
                   <Text fontWeight={"bold"} size={"md"} color={"black"}>
-                    ₹{amount}
+                    ₹{AMOUNT}
                   </Text>
                 </Flex>
                 <Flex
