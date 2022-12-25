@@ -71,6 +71,7 @@ const OrderSummary = () => {
           email: formik.values.email,
           firstname: formik.values.name,
           state: formik.values.state,
+          coupon: formik.values.coupon,
         })
         .then((response: AxiosResponse) => {
           window.location.href = response.data.responseUrl;
@@ -88,7 +89,6 @@ const OrderSummary = () => {
           }
         })
         .catch((error: AxiosError) => {
-          console.log(error.message);
           toast({
             title: "An Error occured",
             description: "",
@@ -102,6 +102,60 @@ const OrderSummary = () => {
         });
     },
   });
+
+  const handleApplyCoupon = () => {
+    if (formik.values.coupon) {
+      formik.setFieldValue("coupon", null);
+      setCoupon(null);
+      return;
+    }
+
+    if (coupon && coupon.trim().length) {
+      axios
+        .get("/api/verifycoupon", {
+          params: {
+            coupon: coupon,
+          },
+        })
+        .then((response: AxiosResponse) => {
+          if (response.status === 202) {
+            throw new Error("Invalid coupon code");
+          }
+
+          if (response.status === 200) {
+            formik.setFieldValue("coupon", coupon);
+            return toast({
+              status: "success",
+              title: `₹${(Math.round(+response.data.data.discount * 100) / 100)
+                .toFixed(2)
+                .toString()} Discount applied`,
+              duration: 1000,
+              isClosable: true,
+            });
+          } else if (response.data.discount) {
+            formik.setFieldValue("coupon", coupon);
+          }
+        })
+        .catch((error: AxiosError) => {
+          if (error.message.toString().toLowerCase().includes("invalid")) {
+            setCoupon(null);
+            return toast({
+              status: "error",
+              title: "Invalid coupon code",
+              duration: 1000,
+              isClosable: true,
+            });
+          }
+
+          return toast({
+            status: "error",
+            title: "An error occured",
+            duration: 1000,
+            isClosable: true,
+          });
+        });
+    }
+  };
 
   useEffect(() => {
     let total: number = +AMOUNT - +DISCOUNT;
@@ -372,32 +426,7 @@ const OrderSummary = () => {
                         h="1.75rem"
                         p="1rem 3rem"
                         size="sm"
-                        onClick={(e) => {
-                          if (formik.values.coupon) {
-                            formik.setFieldValue("coupon", null);
-                            setCoupon(null);
-                            return;
-                          }
-
-                          if (
-                            coupon?.toLowerCase() !== COUPON.toLowerCase() &&
-                            coupon &&
-                            coupon.length > 0
-                          ) {
-                            return toast({
-                              status: "error",
-                              title: "Invalid coupon code",
-                              duration: 1000,
-                              isClosable: true,
-                            });
-                          }
-
-                          if (
-                            coupon &&
-                            coupon.toLowerCase() === COUPON.toLowerCase()
-                          )
-                            formik.setFieldValue("coupon", coupon);
-                        }}
+                        onClick={handleApplyCoupon}
                       >
                         {formik.values.coupon &&
                         !(formik.touched.coupon && !!formik.errors.coupon)
@@ -462,7 +491,6 @@ const OrderSummary = () => {
                   <Checkbox
                     checked={formik.values.termsAndCondition}
                     onChange={(e) => {
-                      console.log(e.target.checked);
                       formik.setFieldValue(
                         "termsAndCondition",
                         e.target.checked
