@@ -29,14 +29,11 @@ import {
 
 import states from "../lib/statesIndia";
 
-const AMOUNT = process.env.NEXT_PUBLIC_AMOUNT || 0;
-const DISCOUNT = process.env.NEXT_PUBLIC_DISCOUNT || 0;
-const COUPON =
-  process.env.NEXT_PUBLIC_COUPON || "71337436763979244226452948404D63";
-const COUPON_DISCOUNT = process.env.NEXT_PUBLIC_COUPON_DISCOUNT || 0;
-
 const OrderSummary = () => {
+  const [amount, setAmount] = useState<number | null>(null);
+  const [discount, setDiscount] = useState<number | null>(null);
   const [coupon, setCoupon] = useState<string | null>(null);
+  const [couponDiscount, setCouponDiscount] = useState<number | null>(null);
   const [gst, setGst] = useState<string>("");
   const [total, setTotal] = useState<string>("");
 
@@ -124,6 +121,7 @@ const OrderSummary = () => {
 
           if (response.status === 200) {
             formik.setFieldValue("coupon", coupon);
+            setCouponDiscount(+response.data.data.discount);
             return toast({
               status: "success",
               title: `₹${(Math.round(+response.data.data.discount * 100) / 100)
@@ -134,6 +132,7 @@ const OrderSummary = () => {
             });
           } else if (response.data.discount) {
             formik.setFieldValue("coupon", coupon);
+            setCouponDiscount(+response.data.data.discount);
           }
         })
         .catch((error: AxiosError) => {
@@ -157,24 +156,46 @@ const OrderSummary = () => {
     }
   };
 
-  useEffect(() => {
-    let total: number = +AMOUNT - +DISCOUNT;
-    if (formik.values.coupon) {
-      total -= +COUPON_DISCOUNT;
+  const calculateTotal = () => {
+    let _total: number = 0;
+    if (amount && discount) _total = +amount - +discount;
+    if (formik.values.coupon && couponDiscount) {
+      if (_total >= couponDiscount) _total -= +couponDiscount;
     }
-    const _gst: number = 0.18 * total;
+
+    return _total;
+  };
+
+  useEffect(() => {
+    axios
+      .get("/api/fetchOrderAmountandDiscount")
+      .then((response: AxiosResponse) => {
+        const { amount: amt, discount: dct } = response.data.data;
+        setAmount(amt);
+        setDiscount(dct);
+      })
+      .catch((error: AxiosError) => {
+        toast({
+          status: "error",
+          title: "An error occured",
+          duration: 1000,
+          isClosable: true,
+        });
+      });
+  }, []);
+
+  useEffect(() => {
+    let _total: number = calculateTotal();
+    const _gst: number = 0.18 * _total;
 
     setGst((Math.round(_gst * 100) / 100).toFixed(2).toString());
-  }, [formik.values.coupon]);
+  }, [amount, couponDiscount, discount, formik.values.coupon]);
 
   useEffect(() => {
-    let _total: number = +AMOUNT - +DISCOUNT;
-    if (formik.values.coupon) {
-      _total -= +COUPON_DISCOUNT;
-    }
+    let _total: number = calculateTotal();
 
     setTotal((Math.round(_total * 100) / 100).toFixed(2).toString());
-  }, [formik.values.coupon]);
+  }, [amount, couponDiscount, discount, formik.values.coupon]);
 
   return (
     <>
@@ -396,7 +417,7 @@ const OrderSummary = () => {
                     Plan Amount
                   </Text>
                   <Text fontWeight={"bold"} size={"md"} color={"black"}>
-                    ₹{AMOUNT}
+                    ₹{amount}
                   </Text>
                 </Flex>
                 <Flex
@@ -446,7 +467,7 @@ const OrderSummary = () => {
                     Discount
                   </Text>
                   <Text fontWeight={"semibold"} size={"xs"} color={"black"}>
-                    ₹{DISCOUNT}
+                    ₹{discount}
                   </Text>
                 </Flex>
                 <Flex

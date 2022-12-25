@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     }
 
     if (COUPON && coupon.toLowerCase() === COUPON.toLowerCase()) {
-      res.status(200).send({
+      return res.status(200).send({
         status: true,
         data: {
           valid: true,
