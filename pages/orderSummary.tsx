@@ -1,9 +1,10 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 import * as Yup from "yup";
 import "yup-phone";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { NextSeo } from "next-seo";
+import { CloseIcon } from "@chakra-ui/icons";
 import {
   Box,
   Text,
@@ -22,11 +23,24 @@ import {
   CircularProgress,
   Select,
   useToast,
+  InputGroup,
+  InputRightElement,
 } from "@chakra-ui/react";
 
 import states from "../lib/statesIndia";
 
+const AMOUNT = process.env.NEXT_PUBLIC_AMOUNT || 0;
+const DISCOUNT = process.env.NEXT_PUBLIC_DISCOUNT || 0;
+const COUPON =
+  process.env.NEXT_PUBLIC_COUPON || "71337436763979244226452948404D63";
+const COUPON_DISCOUNT = process.env.NEXT_PUBLIC_COUPON_DISCOUNT || 0;
+
 const OrderSummary = () => {
+  const [amount, setAmount] = useState(AMOUNT);
+  const [coupon, setCoupon] = useState<string | null>(null);
+  const [gst, setGst] = useState<string>("");
+  const [total, setTotal] = useState<string>("");
+
   const [isLoading, setIsLoading] = useState(false);
   const toast = useToast();
 
@@ -37,6 +51,7 @@ const OrderSummary = () => {
       phone: "",
       state: "",
       termsAndCondition: false,
+      coupon: null,
     },
     validationSchema: Yup.object({
       name: Yup.string()
@@ -88,6 +103,25 @@ const OrderSummary = () => {
         });
     },
   });
+
+  useEffect(() => {
+    let total: number = +amount - +DISCOUNT;
+    if (formik.values.coupon) {
+      total -= +COUPON_DISCOUNT;
+    }
+    const _gst: number = 0.18 * total;
+
+    setGst((Math.round(_gst * 100) / 100).toFixed(2).toString());
+  }, [amount, formik.values.coupon]);
+
+  useEffect(() => {
+    let _total: number = +amount - +DISCOUNT;
+    if (formik.values.coupon) {
+      _total -= +COUPON_DISCOUNT;
+    }
+
+    setTotal((Math.round(_total * 100) / 100).toFixed(2).toString());
+  }, [amount, formik.values.coupon]);
 
   return (
     <>
@@ -309,20 +343,82 @@ const OrderSummary = () => {
                     Plan Amount
                   </Text>
                   <Text fontWeight={"bold"} size={"md"} color={"black"}>
-                    ₹2,999
+                    ₹{amount}
                   </Text>
+                </Flex>
+                <Flex
+                  alignItems={"start"}
+                  flexDir={"column"}
+                  justifyContent={"space-between"}
+                  gap={[3, null, 4, null, 5]}
+                  my={[3, null, 4, null, 5]}
+                >
+                  <InputGroup size="md">
+                    <Input
+                      pr="4.5rem"
+                      name="coupon"
+                      value={coupon || ""}
+                      disabled={formik.values.coupon ? true : false}
+                      onChange={(e) => {
+                        setCoupon(e.target.value);
+                      }}
+                      color={formik.values.coupon ? "green" : "inherit"}
+                      placeholder="Enter Coupon code"
+                    />
+                    <InputRightElement width="4.5rem">
+                      <Button
+                        variant={"gradient"}
+                        mr={10}
+                        w={"100%"}
+                        h="1.75rem"
+                        p="1rem 3rem"
+                        size="sm"
+                        onClick={(e) => {
+                          if (formik.values.coupon) {
+                            formik.setFieldValue("coupon", null);
+                            setCoupon(null);
+                            return;
+                          }
+
+                          if (
+                            coupon?.toLowerCase() !== COUPON.toLowerCase() &&
+                            coupon &&
+                            coupon.length > 0
+                          ) {
+                            return toast({
+                              status: "error",
+                              title: "Invalid coupon code",
+                              duration: 1000,
+                              isClosable: true,
+                            });
+                          }
+
+                          if (
+                            coupon &&
+                            coupon.toLowerCase() === COUPON.toLowerCase()
+                          )
+                            formik.setFieldValue("coupon", coupon);
+                        }}
+                      >
+                        {formik.values.coupon &&
+                        !(formik.touched.coupon && !!formik.errors.coupon)
+                          ? "Remove"
+                          : "Apply"}
+                      </Button>
+                    </InputRightElement>
+                  </InputGroup>
                 </Flex>
                 <Flex
                   alignItems={"center"}
                   justifyContent={"space-between"}
                   gap={[3, null, 4, null, 5]}
-                  my={[3, null, 4, null, 5]}
+                  my={[2, null, 3, null, 4]}
                 >
                   <Text fontWeight={"semibold"} size={"xs"} color={"blackOpac"}>
                     Discount
                   </Text>
                   <Text fontWeight={"semibold"} size={"xs"} color={"black"}>
-                    ₹2500
+                    ₹{DISCOUNT}
                   </Text>
                 </Flex>
                 <Flex
@@ -335,7 +431,7 @@ const OrderSummary = () => {
                     Goods and Services Tax @ 18%
                   </Text>
                   <Text fontWeight={"semibold"} size={"xs"} color={"black"}>
-                    ₹89.82
+                    ₹{gst}
                   </Text>
                 </Flex>
                 <Flex
@@ -348,7 +444,7 @@ const OrderSummary = () => {
                     Total
                   </Text>
                   <Text fontWeight={"bold"} size={"md"} color={"black"}>
-                    ₹588.82
+                    ₹{total}
                   </Text>
                 </Flex>
                 <Text size={"xs"} color={"blacOpac"} my={[3, null, 4, null, 5]}>

@@ -55,7 +55,7 @@ const RequestCallBack: React.FC<{ slice: RequestCallBackSlice }> = ({
           {
             params: {
               // name: formik.values.name,
-              phone: formik.values.phone,
+              phone: formik.values.phone, 
               email: formik.values.email,
             },
           }
