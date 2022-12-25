@@ -33,15 +33,15 @@ const RequestCallBack: React.FC<{ slice: RequestCallBackSlice }> = ({
   // Form Validation and Submission
   const formik = useFormik({
     initialValues: {
-      name: "",
+      // name: "",
       phone: "",
       email: "",
     },
     validationSchema: Yup.object({
-      name: Yup.string()
-        .trim()
-        .required()
-        .matches(/^[aA-zZ\s]+$/),
+      // name: Yup.string()
+      //   .trim()
+      //   .required()
+      //   .matches(/^[aA-zZ\s]+$/),
       email: Yup.string().trim().email().required(),
       phone: Yup.string().trim().phone().required(),
     }),
@@ -55,13 +55,12 @@ const RequestCallBack: React.FC<{ slice: RequestCallBackSlice }> = ({
           {
             params: {
               // name: formik.values.name,
-              phone: formik.values.phone, 
+              phone: formik.values.phone,
               email: formik.values.email,
             },
           }
         )
         .then((response: AxiosResponse) => {
-          console.log(response);
           if (response.status == 200) {
             toast({
               title: primary.success_toast,
@@ -90,8 +89,6 @@ const RequestCallBack: React.FC<{ slice: RequestCallBackSlice }> = ({
         });
     },
   });
-
-  console.log(primary);
 
   return (
     <>
@@ -190,7 +187,6 @@ const RequestCallBack: React.FC<{ slice: RequestCallBackSlice }> = ({
                   size={"lg"}
                   w={"fit-content"}
                   type="submit"
-                  onClick={() => {}}
                 >
                   {primary.cta_label}
                 </Button>

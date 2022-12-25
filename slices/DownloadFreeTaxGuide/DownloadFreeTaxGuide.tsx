@@ -52,7 +52,6 @@ const TitleSubtitleCta: React.FC<{ slice: DownloadFreeTaxGuideSlice }> = ({
           },
         })
         .then((response: AxiosResponse) => {
-          console.log(response);
           if (response.status == 200) {
             toast({
               title: "Account created.",
