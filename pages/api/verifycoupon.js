@@ -5,7 +5,16 @@ const COUPON_DISCOUNT = process.env.COUPON_DISCOUNT;
 
 export default async function handler(req, res) {
   try {
-    const coupon = req.query.coupon;
+    const { method } = req;
+    const { coupon } = req.query;
+
+    if (method !== "POST") {
+      console.log("This is not a POST request");
+      return res.status(400).send({
+        status: false,
+        message: "Operation Failed",
+      });
+    }
 
     // Basic Validation
     if (!coupon) {

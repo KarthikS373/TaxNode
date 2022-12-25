@@ -109,11 +109,15 @@ const OrderSummary = () => {
 
     if (coupon && coupon.trim().length) {
       axios
-        .get("/api/verifycoupon", {
-          params: {
-            coupon: coupon,
-          },
-        })
+        .post(
+          "/api/verifycoupon",
+          {},
+          {
+            params: {
+              coupon: coupon,
+            },
+          }
+        )
         .then((response: AxiosResponse) => {
           if (response.status === 202) {
             throw new Error("Invalid coupon code");
